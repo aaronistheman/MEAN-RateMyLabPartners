@@ -10,6 +10,7 @@ Upcoming Tasks (not yet in any particular order)
 -LabPartner model instance
 -User/Reviewer model instance
 -User can leave review for a LabPartner
+	-must require authentication in the appropriate route
 -Review model instance
 	-subject/class
 	-rating
@@ -19,3 +20,7 @@ Eventually:
 -make the webpage look nice with CSS, Bootstrap, etc.
 -since this is a trivial app, should I *not* hardcode
 the secret used for signing the tokens
+	-is hardcoded in:
+		-routes/index.js
+		-mdoels/Users.js
+	-could use environment variable instead
