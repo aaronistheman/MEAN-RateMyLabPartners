@@ -1,0 +1,17 @@
+Current:
+-logging in and registering
+	-to test, have some text that says any of the following two
+	statements: 1) "You're logged in", 2) "You're not logged in"
+
+Upcoming Tasks (not yet in any particular order)
+(NOTE: it's okay if the webpage looks terrible at first):
+-LabPartner model instance
+-User/Reviewer model instance
+-User can leave review for a LabPartner
+-Review model instance
+	-subject/class
+	-rating
+	-comments
+
+Eventually:
+-make the webpage look nice with CSS, Bootstrap, etc.
