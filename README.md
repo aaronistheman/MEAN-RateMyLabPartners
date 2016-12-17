@@ -1,6 +1,6 @@
 # MEAN-RateMyLabPartners
 
-(Last updated: December 11, 2016)
+(Last updated: December 17, 2016)
 
 About
 -----
@@ -15,6 +15,8 @@ Helpful Resources
 * This introductory MEAN tutorial, from which I got some of the code
 used in this application (e.g. the password-setting code for the UserSchema):
 https://thinkster.io/tutorials/mean-stack
+
+* This helped with understanding Passport: http://passportjs.org/docs/overview
 
 * Found the .gitignore file here: https://github.com/meanjs/mean/blob/master/.gitignore
 
