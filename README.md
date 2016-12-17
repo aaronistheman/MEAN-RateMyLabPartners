@@ -12,6 +12,10 @@ for rating lab partners instead :-)
 Helpful Resources
 -----------------
 
+* This introductory MEAN tutorial, from which I got some of the code
+used in this application (e.g. the password-setting code for the UserSchema):
+https://thinkster.io/tutorials/mean-stack
+
 * Found the .gitignore file here: https://github.com/meanjs/mean/blob/master/.gitignore
 
 Author

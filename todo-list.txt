@@ -2,6 +2,8 @@ Current:
 -logging in and registering
 	-to test, have some text that says any of the following two
 	statements: 1) "You're logged in", 2) "You're not logged in"
+		-go through tutorial
+			-don't hardcode iterations or key length
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
@@ -15,3 +17,5 @@ Upcoming Tasks (not yet in any particular order)
 
 Eventually:
 -make the webpage look nice with CSS, Bootstrap, etc.
+-since this is a trivial app, should I *not* hardcode
+the secret used for signing the tokens
