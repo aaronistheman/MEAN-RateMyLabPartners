@@ -23,7 +23,6 @@
 
     <script type="text/ng-template" id="/home.html">
     	<p>Template: home.html</p>
-  		<p>{{ teehee }}</p>
 
       <p>Go to <a href="/#/register">registration</a></p>
 
@@ -34,12 +33,48 @@
       -->
     </script> <!-- home.html -->
 
+
+
     <script type="text/ng-template" id="/register.html">
+      <div ng-show="error">
+        <span>{{ error.message }}</span>
+      </div>
+
+      <form ng-submit="register()">
+        <h3>Register</h3>
+
+        <input type="text" placeholder="Username"
+          ng-model="user.username" />
+        <input type="password" placeholder="Password"
+          ng-model="user.password" />
+        <button type="submit">Register</button>
+      </form>
+
+      <!--
       <p>Template: register.html</p>
       <p>{{ blah }}</p>
 
       <p>Go <a href="/#/home">home</a></p>
-    </script>
+      -->
+    </script> <!-- register.html -->
+
+
+
+    <script type="text/ng-template" id="/login.html">
+      <div ng-show="error">
+        <span>{{ error.message }}</span>
+      </div>
+
+      <form ng-submit="logIn()">
+        <h3>Log In</h3>
+
+        <input type="text" placeholder="Username"
+          ng-model="user.username" />
+        <input type="password" placeholder="Password"
+          ng-model="user.password" />
+        <button type="submit">Log In</button>
+      </form>
+    </script> <!-- login.html -->
 
     <!--
     <form action="/test" method="post">

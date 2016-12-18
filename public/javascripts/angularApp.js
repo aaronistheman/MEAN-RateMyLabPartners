@@ -1,3 +1,9 @@
+/**
+ * Much of this file's code was copied from this tutorial:
+ * https://thinkster.io/tutorials/mean-stack/creating-an-angular-service-for-authentication
+ */
+
+
 var app = angular.module('rateMyLabPartners', ['ui.router']);
 
 
@@ -13,10 +19,27 @@ function($stateProvider, $urlRouterProvider) {
 			templateUrl: '/home.html',
 			controller: 'MainCtrl'
 		})
+    .state('login', {
+      url: '/login',
+      templateUrl: '/login.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'auth', function($state, auth){
+        // redirect user to home state if already logged in
+        if(auth.isLoggedIn()){
+          $state.go('home');
+        }
+      }]
+    })
     .state('register', {
       url: '/register',
       templateUrl: '/register.html',
-      controller: 'AuthCtrl'
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'auth', function($state, auth){
+        // redirect user to home state if already logged in
+        if(auth.isLoggedIn()){
+          $state.go('home');
+        }
+      }]
     });
 
 
@@ -25,10 +48,6 @@ function($stateProvider, $urlRouterProvider) {
 
 
 
-/**
- * The below factory is copied from:
- * https://thinkster.io/tutorials/mean-stack/creating-an-angular-service-for-authentication
- */
 app.factory('auth', [
 '$http',
 '$window',
@@ -91,8 +110,6 @@ function($htpp, $window) {
 app.controller('MainCtrl', [
 '$scope',
 function($scope){
-	$scope.teehee = 'blake';
-
 
 
 }]); // MainCtrl controller
@@ -101,6 +118,24 @@ function($scope){
 
 app.controller('AuthCtrl', [
 '$scope',
-function($scope){
-  $scope.blah = 'shelton';
+'$state',
+'auth',
+function($scope, $state, auth){
+  $scope.user = {};
+
+  $scope.register = function(){
+    auth.register($scope.user).error(function(error){
+      $scope.error = error;
+    }).then(function(){
+      $state.go('home');
+    });
+  };
+
+  $scope.logIn = function(){
+    auth.logIn($scope.user).error(function(error){
+      $scope.error = error;
+    }).then(function(){
+      $state.go('home');
+    })
+  };
 }]); // AuthCtrl controller

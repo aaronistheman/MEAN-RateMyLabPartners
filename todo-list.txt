@@ -2,11 +2,10 @@ Current:
 -logging in and registering
 	-to test, have some text that says any of the following two
 	statements: 1) "You're logged in", 2) "You're not logged in"
-		-use AngularJS templates to provide home, login,
-		and registration screens (i.e. make it possible to
-		log in)
-			-go through the last tutorial page to figure
-			out next steps
+		-make it possible to get to the login and registration
+		screens
+		-make sure the login/registration forms work; do I have
+		the routes, etc.?
 		-use AngularJS factory to detect the status
 		and adjust the text
 	-don't hardcode iterations or key length
