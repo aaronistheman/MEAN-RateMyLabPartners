@@ -2,9 +2,10 @@ Current:
 -logging in and registering
 	-to test, have some text that says any of the following two
 	statements: 1) "You're logged in", 2) "You're not logged in"
-		-skim through tutorial
-			-maybe build *basic* AngularJS front-end
-		-use AngularJS factory to adjust the text
+		-use AngularJS templates to provide home, login,
+		and registration screens
+		-use AngularJS factory to detect the status
+		and adjust the text
 	-don't hardcode iterations or key length
 
 Upcoming Tasks (not yet in any particular order)
