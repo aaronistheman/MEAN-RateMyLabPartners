@@ -3,10 +3,18 @@ Current:
 	-to test, have some text that says any of the following two
 	statements: 1) "You're logged in", 2) "You're not logged in"
 		-use AngularJS templates to provide home, login,
-		and registration screens
+		and registration screens (i.e. make it possible to
+		log in)
+			-go through the last tutorial page to figure
+			out next steps
 		-use AngularJS factory to detect the status
 		and adjust the text
 	-don't hardcode iterations or key length
+	-don't hardcode session token name
+	-there are some parts of code that I initially neglected
+	copying (e.g. the onEnter member of the login state
+	in angularApp.js) from the tutorial; examine these;
+	should end up checking off the entire tutorial
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):

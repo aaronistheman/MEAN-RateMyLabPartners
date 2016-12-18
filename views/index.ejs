@@ -14,16 +14,32 @@
     <p>Welcome to <%= title %></p>
     -->
 
+    <div>
+      <h1>Rate My Lab Partners</h1>
+    </div>
+
     <!-- Specify where to render the current AngularJS template -->
     <ui-view></ui-view>
 
     <script type="text/ng-template" id="/home.html">
-    	<div>
-    		<h1>Rate My Lab Partners</h1>
-		</div>
+    	<p>Template: home.html</p>
+  		<p>{{ teehee }}</p>
 
-		<p>Template: home.html</p>
+      <p>Go to <a href="/#/register">registration</a></p>
+
+      <!--
+  		<div ng-hide="isLoggedIn()">
+  			<p>You are not logged in.</p>
+  		</div>
+      -->
     </script> <!-- home.html -->
+
+    <script type="text/ng-template" id="/register.html">
+      <p>Template: register.html</p>
+      <p>{{ blah }}</p>
+
+      <p>Go <a href="/#/home">home</a></p>
+    </script>
 
     <!--
     <form action="/test" method="post">

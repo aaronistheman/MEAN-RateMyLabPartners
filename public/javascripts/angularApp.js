@@ -1,5 +1,7 @@
 var app = angular.module('rateMyLabPartners', ['ui.router']);
 
+
+
 app.config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -11,6 +13,11 @@ function($stateProvider, $urlRouterProvider) {
 			templateUrl: '/home.html',
 			controller: 'MainCtrl'
 		})
+    .state('register', {
+      url: '/register',
+      templateUrl: '/register.html',
+      controller: 'AuthCtrl'
+    });
 
 
 	$urlRouterProvider.otherwise('home');
@@ -89,3 +96,11 @@ function($scope){
 
 
 }]); // MainCtrl controller
+
+
+
+app.controller('AuthCtrl', [
+'$scope',
+function($scope){
+  $scope.blah = 'shelton';
+}]); // AuthCtrl controller
