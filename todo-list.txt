@@ -1,12 +1,14 @@
 Current:
 -logging in and registering
-	-program crashes if try to register already existing user
 	-don't hardcode iterations or key length
 	-don't hardcode session token name
 	-there are some parts of code that I initially neglected
 	copying (e.g. the onEnter member of the login state
 	in angularApp.js) from the tutorial; examine these;
 	should end up checking off the entire tutorial
+	-program crashes if try to register already existing user
+		-in register handler, try to find the username;
+		if it's found, report the error
 	-probably add navigation bar; move log in/register/log out
 	links to that bar
 
