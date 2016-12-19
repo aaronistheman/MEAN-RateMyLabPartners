@@ -48,6 +48,7 @@ function($stateProvider, $urlRouterProvider) {
 
 
 
+var LocalStorageTokenName = 'rate-token';
 app.factory('auth', [
 '$http',
 '$window',
@@ -55,11 +56,11 @@ function($http, $window) {
 	var auth = {};
 
   auth.saveToken = function(token){
-    $window.localStorage['rate-token'] = token;
+    $window.localStorage[LocalStorageTokenName] = token;
   };
 
   auth.getToken = function(){
-    return $window.localStorage['rate-token'];
+    return $window.localStorage[LocalStorageTokenName];
   };
 
   // Returns true if the user is logged in
@@ -99,7 +100,7 @@ function($http, $window) {
   };
 
   auth.logOut = function(){
-    $window.localStorage.removeItem('rate-token');
+    $window.localStorage.removeItem(LocalStorageTokenName);
   };
 
   return auth;

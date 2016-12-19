@@ -1,6 +1,5 @@
 Current:
 -logging in and registering
-	-don't hardcode session token name
 	-there are some parts of code that I initially neglected
 	copying (e.g. the onEnter member of the login state
 	in angularApp.js) from the tutorial; examine these;
