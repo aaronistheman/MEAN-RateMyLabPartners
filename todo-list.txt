@@ -2,18 +2,19 @@ Current:
 -logging in and registering
 	-to test, have some text that says any of the following two
 	statements: 1) "You're logged in", 2) "You're not logged in"
-		-make it possible to get to the login and registration
-		screens
-		-make sure the login/registration forms work; do I have
-		the routes, etc.?
 		-use AngularJS factory to detect the status
 		and adjust the text
+		-make it possible to go back from the login/registration
+		screens
+		-program crashes if try to register already existing user
 	-don't hardcode iterations or key length
 	-don't hardcode session token name
 	-there are some parts of code that I initially neglected
 	copying (e.g. the onEnter member of the login state
 	in angularApp.js) from the tutorial; examine these;
 	should end up checking off the entire tutorial
+	-probably add navigation bar; move log in/register/log out
+	links to that bar
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):

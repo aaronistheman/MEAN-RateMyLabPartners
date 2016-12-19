@@ -51,7 +51,7 @@ function($stateProvider, $urlRouterProvider) {
 app.factory('auth', [
 '$http',
 '$window',
-function($htpp, $window) {
+function($http, $window) {
 	var auth = {};
 
   auth.saveToken = function(token){
@@ -109,8 +109,11 @@ function($htpp, $window) {
 
 app.controller('MainCtrl', [
 '$scope',
-function($scope){
+'auth',
+function($scope, auth){
 
+  $scope.isLoggedIn = auth.isLoggedIn;
+  $scope.logOut = auth.logOut;
 
 }]); // MainCtrl controller
 

@@ -24,13 +24,13 @@
     <script type="text/ng-template" id="/home.html">
     	<p>Template: home.html</p>
 
-      <p>Go to <a href="/#/register">registration</a></p>
-
-      <!--
+      <div ng-show="isLoggedIn()">
+        <a href="" ng-click="logOut()">Log Out</a>
+      </div>
   		<div ng-hide="isLoggedIn()">
-  			<p>You are not logged in.</p>
+  			<a href="/#/login">Log In</a>
+        <a href="/#/register">Register</a>
   		</div>
-      -->
     </script> <!-- home.html -->
 
 
