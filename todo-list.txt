@@ -1,14 +1,11 @@
 Current:
 -logging in and registering
-	-there are some parts of code that I initially neglected
-	copying (e.g. the onEnter member of the login state
-	in angularApp.js) from the tutorial; examine these;
-	should end up checking off the entire tutorial
-	-program crashes if try to register already existing user
-		-in register handler, try to find the username;
-		if it's found, report the error
 	-probably add navigation bar; move log in/register/log out
 	links to that bar
+	-program crashes if try to register already existing user
+	but use his name capitalized
+		-are the usernames case-sensitive? should they be or not?
+	-should I be serializing the user?
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
@@ -22,6 +19,9 @@ Upcoming Tasks (not yet in any particular order)
 	-comments
 
 Eventually:
+-there are some parts of code that I initially neglected
+copying from the tutorial; examine these;
+should end up checking off the entire tutorial
 -make the webpage look nice with CSS, Bootstrap, etc.
 -since this is a trivial app, should I *not* hardcode
 the secret used for signing the tokens

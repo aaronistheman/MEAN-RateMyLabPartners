@@ -23,17 +23,26 @@ router.post('/register', function(req, res, next){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
 
-  var user = new User();
+  // Check if the username is taken
+  User.findOne({ username: req.body.username}).exec()
+    .then(function(foundUser) {
+      if (foundUser) // if found a user with the given name
+        return res.status(400).json({message: 'Username already taken'});
+      else
+      {
+        var user = new User();
 
-  user.username = req.body.username;
+        user.username = req.body.username;
 
-  user.setPassword(req.body.password);
+        user.setPassword(req.body.password);
 
-  user.save(function (err){
-    if(err){ return next(err); }
+        user.save(function (err){
+          if(err){ return next(err); }
 
-    return res.json({token: user.generateJWT()})
-  });
+          return res.json({token: user.generateJWT()})
+        });
+      }
+    });
 });
 
 

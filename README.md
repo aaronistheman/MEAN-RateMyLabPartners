@@ -18,6 +18,8 @@ https://thinkster.io/tutorials/mean-stack
 
 * This helped with understanding Passport: http://passportjs.org/docs/overview
 
+* "MEAN Web Development" by Amos Q. Haviv
+
 * Found the .gitignore file here: https://github.com/meanjs/mean/blob/master/.gitignore
 
 Author
