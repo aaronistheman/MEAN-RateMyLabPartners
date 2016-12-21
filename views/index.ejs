@@ -9,14 +9,23 @@
     <script src="/javascripts/angularApp.js"></script>
   </head>
   <body ng-app="rateMyLabPartners">
-  	<!--
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    -->
 
+    <!--
     <div>
       <h1>Rate My Lab Partners</h1>
     </div>
+    -->
+
+    <nav ng-controller="NavCtrl">
+      <ul>
+        <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+        <li ng-show="isLoggedIn()">
+          <a href="" ng-click="logOut()">Log Out</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/register">Register
+          </a></li>
+      </ul>
+    </nav>
 
     <!-- Specify where to render the current AngularJS template -->
     <ui-view></ui-view>
@@ -24,6 +33,7 @@
     <script type="text/ng-template" id="/home.html">
     	<p>Template: home.html</p>
 
+      <!--
       <div ng-show="isLoggedIn()">
         <p>Hello: {{ currentUser() }}</p>
 
@@ -33,6 +43,7 @@
   			<a href="/#/login">Log In</a>
         <a href="/#/register">Register</a>
   		</div>
+      -->
     </script> <!-- home.html -->
 
 

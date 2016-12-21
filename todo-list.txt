@@ -2,6 +2,9 @@ Current:
 -logging in and registering
 	-probably add navigation bar; move log in/register/log out
 	links to that bar
+		-install Bootstrap so is navigation bar
+		-would certain methods still need to be exposed
+		to the other controllers?
 	-program crashes if try to register already existing user
 	but use his name capitalized
 		-are the usernames case-sensitive? should they be or not?
