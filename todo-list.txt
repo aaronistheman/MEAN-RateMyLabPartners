@@ -2,7 +2,7 @@ Current:
 -logging in and registering
 	-probably add navigation bar; move log in/register/log out
 	links to that bar
-		-install Bootstrap so is navigation bar
+		-figure out what the Bootstrap I added does
 		-would certain methods still need to be exposed
 		to the other controllers?
 	-program crashes if try to register already existing user

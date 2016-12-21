@@ -1,6 +1,6 @@
 # MEAN-RateMyLabPartners
 
-(Last updated: December 17, 2016)
+(Last updated: December 21, 2016)
 
 About
 -----
@@ -8,6 +8,10 @@ About
 Will be programmed with the JavaScript MEAN framework.
 Will be a "just for fun," not real version of RateMyProfessors.com
 for rating lab partners instead :-)
+
+Languages/Software Used: JavaScript, MEAN framework
+(MongoDB/Mongoose, Express, AngularJS, Node.js), HTML/CSS,
+Bootstrap.
 
 Helpful Resources
 -----------------
