@@ -10,7 +10,10 @@ var PasswordKeyLength = 64;
 
 var UserSchema = new mongoose.Schema({
   username: {type: String, unique: true},
-	hash: String,
+
+
+  // Password-related
+	hash: String,    // the hidden password
 	salt: String
 });
 

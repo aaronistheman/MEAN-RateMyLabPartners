@@ -1,16 +1,26 @@
 Current:
+-must be able to access the data about a college
+	-College model instance
+	-user can search for college with a search bar (use
+	the datalist element)
+	-user is presented list of colleges (for now, a bullet
+	point list)?
+	-user can add a college to the list (for now, probably
+	don't worry if it's too easy to do so)
+
 
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
 -LabPartner model instance
--User/Reviewer model instance
 -User can leave review for a LabPartner
 	-must require authentication in the appropriate route
 -Review model instance
 	-subject/class
 	-rating
 	-comments
+
+
 
 Eventually:
 -should I be serializing the user?
@@ -24,3 +34,8 @@ the secret used for signing the tokens
 		-routes/index.js
 		-mdoels/Users.js
 	-could use environment variable instead
+
+
+Junk users and passwords (for manual testing):
+tahu nuva
+Tahu Nuva
