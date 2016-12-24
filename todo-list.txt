@@ -1,9 +1,5 @@
 Current:
--logging in and registering
-	-program crashes if try to register already existing user
-	but use his name capitalized
-		-are the usernames case-sensitive? should they be or not?
-	-should I be serializing the user?
+
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
@@ -17,6 +13,7 @@ Upcoming Tasks (not yet in any particular order)
 	-comments
 
 Eventually:
+-should I be serializing the user?
 -there are some parts of code that I initially neglected
 copying from the tutorial; examine these;
 should end up checking off the entire tutorial
