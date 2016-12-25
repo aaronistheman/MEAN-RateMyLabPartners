@@ -7,15 +7,16 @@ var jwt = require('express-jwt');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 
+var College = mongoose.model('College');
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
-router.post('/test', function(req, res, next) {
-	res.render('index', { title: req.body.info });
-});
 
 
 router.post('/register', function(req, res, next){
@@ -60,6 +61,32 @@ router.post('/login', function(req, res, next){
       return res.status(401).json(info);
     }
   })(req, res, next);
+});
+
+
+
+// Gets all College instances
+router.get('/colleges', function(req, res, next) {
+  College.find(function(err, colleges) {
+    if (err) {
+      return next(err);
+    }
+
+    res.json(colleges);
+  });
+});
+
+
+
+// Add new College instance
+router.post('/colleges', function(req, res, next) {
+  var college = new College(req.body);
+
+  college.save(function(err, college) {
+    if(err){ return next(err); }
+
+    res.json(college);
+  });
 });
 
 

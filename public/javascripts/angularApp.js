@@ -17,7 +17,13 @@ function($stateProvider, $urlRouterProvider) {
 		.state('home', {
 			url: '/home',
 			templateUrl: '/home.html',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+      resolve: {
+        // Whenever this state is entered, load the colleges
+        collegesPromise: ['colleges', function(colleges) {
+          return colleges.getAll();
+        }]
+      }
 		})
     .state('login', {
       url: '/login',
@@ -111,9 +117,23 @@ function($http, $window) {
 
 
 app.factory('colleges', ['$http', 'auth', function($http, auth) {
-  var c = {};
+  var c = {
+    colleges: []
+  };
 
+  c.getAll = function() {
+    return $http.get('/colleges').success(function(data){
+      // create deep--not shallow--copy
+      angular.copy(data, c.colleges);
+    })
+  };
 
+  c.create = function(college) {
+    return $http.post('/colleges', college).success(function(data){
+      // So Angular's data matches database's
+      c.colleges.push(data);
+    });
+  }; // create()
 
   return c;
 }]); // colleges factory
@@ -128,16 +148,22 @@ app.controller('MainCtrl', [
 'colleges',
 function($scope, auth, colleges){
 
-  // $scope.colleges = colleges.colleges;
+  $scope.colleges = colleges.colleges;
 
+  /*
   $scope.colleges = [
     { name: "UC Santa Barbara"},
     { name: "UC Davis"},
     { name: "UC Irvine"}
   ];
+  */
 
   $scope.addCollege = function(){
+    if (!$scope.name || $scope.name === '') { return; }
 
+    colleges.create({
+      name: $scope.name
+    })
 
     // Erase the form
     $scope.name = '';

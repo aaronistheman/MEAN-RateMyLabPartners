@@ -3,8 +3,7 @@ Current:
 	-user can search for college with a search bar (use
 	the datalist element)
 		-showing real data
-			-there must be real data to show; make a way
-			to add a college to the list
+			-make sure can't add duplicate college
 			-should require account to add college
 				-user is shown a message that he must log
 				in to see the form for adding a college
@@ -32,6 +31,7 @@ Upcoming Tasks (not yet in any particular order)
 
 
 Eventually:
+-figure out how to split angularApp.js into multiple files
 -should I be serializing the user?
 -there are some parts of code that I initially neglected
 copying from the tutorial; examine these;
