@@ -114,7 +114,7 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
   var c = {};
 
 
-  
+
   return c;
 }]); // colleges factory
 
@@ -131,10 +131,17 @@ function($scope, auth, colleges){
   // $scope.colleges = colleges.colleges;
 
   $scope.colleges = [
-    { title: "UC Santa Barbara"},
-    { title: "UC Davis"},
-    { title: "UC Irvine"}
+    { name: "UC Santa Barbara"},
+    { name: "UC Davis"},
+    { name: "UC Irvine"}
   ];
+
+  $scope.addCollege = function(){
+
+
+    // Erase the form
+    $scope.name = '';
+  }; // addCollege()
 
 }]); // MainCtrl controller
 

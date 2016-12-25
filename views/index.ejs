@@ -44,8 +44,20 @@
       <input list="colleges" />
       <datalist id="colleges">
         <option ng-repeat="college in colleges"
-          value="{{ college.title }}" />
+          value="{{ college.name }}" />
       </datalist>
+
+      <!-- Form for adding a college -->
+      <br /><br />
+      <span>Don't see your college? Do something about it
+        by submitting the form below.</span>
+      <form ng-submit="addCollege()">
+        <input type="text" placeholder="College Name"
+          ng-model="name">
+
+        <button type="submit" class="btn btn-primary">
+          Add College</button>
+      </form>
     
     </script> <!-- home.html -->
 
