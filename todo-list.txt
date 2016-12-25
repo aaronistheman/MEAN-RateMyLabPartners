@@ -2,9 +2,10 @@ Current:
 -must be able to access the data about a college
 	-user can search for college with a search bar (use
 	the datalist element)
-		-webpage must be given the list of webpages
-		-turn the displayed list into a search bar
-		(using the datalist element)
+		-showing real data
+			-there must be real data to show; make a way
+			to add a college to the list
+			-webpage must be given the list of webpages
 	-user is presented list of colleges (for now, a bullet
 	point list)?
 	-user can add a college to the list (for now, probably

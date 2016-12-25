@@ -38,11 +38,14 @@
     <ui-view></ui-view>
 
     <script type="text/ng-template" id="/home.html">
-    	
-      <!-- Display the list of colleges -->
-      <div ng-repeat="college in colleges | orderBy:'title'">
-        <span>{{ college.title }}</span>
-      </div>
+
+      <!-- Search bar for user to search for college -->
+      <span>Search for your college:</span>
+      <input list="colleges" />
+      <datalist id="colleges">
+        <option ng-repeat="college in colleges"
+          value="{{ college.title }}" />
+      </datalist>
     
     </script> <!-- home.html -->
 
