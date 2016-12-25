@@ -108,14 +108,33 @@ function($http, $window) {
 
 
 
+
+
+app.factory('colleges', ['$http', 'auth', function($http, auth) {
+  var c = {};
+
+
+  
+  return c;
+}]); // colleges factory
+
+
+
+
+
 app.controller('MainCtrl', [
 '$scope',
 'auth',
-function($scope, auth){
+'colleges',
+function($scope, auth, colleges){
 
-  // $scope.isLoggedIn = auth.isLoggedIn;
-  // $scope.currentUser = auth.currentUser;
-  // $scope.logOut = auth.logOut;
+  // $scope.colleges = colleges.colleges;
+
+  $scope.colleges = [
+    { title: "UC Santa Barbara"},
+    { title: "UC Davis"},
+    { title: "UC Irvine"}
+  ];
 
 }]); // MainCtrl controller
 

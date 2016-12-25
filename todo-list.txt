@@ -1,8 +1,10 @@
 Current:
 -must be able to access the data about a college
-	-College model instance
 	-user can search for college with a search bar (use
 	the datalist element)
+		-webpage must be given the list of webpages
+		-turn the displayed list into a search bar
+		(using the datalist element)
 	-user is presented list of colleges (for now, a bullet
 	point list)?
 	-user can add a college to the list (for now, probably
@@ -13,6 +15,8 @@ Current:
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
 -LabPartner model instance
+	-College instances and LabPartner instances should have
+	a one-to-many relationship
 -User can leave review for a LabPartner
 	-must require authentication in the appropriate route
 -Review model instance
