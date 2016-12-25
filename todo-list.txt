@@ -5,7 +5,11 @@ Current:
 		-showing real data
 			-there must be real data to show; make a way
 			to add a college to the list
+			-should require account to add college
+				-user is shown a message that he must log
+				in to see the form for adding a college
 			-webpage must be given the list of webpages
+			and display them
 	-user is presented list of colleges (for now, a bullet
 	point list)?
 	-user can add a college to the list (for now, probably

@@ -5,9 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var mongoose = require('mongoose');
+require('./models/Colleges');
 require('./models/Users');
 mongoose.connect('mongodb://localhost/rate');
+
+
 
 var passport = require('passport');
 require('./config/passport');
