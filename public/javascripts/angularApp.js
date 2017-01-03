@@ -150,6 +150,8 @@ function($scope, auth, colleges){
 
   $scope.colleges = colleges.colleges;
 
+  $scope.isLoggedIn = auth.isLoggedIn;
+
   /*
   $scope.colleges = [
     { name: "UC Santa Barbara"},

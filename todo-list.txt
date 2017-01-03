@@ -1,9 +1,5 @@
 Current:
 -must be able to access the data about a college
-	-should require account to add college
-		-user is shown a message that he must log
-		in to see the form for adding a college
-		-confirm logged-in user can still add college
 	-do something when the user picks a college through
 	the search bar?
 		-e.g. just show some data from the College instance
