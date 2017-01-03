@@ -44,7 +44,7 @@ router.post('/register', function(req, res, next){
         });
       }
     });
-});
+}); // register route
 
 
 router.post('/login', function(req, res, next){
@@ -61,7 +61,7 @@ router.post('/login', function(req, res, next){
       return res.status(401).json(info);
     }
   })(req, res, next);
-});
+}); // login route
 
 
 
@@ -79,7 +79,7 @@ router.get('/colleges', function(req, res, next) {
 
 
 // Add new College instance
-router.post('/colleges', function(req, res, next) {
+router.post('/colleges', auth, function(req, res, next) {
   var college = new College(req.body);
 
   college.save(function(err, college) {
