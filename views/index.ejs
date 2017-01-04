@@ -40,12 +40,17 @@
     <script type="text/ng-template" id="/home.html">
 
       <!-- Search bar for user to search for college -->
-      <span>Search for your college:</span>
-      <input list="colleges" />
-      <datalist id="colleges">
-        <option ng-repeat="college in colleges | orderBy:'name'"
-          value="{{ college.name }}" />
-      </datalist>
+      <form name="college-search-form"
+        onsubmit="alert(document.forms['college-search-form']['selected-college'].value)">
+        <span>Search for your college:</span>
+        <input name="selected-college" list="colleges" />
+        <datalist id="colleges">
+          <option ng-repeat="college in colleges | orderBy:'name'"
+            value="{{ college.name }}" />
+        </datalist>
+
+        <input type="submit" value="Submit" />
+      </form>
 
       <br /><br />
 

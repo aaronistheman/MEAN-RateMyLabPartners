@@ -2,6 +2,9 @@ Current:
 -must be able to access the data about a college
 	-show selected College's name
 		-change the dataset elements to link to the specific college
+			-hmm how? what should I make the form action?
+				-if I use a form action, the name put in the input
+				box is passed, so can use that
 -find admin interface for MEAN OR read up on
 interacting with MongoDB/Mongoose command line
 
