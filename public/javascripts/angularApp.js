@@ -46,6 +46,11 @@ function($stateProvider, $urlRouterProvider) {
           $state.go('home');
         }
       }]
+    })
+    .state('colleges', { // state for showing one college
+      url: '/colleges/{id}',
+      templateUrl: '/colleges.html',
+      controller: 'CollegesCtrl'
     });
 
 
@@ -208,4 +213,14 @@ function($scope, auth) {
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
   $scope.logOut = auth.logOut;
-}]);
+}]); // NavCtrl controller
+
+
+
+app.controller("CollegesCtrl", [
+'$scope',
+'college',
+'auth',
+function($scope, auth){
+  $scope.college = college;
+}]); // CollegesCtrl controller

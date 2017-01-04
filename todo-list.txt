@@ -1,8 +1,7 @@
 Current:
 -must be able to access the data about a college
-	-do something when the user picks a college through
-	the search bar?
-		-e.g. just show some data from the College instance
+	-show selected College's name
+		-change the dataset elements to link to the specific college
 -find admin interface for MEAN OR read up on
 interacting with MongoDB/Mongoose command line
 
