@@ -1,10 +1,18 @@
 Current:
 -must be able to access the data about a college
 	-show selected College's name
-		-change the dataset elements to link to the specific college
-			-hmm how? what should I make the form action?
-				-if I use a form action, the name put in the input
-				box is passed, so can use that
+		-need some way to pass the id to the url when going to the state
+			-maybe in the option element, give it an id equal to its value,
+			then in the form action, use the value to find the option element,
+			and get the url (or at least the id)
+			stored in that option element's data attribute
+				-could this be easier without the form wrapper; just have my
+				own button that, when clicked, handles the above logic?
+
+		-next transition: in the route, PRINT the name of the college
+		by grabbing it from the request body and using "console.warn()"
+		-next, try to find the college in the database and
+		pass it to appropriate template somehow
 -find admin interface for MEAN OR read up on
 interacting with MongoDB/Mongoose command line
 
