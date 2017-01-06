@@ -185,7 +185,7 @@ function($scope, auth, colleges){
     if (selectedCollege != "") {
       // Use this name to find--by id--the corresponding option
       // element, and retrieve the url from that element
-      var url = $("#" + selectedCollege).data("url");
+      var url = $("option[id='" + selectedCollege + "']").data("url");
 
       // Redirect to this url
       $("#search-redirection").attr("href", url).click();

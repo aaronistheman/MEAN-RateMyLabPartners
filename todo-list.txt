@@ -1,9 +1,6 @@
 Current:
 -must be able to access the data about a college
 	-show selected College's name
-		-fix the problem of the schools with ids of more than one word not
-		working
-			-somehow remove the spaces
 		-make the route do what it's supposed to do
 		-user should be told if college isn't found, but is it bad to check
 		for this in the front-end?
