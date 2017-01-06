@@ -48,8 +48,7 @@ function($stateProvider, $urlRouterProvider) {
       }]
     })
     .state('colleges', { // state for showing one college
-      // url: '/colleges/{id}',
-      url: '/colleges',
+      url: '/colleges/{id}',
       templateUrl: '/colleges.html',
       controller: 'CollegesCtrl'
     });
@@ -179,7 +178,18 @@ function($scope, auth, colleges){
 
 
   $("#college-search-button").click(function(){
-    $("#search-redirection").click();
+    // Retrieve the name of the selected college from the
+    // search bar
+    var selectedCollege = $("#selected-college").val();
+
+    if (selectedCollege != "") {
+      // Use this name to find--by id--the corresponding option
+      // element, and retrieve the url from that element
+      var url = $("#" + selectedCollege).data("url");
+
+      // Redirect to this url
+      $("#search-redirection").attr("href", url).click();
+    }
   })
 
 }]); // MainCtrl controller

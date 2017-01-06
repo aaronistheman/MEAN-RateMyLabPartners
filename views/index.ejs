@@ -55,21 +55,20 @@
     <script type="text/ng-template" id="/home.html">
 
       <!-- Search bar for user to search for college -->
-      <!-- <form name="college-search-form"
-        onsubmit="alert(document.forms['college-search-form']['selected-college'].value)"> -->
+      <div id="college-search-form">
         <span>Search for your college:</span>
-        <input name="selected-college" list="colleges" />
+        <input id="selected-college" list="colleges" />
         <datalist id="colleges">
           <option ng-repeat="college in colleges | orderBy:'name'"
-            value="{{ college.name }}" />
+            value="{{ college.name }}" id="{{ college.name }}"
+            data-url="/#/colleges/{{ college._id }}" />
         </datalist>
 
         <!-- Used by the "Search" button to redirect the user -->
-        <a hidden id="search-redirection" href='/#/colleges'></a>
+        <a hidden id="search-redirection"></a>
 
         <span id="college-search-button">Search</span>
-        <!-- <input type="submit" value="Submit" /> -->
-      <!-- </form> -->
+      </div>
 
       <br /><br />
 
