@@ -19,7 +19,10 @@ function($stateProvider, $urlRouterProvider) {
 			templateUrl: '/home.html',
 			controller: 'MainCtrl',
       resolve: {
-        // Whenever this state is entered, load the colleges
+        // Whenever this state is entered, query all colleges from
+        // the backend before state finishes loading. The colleges
+        // are given to collegesPromise, but we don't care about
+        // that, we just need the colleges loaded.
         collegesPromise: ['colleges', function(colleges) {
           return colleges.getAll();
         }]
@@ -52,9 +55,12 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: '/colleges.html',
       controller: 'CollegesCtrl',
       resolve: {
-        college: function() {
-          return { name: 'bruh'};
-        }
+        college: ['$stateParams', 'colleges',
+          function($stateParams, colleges) {
+            // Use the 'colleges' service to retrieve the college
+            // object
+            return colleges.get($stateParams.id);
+          }]
       }
     });
 
@@ -130,6 +136,12 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
   var c = {
     colleges: []
   };
+
+  c.get = function(id) {
+    return $http.get('/colleges/' + id).then(function(res) {
+      return res.data;
+    });
+  }
 
   c.getAll = function() {
     return $http.get('/colleges').success(function(data){

@@ -1,10 +1,10 @@
 Current:
 -must be able to access the data about a college
 	-show selected College's name
-		-make the route do what it's supposed to do
 		-user should be told if college isn't found, but is it bad to check
 		for this in the front-end?
 			-probably best to do it in the front-end IN THIS CASE
+		-Enter button should cause submit button to be clicked
 -is it a good idea to redirect to the home page if no proper route is found?
 seems bad for debugging, at least? 404 page?
 -find admin interface for MEAN OR read up on
