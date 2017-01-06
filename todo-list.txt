@@ -13,6 +13,8 @@ Current:
 		by grabbing it from the request body and using "console.warn()"
 		-next, try to find the college in the database and
 		pass it to appropriate template somehow
+-is it a good idea to redirect to the home page if no proper route is found?
+seems bad for debugging, at least? 404 page?
 -find admin interface for MEAN OR read up on
 interacting with MongoDB/Mongoose command line
 

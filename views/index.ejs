@@ -37,9 +37,12 @@
     <nav class="navbar navbar-default pull-right"
       ng-controller="NavCtrl">
       <ul class="nav navbar-nav">
+        <!-- THe navbar if user is logged in -->
         <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
         <li ng-show="isLoggedIn()">
           <a href="" ng-click="logOut()">Log Out</a></li>
+
+        <!-- The navbar if user is logged out -->
         <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
         <li ng-hide="isLoggedIn()"><a href="/#/register">Register
           </a></li>
@@ -52,8 +55,8 @@
     <script type="text/ng-template" id="/home.html">
 
       <!-- Search bar for user to search for college -->
-      <form name="college-search-form"
-        onsubmit="alert(document.forms['college-search-form']['selected-college'].value)">
+      <!-- <form name="college-search-form"
+        onsubmit="alert(document.forms['college-search-form']['selected-college'].value)"> -->
         <span>Search for your college:</span>
         <input name="selected-college" list="colleges" />
         <datalist id="colleges">
@@ -61,8 +64,12 @@
             value="{{ college.name }}" />
         </datalist>
 
-        <input type="submit" value="Submit" />
-      </form>
+        <!-- Used by the "Search" button to redirect the user -->
+        <a hidden id="search-redirection" href='/#/colleges'></a>
+
+        <span id="college-search-button">Search</span>
+        <!-- <input type="submit" value="Submit" /> -->
+      <!-- </form> -->
 
       <br /><br />
 
@@ -128,7 +135,9 @@
     
 
     <script type="text/ng-template" id="/colleges.html">
-      <p>{{ college.name }}</p>
+      <p>You made it to colleges.html!!!</p>
+
+      <!-- <p>{{ college.name }}</p> -->
     </script> <!-- colleges.html -->
   </body>
 </html>

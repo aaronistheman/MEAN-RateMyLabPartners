@@ -48,7 +48,8 @@ function($stateProvider, $urlRouterProvider) {
       }]
     })
     .state('colleges', { // state for showing one college
-      url: '/colleges/{id}',
+      // url: '/colleges/{id}',
+      url: '/colleges',
       templateUrl: '/colleges.html',
       controller: 'CollegesCtrl'
     });
@@ -176,6 +177,11 @@ function($scope, auth, colleges){
     $scope.name = '';
   }; // addCollege()
 
+
+  $("#college-search-button").click(function(){
+    $("#search-redirection").click();
+  })
+
 }]); // MainCtrl controller
 
 
@@ -219,8 +225,8 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
-'college',
+// 'college',
 'auth',
-function($scope, auth){
-  $scope.college = college;
+function($scope, /*college,*/ auth){
+  // $scope.college = college;
 }]); // CollegesCtrl controller
