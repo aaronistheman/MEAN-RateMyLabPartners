@@ -50,7 +50,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('colleges', { // state for showing one college
       url: '/colleges/{id}',
       templateUrl: '/colleges.html',
-      controller: 'CollegesCtrl'
+      controller: 'CollegesCtrl',
+      resolve: {
+        college: function() {
+          return { name: 'bruh'};
+        }
+      }
     });
 
 
@@ -235,8 +240,8 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
-// 'college',
+'college',
 'auth',
-function($scope, /*college,*/ auth){
-  // $scope.college = college;
+function($scope, college, auth){
+  $scope.college = college;
 }]); // CollegesCtrl controller
