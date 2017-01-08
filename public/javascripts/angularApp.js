@@ -194,10 +194,10 @@ function($scope, auth, colleges){
   }; // addCollege()
 
 
-  $("#college-search-button").click(function(){
+  $scope.showCollegePage = function() {
     // Retrieve the name of the selected college from the
     // search bar
-    var selectedCollege = $("#selected-college").val();
+    var selectedCollege = $scope.collegeName;
 
     if (selectedCollege != "") {
       // Use this name to find--by id--the corresponding option
@@ -207,7 +207,7 @@ function($scope, auth, colleges){
       // Redirect to this url
       $("#search-redirection").attr("href", url).click();
     }
-  })
+  };
 
 }]); // MainCtrl controller
 

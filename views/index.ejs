@@ -55,9 +55,9 @@
     <script type="text/ng-template" id="/home.html">
 
       <!-- Search bar for user to search for college -->
-      <div id="college-search-form">
+      <form id="college-search-form" ng-submit="showCollegePage()">
         <span>Search for your college:</span>
-        <input id="selected-college" list="colleges" />
+        <input id="selected-college" ng-model="collegeName" list="colleges" />
         <datalist id="colleges">
           <option ng-repeat="college in colleges | orderBy:'name'"
             value="{{ college.name }}" id="{{ college.name }}"
@@ -67,8 +67,8 @@
         <!-- Used by the "Search" button to redirect the user -->
         <a hidden id="search-redirection"></a>
 
-        <span id="college-search-button">Search</span>
-      </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
 
       <br /><br />
 
