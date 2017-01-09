@@ -1,15 +1,10 @@
 Current:
--must be able to access the data about a college
-	-show selected College's name
-		-user should be told if college isn't found; handle this checking
-		IN THE BACK END
-			-reorient the code so that an Express route is used to retrieve the college
-			(or to at least check if the college exists); this way, can
-			return an error message instead if unfound
 -is it a good idea to redirect to the home page if no proper route is found?
 seems bad for debugging, at least? 404 page?
 -find admin interface for MEAN OR read up on
 interacting with MongoDB/Mongoose command line
+-really think about the layout for the webpage I want
+	-should the college search bar be part of the navbar
 
 
 

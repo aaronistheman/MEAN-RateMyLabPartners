@@ -53,6 +53,9 @@
     <ui-view></ui-view>
 
     <script type="text/ng-template" id="/home.html">
+      <div ng-show="error">
+        <span>{{ error.message }}</span><br />
+      </div>
 
       <!-- Search bar for user to search for college -->
       <form id="college-search-form" ng-submit="showCollegePage()">
@@ -61,11 +64,8 @@
         <datalist id="colleges">
           <option ng-repeat="college in colleges | orderBy:'name'"
             value="{{ college.name }}" id="{{ college.name }}"
-            data-url="/#/colleges/{{ college._id }}" />
+            data-database-id="{{ college._id }}" />
         </datalist>
-
-        <!-- Used by the "Search" button to redirect the user -->
-        <a hidden id="search-redirection"></a>
 
         <button type="submit" class="btn btn-primary">Search</button>
       </form>

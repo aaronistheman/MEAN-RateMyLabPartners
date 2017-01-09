@@ -166,9 +166,10 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
 
 app.controller('MainCtrl', [
 '$scope',
+'$state',
 'auth',
 'colleges',
-function($scope, auth, colleges){
+function($scope, $state, auth, colleges){
 
   $scope.colleges = colleges.colleges;
 
@@ -195,19 +196,21 @@ function($scope, auth, colleges){
 
 
   $scope.showCollegePage = function() {
-    // Retrieve the name of the selected college from the
-    // search bar
-    var selectedCollege = $scope.collegeName;
+    if ($scope.collegeName != "") { // if the user entered a college name
+      // Check if user entered valid college by attempting to find
+      // corresponding <option> tag of the college.
+      // (This jQuery selector is awkward because I had to use one
+      // that would be friendly to ids that have spaces.)
+      var collegeTag = $("option[id='" + $scope.collegeName + "']");
 
-    if (selectedCollege != "") {
-      // Use this name to find--by id--the corresponding option
-      // element, and retrieve the url from that element
-      var url = $("option[id='" + selectedCollege + "']").data("url");
-
-      // Redirect to this url
-      $("#search-redirection").attr("href", url).click();
+      if (collegeTag.length == 0) { // if user didn't enter valid college
+        // return error message
+        $scope.error = { message: "Dude, pick a valid college." };
+      } else { // if user entered valid college
+        $state.go('colleges', { id: collegeTag.data("database-id") });
+      }
     }
-  };
+  }; // showCollegePage()
 
 }]); // MainCtrl controller
 
