@@ -1,6 +1,6 @@
 # MEAN-RateMyLabPartners
 
-(Last updated: December 21, 2016)
+(Last updated: 1/2/2017)
 
 About
 -----
@@ -12,6 +12,15 @@ for rating lab partners instead :-)
 Languages/Software Used: JavaScript, MEAN framework
 (MongoDB/Mongoose, Express, AngularJS, Node.js), HTML/CSS,
 Bootstrap.
+
+To Run
+------
+
+In a terminal, at the top level of the project, enter:
+
+```
+npm start
+```
 
 Helpful Resources
 -----------------
@@ -26,17 +35,11 @@ https://thinkster.io/tutorials/mean-stack
 
 * Found the .gitignore file here: https://github.com/meanjs/mean/blob/master/.gitignore
 
-Author
-------
+About the Author
+----------------
 
-That is me, Aaron Kaloti, who, as of the time of writing this,
-is a second-year Computer Science and Engineering
-student at UC Davis.
-
-Contact Information
--------------------
-
-My email address: aarons.7007@gmail.com
-
-My YouTube channel (in which I demonstrate my finished applications):
-https://www.youtube.com/channel/UCHhcIcXErjijtAI9TWy7wNw/videos
+* Name: Aaron Kaloti
+* Tagline: Second-year Computer Science and Engineering student
+at UC Davis
+* Email address: aarons.7007@gmail.com
+* Webpage: https://aaronistheman.github.io/

@@ -17,7 +17,16 @@ function($stateProvider, $urlRouterProvider) {
 		.state('home', {
 			url: '/home',
 			templateUrl: '/home.html',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+      resolve: {
+        // Whenever this state is entered, query all colleges from
+        // the backend before state finishes loading. The colleges
+        // are given to collegesPromise, but we don't care about
+        // that, we just need the colleges loaded.
+        collegesPromise: ['colleges', function(colleges) {
+          return colleges.getAll();
+        }]
+      }
 		})
     .state('login', {
       url: '/login',
@@ -40,6 +49,19 @@ function($stateProvider, $urlRouterProvider) {
           $state.go('home');
         }
       }]
+    })
+    .state('colleges', { // state for showing one college
+      url: '/colleges/{id}',
+      templateUrl: '/colleges.html',
+      controller: 'CollegesCtrl',
+      resolve: {
+        college: ['$stateParams', 'colleges',
+          function($stateParams, colleges) {
+            // Use the 'colleges' service to retrieve the college
+            // object
+            return colleges.get($stateParams.id);
+          }]
+      }
     });
 
 
@@ -108,14 +130,87 @@ function($http, $window) {
 
 
 
+
+
+app.factory('colleges', ['$http', 'auth', function($http, auth) {
+  var c = {
+    colleges: []
+  };
+
+  c.get = function(id) {
+    return $http.get('/colleges/' + id).then(function(res) {
+      return res.data;
+    });
+  }
+
+  c.getAll = function() {
+    return $http.get('/colleges').success(function(data){
+      // create deep--not shallow--copy
+      angular.copy(data, c.colleges);
+    })
+  };
+
+  c.create = function(college) {
+    return $http.post('/colleges', college).success(function(data){
+      // So Angular's data matches database's
+      c.colleges.push(data);
+    });
+  }; // create()
+
+  return c;
+}]); // colleges factory
+
+
+
+
+
 app.controller('MainCtrl', [
 '$scope',
+'$state',
 'auth',
-function($scope, auth){
+'colleges',
+function($scope, $state, auth, colleges){
 
-  // $scope.isLoggedIn = auth.isLoggedIn;
-  // $scope.currentUser = auth.currentUser;
-  // $scope.logOut = auth.logOut;
+  $scope.colleges = colleges.colleges;
+
+  $scope.isLoggedIn = auth.isLoggedIn;
+
+  /*
+  $scope.colleges = [
+    { name: "UC Santa Barbara"},
+    { name: "UC Davis"},
+    { name: "UC Irvine"}
+  ];
+  */
+
+  $scope.addCollege = function(){
+    if (!$scope.name || $scope.name === '') { return; }
+
+    colleges.create({
+      name: $scope.name
+    })
+
+    // Erase the form
+    $scope.name = '';
+  }; // addCollege()
+
+
+  $scope.showCollegePage = function() {
+    if ($scope.collegeName != "") { // if the user entered a college name
+      // Check if user entered valid college by attempting to find
+      // corresponding <option> tag of the college.
+      // (This jQuery selector is awkward because I had to use one
+      // that would be friendly to ids that have spaces.)
+      var collegeTag = $("option[id='" + $scope.collegeName + "']");
+
+      if (collegeTag.length == 0) { // if user didn't enter valid college
+        // return error message
+        $scope.error = { message: "Dude, pick a valid college." };
+      } else { // if user entered valid college
+        $state.go('colleges', { id: collegeTag.data("database-id") });
+      }
+    }
+  }; // showCollegePage()
 
 }]); // MainCtrl controller
 
@@ -154,4 +249,14 @@ function($scope, auth) {
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
   $scope.logOut = auth.logOut;
-}]);
+}]); // NavCtrl controller
+
+
+
+app.controller("CollegesCtrl", [
+'$scope',
+'college',
+'auth',
+function($scope, college, auth){
+  $scope.college = college;
+}]); // CollegesCtrl controller

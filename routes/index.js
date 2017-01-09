@@ -7,17 +7,18 @@ var jwt = require('express-jwt');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 
+var College = mongoose.model('College');
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 
-router.post('/test', function(req, res, next) {
-	res.render('index', { title: req.body.info });
-});
-
-
+// attempt to register
 router.post('/register', function(req, res, next){
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -43,9 +44,10 @@ router.post('/register', function(req, res, next){
         });
       }
     });
-});
+}); // register route
 
 
+// attempt to login
 router.post('/login', function(req, res, next){
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -60,6 +62,53 @@ router.post('/login', function(req, res, next){
       return res.status(401).json(info);
     }
   })(req, res, next);
+}); // login route
+
+
+
+// Gets all College instances
+router.get('/colleges', function(req, res, next) {
+  College.find(function(err, colleges) {
+    if (err) {
+      return next(err);
+    }
+
+    res.json(colleges);
+  });
+});
+
+
+
+// Add new College instance
+router.post('/colleges', auth, function(req, res, next) {
+  var college = new College(req.body);
+
+  college.save(function(err, college) {
+    if(err){ return next(err); }
+
+    res.json(college);
+  });
+});
+
+
+// load the college parameter
+router.param('college', function(req, res, next, id) {
+  var query = College.findById(id);
+
+  query.exec(function(err, college) {
+    if (err) { return next(err); }
+    if (!college) { return next(new Error("can't find college")); }
+
+    req.college = college;
+    return next();
+  });
+});
+
+
+router.get('/colleges/:college', function(req, res, next) {
+  // Isn't anything (yet) to populate, so just return the College
+  // object
+  res.json(req.college);
 });
 
 

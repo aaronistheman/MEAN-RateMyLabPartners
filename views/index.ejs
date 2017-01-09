@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head lang="en">
+
     <title>RateMyLabPartners</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap's CSS part -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Bootstrap's JS part -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+
+    <!-- My own included files -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
-    <!-- Bootstrap CDN -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- AngularJS CDNs -->
-   	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-
     <script src="/javascripts/angularApp.js"></script>
   </head>
-  <body ng-app="rateMyLabPartners">
+  <body ng-app="rateMyLabPartners" ng-cloak>
 
     <!--
     <div>
@@ -25,9 +37,12 @@
     <nav class="navbar navbar-default pull-right"
       ng-controller="NavCtrl">
       <ul class="nav navbar-nav">
+        <!-- THe navbar if user is logged in -->
         <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
         <li ng-show="isLoggedIn()">
           <a href="" ng-click="logOut()">Log Out</a></li>
+
+        <!-- The navbar if user is logged out -->
         <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
         <li ng-hide="isLoggedIn()"><a href="/#/register">Register
           </a></li>
@@ -38,19 +53,40 @@
     <ui-view></ui-view>
 
     <script type="text/ng-template" id="/home.html">
-    	<p>Template: home.html</p>
-
-      <!--
-      <div ng-show="isLoggedIn()">
-        <p>Hello: {{ currentUser() }}</p>
-
-        <a href="" ng-click="logOut()">Log Out</a>
+      <div ng-show="error">
+        <span>{{ error.message }}</span><br />
       </div>
-  		<div ng-hide="isLoggedIn()">
-  			<a href="/#/login">Log In</a>
-        <a href="/#/register">Register</a>
-  		</div>
-      -->
+
+      <!-- Search bar for user to search for college -->
+      <form id="college-search-form" ng-submit="showCollegePage()">
+        <span>Search for your college:</span>
+        <input id="selected-college" ng-model="collegeName" list="colleges" />
+        <datalist id="colleges">
+          <option ng-repeat="college in colleges | orderBy:'name'"
+            value="{{ college.name }}" id="{{ college.name }}"
+            data-database-id="{{ college._id }}" />
+        </datalist>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <br /><br />
+
+      <!-- Form for adding a college -->
+      <form ng-show="isLoggedIn()" ng-submit="addCollege()">
+        <span>Don't see your college? Do something about it
+          by submitting the form below.</span><br />
+        <input type="text" placeholder="College Name"
+          ng-model="name">
+
+        <button type="submit" class="btn btn-primary">
+          Add College</button>
+      </form>
+      <div ng-hide="isLoggedIn()">
+        <span>Don't see your college? Log in so you can
+          do something about it.</span>
+      </div>
+    
     </script> <!-- home.html -->
 
 
@@ -95,10 +131,12 @@
       <a href="/#/home">Back</a>
     </script> <!-- login.html -->
 
-    <!--
-    <form action="/test" method="post">
-    	<input type="text" name="info" />
-    </form>
-    -->
+    
+
+    <script type="text/ng-template" id="/colleges.html">
+      <p>You made it to colleges.html!!!</p>
+
+      <p>College name: {{ college.name }}</p>
+    </script> <!-- colleges.html -->
   </body>
 </html>

@@ -1,18 +1,18 @@
 Current:
--must be able to access the data about a college
-	-College model instance
-	-user can search for college with a search bar (use
-	the datalist element)
-	-user is presented list of colleges (for now, a bullet
-	point list)?
-	-user can add a college to the list (for now, probably
-	don't worry if it's too easy to do so)
+-is it a good idea to redirect to the home page if no proper route is found?
+seems bad for debugging, at least? 404 page?
+-find admin interface for MEAN OR read up on
+interacting with MongoDB/Mongoose command line
+-really think about the layout for the webpage I want
+	-should the college search bar be part of the navbar
 
 
 
 Upcoming Tasks (not yet in any particular order)
 (NOTE: it's okay if the webpage looks terrible at first):
 -LabPartner model instance
+	-College instances and LabPartner instances should have
+	a one-to-many relationship
 -User can leave review for a LabPartner
 	-must require authentication in the appropriate route
 -Review model instance
@@ -23,12 +23,29 @@ Upcoming Tasks (not yet in any particular order)
 
 
 Eventually:
+-figure out a clean way to prevent duplicates (e.g. usernames,
+colleges) without having to use similar boilerplate code in
+the respective Express routes
+-figure out how to split angularApp.js into multiple files
 -should I be serializing the user?
 -there are some parts of code that I initially neglected
 copying from the tutorial; examine these;
 should end up checking off the entire tutorial
 -make the webpage look nice with CSS, Bootstrap, etc.
--since this is a trivial app, should I *not* hardcode
+	-Bootstrap-related ideas
+		-display reviews with <blockquote>
+		-style login/registration forms (with default style?)
+		-use the text/bg color classes for messges to the user
+		(e.g. account created, wrong password)
+		-use breadcrumbs to show hierarchy of college to
+		lab partner
+		-put the website logo in the navigation bar
+		-perhaps put the college search bar into the
+		navigation bar
+		-perhaps fix navigation bar to page's top
+		-collapse the nav bar if it takes too much space
+		-use glyphicons where possible
+-although this is a trivial app, should I *not* hardcode
 the secret used for signing the tokens
 	-is hardcoded in:
 		-routes/index.js
