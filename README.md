@@ -22,6 +22,9 @@ In a terminal, at the top level of the project, enter:
 npm start
 ```
 
+Then open a web browser (e.g. Google Chrome) and navigate to the url
+specified in the terminal output.
+
 Helpful Resources
 -----------------
 
