@@ -1,11 +1,13 @@
 Current:
 -the college page
 	-add lab partners to existing colleges
-		-way to add a lab partner
-			-controller method
-			-Express route, etc.
+		-figure out why "auth" makes creating a lab partner
+		ALWAYS fail
 	-can search for LabPartner
 		-html form
+	-if the user logs in while in the college page, he should
+	be redirected to that same page, rather than to the home
+	page again
 -lab partner page
 	-Review model instance
 		-subject/class

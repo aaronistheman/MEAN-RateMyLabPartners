@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 require('./models/Colleges');
+require('./models/LabPartners');
 require('./models/Users');
 mongoose.connect('mongodb://localhost/rate');
 

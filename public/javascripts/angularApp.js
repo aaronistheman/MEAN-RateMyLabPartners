@@ -163,6 +163,23 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
 
 
 
+app.factory('labPartners', ['$http', 'auth', function($http, auth) {
+  var l = {
+    labPartners: []
+  };
+
+  l.create = function(labPartner) {
+    return $http.post('/partners', labPartner).success(function(data){
+      // So Angular's data matches database's
+      l.labPartners.push(data); 
+    });
+  }; // create()
+
+  return l;
+}]); // labPartners factory
+
+
+
 
 app.controller('MainCtrl', [
 '$scope',
@@ -174,14 +191,6 @@ function($scope, $state, auth, colleges){
   $scope.colleges = colleges.colleges;
 
   $scope.isLoggedIn = auth.isLoggedIn;
-
-  /*
-  $scope.colleges = [
-    { name: "UC Santa Barbara"},
-    { name: "UC Davis"},
-    { name: "UC Irvine"}
-  ];
-  */
 
   $scope.addCollege = function(){
     if (!$scope.name || $scope.name === '') { return; }
@@ -257,6 +266,25 @@ app.controller("CollegesCtrl", [
 '$scope',
 'college',
 'auth',
-function($scope, college, auth){
+'labPartners',
+function($scope, college, auth, labPartners){
   $scope.college = college;
+
+  $scope.isLoggedIn = auth.isLoggedIn;
+
+  $scope.addPartner = function() {
+    if (!$scope.firstName || $scope.firstName === ''
+      || !$scope.lastName || $scope.lastName === '') {
+      $("#add-partner-form-error > span").text("Fill out all fields");
+      return;
+    }
+
+    labPartners.create({
+      firstName: $scope.firstName,
+      lastName: $scope.lastName
+    });
+
+    // Erase the form
+    $scope.firstName = $scope.lastName = '';
+  };
 }]); // CollegesCtrl controller

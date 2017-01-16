@@ -8,6 +8,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 
 var College = mongoose.model('College');
+var LabPartner = mongoose.model('LabPartner');
 
 
 
@@ -109,6 +110,19 @@ router.get('/colleges/:college', function(req, res, next) {
   // Isn't anything (yet) to populate, so just return the College
   // object
   res.json(req.college);
+});
+
+
+
+// Add new LabPartner instance
+router.post('/partners', function(req, res, next) {
+  var partner = new LabPartner(req.body);
+
+  partner.save(function(err, partner) {
+    if(err){ return next(err); }
+
+    res.json(partner);
+  });
 });
 
 

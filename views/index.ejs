@@ -178,7 +178,11 @@
       <br /><br />
 
       <!-- Form for adding a lab partner -->
-      <form ng-show="isLoggedIn()" ng-submit="addPartner()">
+      <div id="add-partner-form-error">
+        <span></span>
+      </div>
+      <form ng-show="isLoggedIn()" ng-submit="addPartner()"
+        id="add-partner-form">
         <span>Don't see your lab partner? Do a public service
           by submitting the form below.</span><br />
 
