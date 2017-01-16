@@ -1,7 +1,4 @@
 Current:
--LabPartner model instance
-	-College instances and LabPartner instances should have
-	a one-to-many relationship
 -the college page
 	-can search for LabPartner
 -Review model instance
