@@ -4,7 +4,11 @@ var mongoose = require('mongoose');
 
 var CollegeSchema = new mongoose.Schema({
 	name: String,
-	// set of related LabPartner instances
+
+
+    // array of related LabPartner instances
+    labPartners: [{ type: mongoose.Schema.Types.ObjectId,
+        ref: 'LabPartner' }]
 });
 
 
