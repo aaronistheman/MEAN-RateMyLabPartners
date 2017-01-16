@@ -52,6 +52,15 @@
     <!-- Specify where to render the current AngularJS template -->
     <ui-view></ui-view>
 
+
+
+
+    <!--
+    *****************************************************
+    *** template: home.html
+    *****************************************************
+    -->
+
     <script type="text/ng-template" id="/home.html">
       <div ng-show="error">
         <span>{{ error.message }}</span><br />
@@ -90,6 +99,15 @@
     </script> <!-- home.html -->
 
 
+
+
+
+
+    <!--
+    *****************************************************
+    *** template: register.html
+    *****************************************************
+    -->
 
     <script type="text/ng-template" id="/register.html">
       <div ng-show="error">
@@ -133,10 +151,64 @@
 
     
 
+
+
+
+    <!--
+    *****************************************************
+    *** template: colleges.html
+    *****************************************************
+    -->
+
     <script type="text/ng-template" id="/colleges.html">
       <p>You made it to colleges.html!!!</p>
 
       <p>College name: {{ college.name }}</p>
+
+      <!-- Search bar for user to search for lab partner -->
+      <!-- <form id="lab-partner-search-form" ng-submit="showLabPartnerSearchForm()">
+        <span>Search for your lab partner:</span>
+        <input id="selected-partner" ng-model="partnerName"
+          list="datalist-partners" />
+        <datalist id="datalist-partners">
+          <option ng-repeat=""
+        </datalist>
+      </form> -->
+
+      <br /><br />
+
+      <!-- Form for adding a lab partner -->
+      <form ng-show="isLoggedIn()" ng-submit="addPartner()">
+        <span>Don't see your lab partner? Do a public service
+          by submitting the form below.</span><br />
+
+        <input type="text" placeholder="First Name"
+          ng-model="firstName" />
+        <input type="text" placeholder="Last Name"
+          ng-model="lastName" />
+
+        <button type="submit" class="btn btn-primary">
+          Add Lab Partner</button>
+      </form>
+      <div ng-hide="isLoggedIn()">
+        <span>Don't see your lab partner? Log in to write
+          his/her first review.</span>
+      </div>
+
     </script> <!-- colleges.html -->
+
+
+
+
+    <!--
+    *****************************************************
+    *** template: lab-partners.html
+    *****************************************************
+    -->
+
+    <script type="text/ng-template" id="/lab-partners.html">
+      <p>You made it to lab-partners.html</p>
+    </script> <!-- lab-partners.html -->
+
   </body>
 </html>

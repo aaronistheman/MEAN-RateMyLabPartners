@@ -1,11 +1,16 @@
 Current:
 -the college page
+	-add lab partners to existing colleges
+		-way to add a lab partner
+			-controller method
+			-Express route, etc.
 	-can search for LabPartner
--Review model instance
-	-subject/class
-	-rating
-	-comments
+		-html form
 -lab partner page
+	-Review model instance
+		-subject/class
+		-rating
+		-comments
 	-User can leave review for a LabPartner
 		-must require authentication in the appropriate route
 -making the webpage look nice
