@@ -55,6 +55,13 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: '/colleges.html',
       controller: 'CollegesCtrl',
       resolve: {
+        // Whenever this state is entered, query all lab partners from
+        // the backend before state finishes loading, JUST
+        // to get them loaded. The 'labPartners' refers to
+        // the factory
+        partnersPromise: ['labPartners', function(partners) {
+          return partners.getAll();
+        }],
         college: ['$stateParams', 'colleges',
           function($stateParams, colleges) {
             // Use the 'colleges' service to retrieve the college
@@ -168,6 +175,13 @@ app.factory('labPartners', ['$http', 'auth', function($http, auth) {
     labPartners: []
   };
 
+  l.getAll = function() {
+    return $http.get('/partners').success(function(data){
+      // create deep--not shallow--copy
+      angular.copy(data, l.labPartners);
+    })
+  };
+
   l.create = function(labPartner) {
     return $http.post('/partners', labPartner).success(function(data){
       // So Angular's data matches database's
@@ -269,6 +283,7 @@ app.controller("CollegesCtrl", [
 'labPartners',
 function($scope, college, auth, labPartners){
   $scope.college = college;
+  $scope.partners = labPartners.labPartners;
 
   $scope.isLoggedIn = auth.isLoggedIn;
 
@@ -286,5 +301,11 @@ function($scope, college, auth, labPartners){
 
     // Erase the form
     $scope.firstName = $scope.lastName = '';
-  };
+  }; // addPartner()
+
+  $scope.showLabPartnerSearchForm = function() {
+    alert("Sup");
+  }; // showLabPartnerSearchForm()
+
+
 }]); // CollegesCtrl controller

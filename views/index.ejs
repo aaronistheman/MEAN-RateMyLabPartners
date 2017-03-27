@@ -166,14 +166,19 @@
       <p>College name: {{ college.name }}</p>
 
       <!-- Search bar for user to search for lab partner -->
-      <!-- <form id="lab-partner-search-form" ng-submit="showLabPartnerSearchForm()">
+      <form id="lab-partner-search-form" ng-submit="showLabPartnerSearchForm()">
         <span>Search for your lab partner:</span>
         <input id="selected-partner" ng-model="partnerName"
           list="datalist-partners" />
         <datalist id="datalist-partners">
-          <option ng-repeat=""
+          <option ng-repeat="partner in partners | orderBy:'name'"
+            value="{{ partner.firstName }}"
+            id="{{ partner.firstName }}"
+            data-database-id="{{ partner._id }}" />
         </datalist>
-      </form> -->
+
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
 
       <br /><br />
 

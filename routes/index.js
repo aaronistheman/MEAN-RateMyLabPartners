@@ -114,6 +114,19 @@ router.get('/colleges/:college', function(req, res, next) {
 
 
 
+// Gets all LabPartner instances
+router.get('/partners', function(req, res, next) {
+  LabPartner.find(function(err, partners) {
+    if (err) {
+      return next(err);
+    }
+
+    res.json(partners);
+  });
+});
+
+
+
 // Add new LabPartner instance
 router.post('/partners', function(req, res, next) {
   var partner = new LabPartner(req.body);
