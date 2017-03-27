@@ -1,11 +1,11 @@
 # MEAN-RateMyLabPartners
 
-(Last updated: 1/2/2017)
+(Last updated: 3/26/2017)
 
 About
 -----
 
-Will be programmed with the JavaScript MEAN framework.
+Is being programmed with the JavaScript MEAN framework.
 Will be a "just for fun," not real version of RateMyProfessors.com
 for rating lab partners instead :-)
 
@@ -22,8 +22,8 @@ In a terminal, at the top level of the project, enter:
 npm start
 ```
 
-Then open a web browser (e.g. Google Chrome) and navigate to the url
-specified in the terminal output.
+Then open a web browser (e.g. Google Chrome) and navigate to the
+following url: http://localhost:3000
 
 Helpful Resources
 -----------------
@@ -42,7 +42,6 @@ About the Author
 ----------------
 
 * Name: Aaron Kaloti
-* Tagline: Second-year Computer Science and Engineering student
-at UC Davis
+* Tagline: Second-year Computer Science student at UC Davis
 * Email address: aarons.7007@gmail.com
 * Webpage: https://aaronistheman.github.io/
