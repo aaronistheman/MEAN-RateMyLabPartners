@@ -359,12 +359,17 @@ function($scope, colleges, college, labPartner, auth){
   $scope.college = college;
   $scope.labPartner = labPartner;
 
-  // Find average rating by dividing the sum of the ratings
-  // (obtained with reduce()) by the number of ratings
-  var sum = labPartner.reviews.reduce(function(acc, review) {
-    return acc + review.rating;
-  }, 0);
-  $scope.averageRating = sum / labPartner.reviews.length;
+  $scope.updateAverageRating = function() {
+    // Find average rating by dividing the sum of the ratings
+    // (obtained with reduce()) by the number of ratings
+    var sum = labPartner.reviews.reduce(function(acc, review) {
+      return acc + review.rating;
+    }, 0);
+    $scope.averageRating = sum / labPartner.reviews.length;
+  }
+
+  $scope.averageRating = 0;
+  $scope.updateAverageRating();
 
   $scope.addReview = function() {
     if (!$scope.class || $scope.class === ''
@@ -383,6 +388,7 @@ function($scope, colleges, college, labPartner, auth){
       }).success(function(review) {
         // Update front-end reviews data
         $scope.labPartner.reviews.push(review);
+        $scope.updateAverageRating();
       });
 
       // Erase the form
