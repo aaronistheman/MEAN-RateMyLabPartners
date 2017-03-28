@@ -165,8 +165,12 @@
 
       <p>College name: {{ college.name }}</p>
 
+      <div ng-show="error">
+        <span>{{ error.message }}</span><br />
+      </div>
+
       <!-- Search bar for user to search for lab partner -->
-      <form id="lab-partner-search-form" ng-submit="showLabPartnerSearchForm()">
+      <form id="lab-partner-search-form" ng-submit="showLabPartnerPage()">
         <span>Search for your lab partner:</span>
         <input id="selected-partner" ng-model="partnerName"
           list="datalist-partners" />

@@ -15,7 +15,7 @@ function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 		.state('home', {
-			url: '/home',
+			url: '/home', // the url shown in the search bar
 			templateUrl: '/home.html',
 			controller: 'MainCtrl',
       resolve: {
@@ -61,6 +61,14 @@ function($stateProvider, $urlRouterProvider) {
             // object
             return colleges.get($stateParams.id);
           }]
+      }
+    })
+    .state('partners', { // state for showing one lab partner
+      url: '/colleges/{collegeId}/partners/{partnerId}',
+      templateUrl: '/lab-partners.html',
+      controller: 'PartnersCtrl',
+      resolve: {
+
       }
     });
 
@@ -173,24 +181,6 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
 
 
 
-app.factory('labPartners', ['$http', 'auth', function($http, auth) {
-  var l = {
-    labPartners: []
-  };
-
-  l.getAll = function() {
-    return $http.get('/partners').success(function(data){
-      // create deep--not shallow--copy
-      angular.copy(data, l.labPartners);
-    })
-  };
-
-  return l;
-}]); // labPartners factory
-
-
-
-
 app.controller('MainCtrl', [
 '$scope',
 '$state',
@@ -214,6 +204,8 @@ function($scope, $state, auth, colleges){
   }; // addCollege()
 
 
+  // Takes the user to the college page he searched for, if
+  // he entered a valid college; else, gives error message
   $scope.showCollegePage = function() {
     if ($scope.collegeName != "") { // if the user entered a college name
       // Check if user entered valid college by attempting to find
@@ -274,10 +266,11 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
+'$state',
 'colleges',
 'college',
 'auth',
-function($scope, colleges, college, auth){
+function($scope, $state, colleges, college, auth){
   $scope.college = college;
 
   $scope.isLoggedIn = auth.isLoggedIn;
@@ -300,9 +293,35 @@ function($scope, colleges, college, auth){
     $scope.firstName = $scope.lastName = '';
   }; // addPartner()
 
-  $scope.showLabPartnerSearchForm = function() {
-    alert("Sup");
-  }; // showLabPartnerSearchForm()
+  // Takes the user to the lab partner page he searched for, if
+  // he entered a valid lab partner; else, gives error message
+  $scope.showLabPartnerPage = function() {
+    if ($scope.partnerName != "") { // only proceed if user entered something
+      // Check if user entered valid lab partner by attempting to find
+      // the datalist (<option>) entry.
+      // Use a jQuery selector that is friendly to ids with spaces.
+      var partnerTag = $("option[id='" + $scope.partnerName + "']");
+
+      if (partnerTag.length === 0) { // if invalid college
+        // return error message
+        $scope.error = { message: "Bruh, pick a valid lab partner."};
+      } else { // if valid college
+        // Go to that lab partner's page
+        $state.go('partners', { id: partnerTag.data("database-id") });
+      }
+    }
+  }; // showLabPartnerPage()
 
 
 }]); // CollegesCtrl controller
+
+
+
+app.controller("PartnersCtrl", [
+'$scope',
+'auth',
+function($scope, auth){
+  
+
+
+}]); // PartnersCtrl controller

@@ -1,7 +1,5 @@
 Current:
 -lab partner page
-	-get to this page by searching for a lab partner
-		-incorrect searches should be rejected
 	-Review model instance
 		-subject/class
 		-rating
