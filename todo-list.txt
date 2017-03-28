@@ -1,9 +1,5 @@
 Current:
 -lab partner page
-	-Review model instance
-		-subject/class
-		-rating
-		-comments
 	-User can leave review for a LabPartner
 		-must require authentication in the appropriate route
 -making the webpage look nice

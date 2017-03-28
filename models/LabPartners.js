@@ -8,7 +8,8 @@ var LabPartnerSchema = new mongoose.Schema({
 
     college: { type: mongoose.Schema.Types.ObjectId, ref: 'College' }
 
-    // set of related Review instances
+    // array of related Review instances
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 });
 
 
