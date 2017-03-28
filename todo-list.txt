@@ -1,8 +1,6 @@
 Current:
 -the college page
 	-lab partner database stuff
-		-fix the GET route
-		-probably have to populate the College in its GET route
 		-use "auth" in the POST route (perhaps the issue
 		is in the case-sensitivity)
 			-use the "headers" bearer thing, you dummy

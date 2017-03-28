@@ -107,9 +107,12 @@ router.param('college', function(req, res, next, id) {
 
 
 router.get('/colleges/:college', function(req, res, next) {
-  // Isn't anything (yet) to populate, so just return the College
-  // object
-  res.json(req.college);
+  // Load the lab partners of that college as well
+  req.college.populate('labPartners', function(err, college) {
+    if (err) return next(err);
+
+    res.json(college);
+  });
 });
 
 

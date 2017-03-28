@@ -171,7 +171,7 @@
         <input id="selected-partner" ng-model="partnerName"
           list="datalist-partners" />
         <datalist id="datalist-partners">
-          <option ng-repeat="partner in partners | orderBy:'name'"
+          <option ng-repeat="partner in college.labPartners | orderBy:'name'"
             value="{{ partner.firstName }}"
             id="{{ partner.firstName }}"
             data-database-id="{{ partner._id }}" />

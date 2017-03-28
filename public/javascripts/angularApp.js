@@ -55,13 +55,6 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: '/colleges.html',
       controller: 'CollegesCtrl',
       resolve: {
-        // Whenever this state is entered, query all lab partners from
-        // the backend before state finishes loading, JUST
-        // to get them loaded. The 'labPartners' refers to
-        // the factory
-        partnersPromise: ['labPartners', function(partners) {
-          return partners.getAll();
-        }],
         college: ['$stateParams', 'colleges',
           function($stateParams, colleges) {
             // Use the 'colleges' service to retrieve the college
@@ -298,7 +291,7 @@ function($scope, colleges, college, auth, labPartners){
       firstName: $scope.firstName,
       lastName: $scope.lastName,
     }).success(function(partner) {
-      $scope.college.partners.push(partner);
+      $scope.college.labPartners.push(partner);
     });
 
     // Erase the form
