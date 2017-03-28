@@ -2,6 +2,9 @@ Current:
 -lab partner page
 	-User sees
 		-average lab partner rating
+			-show less digits (round to tenth)
+			-make sure it updates when new rating is added
+		-all shown ratings should be rounded to nearest tenth
 	-front-end validation
 		-rating must be:
 			-a number

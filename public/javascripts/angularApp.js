@@ -359,6 +359,13 @@ function($scope, colleges, college, labPartner, auth){
   $scope.college = college;
   $scope.labPartner = labPartner;
 
+  // Find average rating by dividing the sum of the ratings
+  // (obtained with reduce()) by the number of ratings
+  var sum = labPartner.reviews.reduce(function(acc, review) {
+    return acc + review.rating;
+  }, 0);
+  $scope.averageRating = sum / labPartner.reviews.length;
+
   $scope.addReview = function() {
     if (!$scope.class || $scope.class === ''
       || !$scope.rating || $scope.rating === ''
