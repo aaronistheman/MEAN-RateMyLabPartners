@@ -2,6 +2,7 @@ Current:
 -lab partner page
 	-User sees
 		-list of reviews
+			-order should have oldest at bottom
 		-average lab partner rating
 -making the webpage look nice
 	-Bootstrap-related ideas
