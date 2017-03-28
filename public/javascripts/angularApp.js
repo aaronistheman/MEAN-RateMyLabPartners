@@ -151,15 +151,42 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
   };
 
   c.create = function(college) {
-    return $http.post('/colleges', college).success(function(data){
-      // So Angular's data matches database's
+    return $http.post('/colleges', college, {
+      headers: {Authorization: 'Bearer '+auth.getToken()}
+    }).success(function(data){
+      // So Angular's data matches database's (that is, so
+      // a back-end update will be instantly met with a front-end
+      // update without having to fresh the page)
       c.colleges.push(data);
     });
   }; // create()
 
+  c.addPartner = function(id, partner) {
+    return $http.post('/colleges/' + id + '/partners', partner, {
+      headers: {Authorization: 'Bearer '+auth.getToken()}
+    });
+  }; // addPartner()
+
   return c;
 }]); // colleges factory
 
+
+
+
+app.factory('labPartners', ['$http', 'auth', function($http, auth) {
+  var l = {
+    labPartners: []
+  };
+
+  l.getAll = function() {
+    return $http.get('/partners').success(function(data){
+      // create deep--not shallow--copy
+      angular.copy(data, l.labPartners);
+    })
+  };
+
+  return l;
+}]); // labPartners factory
 
 
 
@@ -174,14 +201,6 @@ function($scope, $state, auth, colleges){
   $scope.colleges = colleges.colleges;
 
   $scope.isLoggedIn = auth.isLoggedIn;
-
-  /*
-  $scope.colleges = [
-    { name: "UC Santa Barbara"},
-    { name: "UC Davis"},
-    { name: "UC Irvine"}
-  ];
-  */
 
   $scope.addCollege = function(){
     if (!$scope.name || $scope.name === '') { return; }
@@ -255,8 +274,35 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
+'colleges',
 'college',
 'auth',
-function($scope, college, auth){
+function($scope, colleges, college, auth){
   $scope.college = college;
+
+  $scope.isLoggedIn = auth.isLoggedIn;
+
+  $scope.addPartner = function() {
+    if (!$scope.firstName || $scope.firstName === ''
+      || !$scope.lastName || $scope.lastName === '') {
+      $("#add-partner-form-error > span").text("Fill out all fields");
+      return;
+    }
+
+    colleges.addPartner(college._id, {
+      firstName: $scope.firstName,
+      lastName: $scope.lastName,
+    }).success(function(partner) {
+      $scope.college.labPartners.push(partner);
+    });
+
+    // Erase the form
+    $scope.firstName = $scope.lastName = '';
+  }; // addPartner()
+
+  $scope.showLabPartnerSearchForm = function() {
+    alert("Sup");
+  }; // showLabPartnerSearchForm()
+
+
 }]); // CollegesCtrl controller

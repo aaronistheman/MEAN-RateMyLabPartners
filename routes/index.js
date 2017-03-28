@@ -8,6 +8,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 
 var College = mongoose.model('College');
+var LabPartner = mongoose.model('LabPartner');
 
 
 
@@ -106,9 +107,46 @@ router.param('college', function(req, res, next, id) {
 
 
 router.get('/colleges/:college', function(req, res, next) {
-  // Isn't anything (yet) to populate, so just return the College
-  // object
-  res.json(req.college);
+  // Load the lab partners of that college as well
+  req.college.populate('labPartners', function(err, college) {
+    if (err) return next(err);
+
+    res.json(college);
+  });
+});
+
+
+
+// Gets all LabPartner instances
+router.get('/partners', function(req, res, next) {
+  LabPartner.find(function(err, partners) {
+    if (err) {
+      return next(err);
+    }
+
+    res.json(partners);
+  });
+});
+
+
+
+// Add new LabPartner instance
+router.post('/colleges/:college/partners', auth, function(req, res, next) {
+  var partner = new LabPartner(req.body);
+  partner.college = req.college;
+
+  // Save the lab partner to the database
+  partner.save(function(err, partner) {
+    if(err) return next(err);
+
+    // Update the college
+    req.college.labPartners.push(partner);
+    req.college.save(function(err, college) {
+      if(err) return next(err);
+
+      res.json(partner);
+    });
+  });
 });
 
 
