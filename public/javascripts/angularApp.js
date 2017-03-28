@@ -327,4 +327,20 @@ function($scope, auth){
   
   $scope.isLoggedIn = auth.isLoggedIn;
 
+  $scope.addReview = function() {
+    if (!$scope.class || $scope.class === ''
+      || !$scope.rating || $scope.rating === ''
+      || !$scope.body || $scope.body === '') { // if incomplete form
+      $("#add-review-form-error > span").text("Fill out all fields");
+    }
+    else { // if complete form
+
+      // Contact the Factory to get the review stored server-side
+      
+
+      // Erase the form
+      $scope.class = $scope.rating = $scope.body = '';
+    }
+  }; // addReview()
+
 }]); // PartnersCtrl controller
