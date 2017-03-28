@@ -307,7 +307,10 @@ function($scope, $state, colleges, college, auth){
         $scope.error = { message: "Bruh, pick a valid lab partner."};
       } else { // if valid college
         // Go to that lab partner's page
-        $state.go('partners', { id: partnerTag.data("database-id") });
+        $state.go('partners', {
+          collegeId: $scope.college._id,
+          partnerId: partnerTag.data("database-id"),
+        });
       }
     }
   }; // showLabPartnerPage()
@@ -322,6 +325,6 @@ app.controller("PartnersCtrl", [
 'auth',
 function($scope, auth){
   
-
+  $scope.isLoggedIn = auth.isLoggedIn;
 
 }]); // PartnersCtrl controller
