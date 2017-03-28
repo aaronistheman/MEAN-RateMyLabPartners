@@ -13,6 +13,8 @@ var ReviewSchema = new mongoose.Schema({
     // say whatever
     body: String,
 
+    creationDate: { type: Date, default: Date.now },
+
     // The lab partner for whom this is a review for.
     labPartner: { type: mongoose.Schema.Types.ObjectId,
         ref: 'LabPartner' }

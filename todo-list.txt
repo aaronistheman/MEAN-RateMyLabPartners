@@ -1,9 +1,11 @@
 Current:
 -lab partner page
 	-User sees
-		-list of reviews
-			-order should have oldest at bottom
 		-average lab partner rating
+	-front-end validation
+		-rating must be:
+			-a number
+			-within designated range
 -making the webpage look nice
 	-Bootstrap-related ideas
 		-display reviews with <blockquote>

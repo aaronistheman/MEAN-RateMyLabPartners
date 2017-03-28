@@ -257,7 +257,8 @@
 
       <!-- Show already-existing reviews -->
       <div>
-        <div ng-repeat="review in labPartner.reviews">
+        <div ng-repeat="review in labPartner.reviews
+          | orderBy:'-creationDate'">
           <br />
           <div>{{ review.class }}</div>
           <div>{{ review.rating }}</div>
