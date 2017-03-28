@@ -151,15 +151,19 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
   };
 
   c.create = function(college) {
-    return $http.post('/colleges', college).success(function(data){
-      // So Angular's data matches database's
+    return $http.post('/colleges', college, {
+      headers: {Authorization: 'Bearer '+auth.getToken()}
+    }).success(function(data){
+      // So Angular's data matches database's (that is, so
+      // a back-end update will be instantly met with a front-end
+      // update without having to fresh the page)
       c.colleges.push(data);
     });
   }; // create()
 
   c.addPartner = function(id, partner) {
     return $http.post('/colleges/' + id + '/partners', partner, {
-
+      headers: {Authorization: 'Bearer '+auth.getToken()}
     });
   }; // addPartner()
 
@@ -273,10 +277,8 @@ app.controller("CollegesCtrl", [
 'colleges',
 'college',
 'auth',
-'labPartners',
-function($scope, colleges, college, auth, labPartners){
+function($scope, colleges, college, auth){
   $scope.college = college;
-  $scope.partners = labPartners.labPartners;
 
   $scope.isLoggedIn = auth.isLoggedIn;
 

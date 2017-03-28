@@ -1,16 +1,7 @@
 Current:
--the college page
-	-lab partner database stuff
-		-use "auth" in the POST route (perhaps the issue
-		is in the case-sensitivity)
-			-use the "headers" bearer thing, you dummy
-	-only show lab partners for a given college (in search bar)
-		-filter for partners in the lab partner promise by college
-	-should lab partners be ordered by name on the html form?
-	-if the user logs in while in the college page, he should
-	be redirected to that same page, rather than to the home
-	page again
 -lab partner page
+	-get to this page by searching for a lab partner
+		-incorrect searches should be rejected
 	-Review model instance
 		-subject/class
 		-rating
@@ -55,6 +46,9 @@ the secret used for signing the tokens
 		-routes/index.js
 		-mdoels/Users.js
 	-could use environment variable instead
+-if the user logs in while in the college page, he should
+be redirected to that same page, rather than to the home
+page again
 
 
 Junk users and passwords (for manual testing)

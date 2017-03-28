@@ -131,7 +131,7 @@ router.get('/partners', function(req, res, next) {
 
 
 // Add new LabPartner instance
-router.post('/colleges/:college/partners', /*auth,*/ function(req, res, next) {
+router.post('/colleges/:college/partners', auth, function(req, res, next) {
   var partner = new LabPartner(req.body);
   partner.college = req.college;
 
