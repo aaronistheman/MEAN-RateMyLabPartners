@@ -107,25 +107,13 @@ router.param('college', function(req, res, next, id) {
 });
 
 
+// Gets one College instance
 router.get('/colleges/:college', function(req, res, next) {
   // Load the lab partners of that college as well
   req.college.populate('labPartners', function(err, college) {
     if (err) return next(err);
 
     res.json(college);
-  });
-});
-
-
-
-// Gets all LabPartner instances
-router.get('/partners', function(req, res, next) {
-  LabPartner.find(function(err, partners) {
-    if (err) {
-      return next(err);
-    }
-
-    res.json(partners);
   });
 });
 
@@ -155,7 +143,7 @@ router.post('/colleges/:college/partners', auth, function(req, res, next) {
 
 
 router.param('partner', function(req, res, next, id) {
-  var query = Partner.findById(id);
+  var query = LabPartner.findById(id);
 
   query.exec(function(err, partner) {
     if (err) { return next(err); }
@@ -163,6 +151,19 @@ router.param('partner', function(req, res, next, id) {
 
     req.partner = partner;
     return next();
+  });
+});
+
+
+// Gets one LabPartner instance
+router.get('/colleges/:college/partners/:partner',
+  function(req, res, next) {
+
+  // Load the reviews of that partner as well
+  req.partner.populate('reviews', function(err, partner) {
+    if (err) return next(err);
+
+    res.json(partner);
   });
 });
 

@@ -1,9 +1,6 @@
 Current:
 -lab partner page
-	-User can leave review for a LabPartner
-		-must require authentication in the appropriate route
 	-User sees
-		-lab partner's name
 		-list of reviews
 		-average lab partner rating
 -making the webpage look nice

@@ -222,6 +222,8 @@
     <script type="text/ng-template" id="/lab-partners.html">
       <p>You made it to lab-partners.html</p>
 
+      <p>Lab partner name: {{ labPartner.firstName }}</p>
+
       <!-- Form for adding a review -->
       <div id="add-review-form-error">
         <span></span>
@@ -229,7 +231,9 @@
       <form ng-show="isLoggedIn()" ng-submit="addReview()"
         id="add-review-form">
         <span>Had a bad time with this lab partner? Take revenge
-          by leaving a review. (Or leave a good review. Whatever.)
+          by leaving a review. Or leave a good review. Whatever.
+          (Note that we advise that you only review lab partners
+          that you have actually been partnered with.)
           </span><br />
 
         <!-- The form fields -->
