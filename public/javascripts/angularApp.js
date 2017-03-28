@@ -164,6 +164,12 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
     });
   }; // create()
 
+  c.addPartner = function(id, partner) {
+    return $http.post('/colleges/' + id + '/partners', partner, {
+
+    });
+  }; // addPartner()
+
   return c;
 }]); // colleges factory
 
@@ -181,13 +187,6 @@ app.factory('labPartners', ['$http', 'auth', function($http, auth) {
       angular.copy(data, l.labPartners);
     })
   };
-
-  l.create = function(labPartner) {
-    return $http.post('/partners', labPartner).success(function(data){
-      // So Angular's data matches database's
-      l.labPartners.push(data); 
-    });
-  }; // create()
 
   return l;
 }]); // labPartners factory
@@ -278,10 +277,11 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
+'colleges',
 'college',
 'auth',
 'labPartners',
-function($scope, college, auth, labPartners){
+function($scope, colleges, college, auth, labPartners){
   $scope.college = college;
   $scope.partners = labPartners.labPartners;
 
@@ -294,9 +294,11 @@ function($scope, college, auth, labPartners){
       return;
     }
 
-    labPartners.create({
+    colleges.addPartner(college._id, {
       firstName: $scope.firstName,
-      lastName: $scope.lastName
+      lastName: $scope.lastName,
+    }).success(function(partner) {
+      $scope.college.partners.push(partner);
     });
 
     // Erase the form

@@ -1,11 +1,14 @@
 Current:
 -the college page
-	-can search for LabPartner
-		-only show lab partners for a given college
-			-a lab partner has to know its college
-				-use the array in the Colleges model
-			-filter for partners in the lab partner promise by college
-		-should lab partners be ordered by name on the html form?
+	-lab partner database stuff
+		-fix the GET route
+		-probably have to populate the College in its GET route
+		-use "auth" in the POST route (perhaps the issue
+		is in the case-sensitivity)
+			-use the "headers" bearer thing, you dummy
+	-only show lab partners for a given college (in search bar)
+		-filter for partners in the lab partner promise by college
+	-should lab partners be ordered by name on the html form?
 	-if the user logs in while in the college page, he should
 	be redirected to that same page, rather than to the home
 	page again

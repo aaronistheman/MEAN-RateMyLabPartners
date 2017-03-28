@@ -128,13 +128,21 @@ router.get('/partners', function(req, res, next) {
 
 
 // Add new LabPartner instance
-router.post('/partners', function(req, res, next) {
+router.post('/colleges/:college/partners', /*auth,*/ function(req, res, next) {
   var partner = new LabPartner(req.body);
+  partner.college = req.college;
 
+  // Save the lab partner to the database
   partner.save(function(err, partner) {
-    if(err){ return next(err); }
+    if(err) return next(err);
 
-    res.json(partner);
+    // Update the college
+    req.college.labPartners.push(partner);
+    req.college.save(function(err, college) {
+      if(err) return next(err);
+
+      res.json(partner);
+    });
   });
 });
 
