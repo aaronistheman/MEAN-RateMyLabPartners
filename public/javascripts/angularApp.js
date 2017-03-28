@@ -359,6 +359,9 @@ function($scope, colleges, college, labPartner, auth){
   $scope.college = college;
   $scope.labPartner = labPartner;
 
+  // For ratings, the number of digits to show after the decimal point
+  $scope.ratingsPrecision = 1;
+
   $scope.updateAverageRating = function() {
     // Find average rating by dividing the sum of the ratings
     // (obtained with reduce()) by the number of ratings

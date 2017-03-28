@@ -223,7 +223,7 @@
       <p>You made it to lab-partners.html</p>
 
       <p>Lab partner name: {{ labPartner.firstName }}</p>
-      <p>Average rating: {{ averageRating }}</p>
+      <p>Average rating: {{ averageRating.toFixed(ratingsPrecision) }}</p>
 
       <!-- Form for adding a review -->
       <div>
@@ -262,7 +262,7 @@
           | orderBy:'-creationDate'">
           <br />
           <div>{{ review.class }}</div>
-          <div>{{ review.rating }}</div>
+          <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
           <div>{{ review.body }}</div>
         </div>
       </div>
