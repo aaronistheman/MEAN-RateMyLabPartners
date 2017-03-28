@@ -286,6 +286,7 @@ function($scope, $state, colleges, college, auth){
       firstName: $scope.firstName,
       lastName: $scope.lastName,
     }).success(function(partner) {
+      // Update front-end copy of the list of lab partners
       $scope.college.labPartners.push(partner);
     });
 

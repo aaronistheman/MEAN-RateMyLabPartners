@@ -9,6 +9,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 var College = mongoose.model('College');
 var LabPartner = mongoose.model('LabPartner');
+var Review = mongoose.model('Review');
 
 
 
@@ -144,7 +145,48 @@ router.post('/colleges/:college/partners', auth, function(req, res, next) {
     req.college.save(function(err, college) {
       if(err) return next(err);
 
+      // Return the partner so can add on front-end
+      // without reloading
       res.json(partner);
+    });
+  });
+});
+
+
+
+router.param('partner', function(req, res, next, id) {
+  var query = Partner.findById(id);
+
+  query.exec(function(err, partner) {
+    if (err) { return next(err); }
+    if (!partner) { return next(new Error("can't find lab partner")); }
+
+    req.partner = partner;
+    return next();
+  });
+});
+
+
+
+// Add new Review instance
+router.post('/colleges/:college/partners/:partner/reviews',
+  auth, function(req, res, next) {
+
+  var review = new Review(req.body);
+  review.labPartner = req.partner;
+
+  // Save the review to the database
+  review.save(function(err, review) {
+    if (err) return next(err);
+
+    // Update the lab partner
+    req.partner.reviews.push(review);
+    req.partner.save(function(err, partner) {
+      if (err) return next(err);
+
+      // Return the review so can add on front-end
+      // without reloading
+      res.json(review);
     });
   });
 });
