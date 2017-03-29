@@ -1,19 +1,26 @@
 Current:
 -making the webpage look nice
-	-show something special if partner has no ratings
-		-don't show average rating if partner has no ratings
-	-Bootstrap-related ideas
-		-display reviews with <blockquote>
+	-login/registration
 		-style login/registration forms (with default style?)
+	-navbar
+		-logo
+		-collapse the nav bar if it takes too much space
+	-college-search page
+	-lab-partner-search page (i.e. college page)
+		-left panel showing list of lab partners
+			-set this up so lab partner page can use it to
+			-each list entry should be hyperlink
+	-lab partner page
+		-left panel showing list of lab partners
+		-display reviews in thsoe rectangle styles
+			-display reviews with <blockquote> (Bootstrap styled)
+		-show something special if partner has no ratings
+			-don't show average rating if partner has no ratings
+	-general
 		-use the text/bg color classes for messges to the user
 		(e.g. account created, wrong password)
 		-use breadcrumbs to show hierarchy of college to
 		lab partner
-		-put the website logo in the navigation bar
-		-put the college search bar into the
-		navigation bar
-		-perhaps fix navigation bar to page's top
-		-collapse the nav bar if it takes too much space
 		-use glyphicons where possible
 
 
@@ -42,6 +49,7 @@ the secret used for signing the tokens
 -if the user logs in while in the college page, he should
 be redirected to that same page, rather than to the home
 page again
+-put the college search bar into the navigation bar
 
 
 Junk users and passwords (for manual testing)
