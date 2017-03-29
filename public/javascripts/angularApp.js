@@ -15,7 +15,7 @@ function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 		.state('home', {
-			url: '/home',
+			url: '/home', // the url shown in the search bar
 			templateUrl: '/home.html',
 			controller: 'MainCtrl',
       resolve: {
@@ -60,6 +60,24 @@ function($stateProvider, $urlRouterProvider) {
             // Use the 'colleges' service to retrieve the college
             // object
             return colleges.get($stateParams.id);
+          }]
+      }
+    })
+    .state('partners', { // state for showing one lab partner
+      url: '/colleges/{collegeId}/partners/{partnerId}',
+      templateUrl: '/lab-partners.html',
+      controller: 'PartnersCtrl',
+      resolve: {
+        college: ['$stateParams', 'colleges',
+          function($stateParams, colleges) {
+            // Use the 'colleges' service to retrieve the college
+            // object
+            return colleges.get($stateParams.collegeId);
+          }],
+        labPartner: ['$stateParams', 'colleges',
+          function($stateParams, colleges) {
+            return colleges.getPartner($stateParams.collegeId,
+              $stateParams.partnerId);
           }]
       }
     });
@@ -150,6 +168,7 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
     })
   };
 
+  // Create college
   c.create = function(college) {
     return $http.post('/colleges', college, {
       headers: {Authorization: 'Bearer '+auth.getToken()}
@@ -161,32 +180,29 @@ app.factory('colleges', ['$http', 'auth', function($http, auth) {
     });
   }; // create()
 
-  c.addPartner = function(id, partner) {
-    return $http.post('/colleges/' + id + '/partners', partner, {
+  c.getPartner = function(collegeId, partnerId) {
+    return $http.get('/colleges/' + collegeId
+      + '/partners/' + partnerId).then(function(res) {
+        return res.data;
+      });
+  }; // getPartner()
+
+  c.addPartner = function(collegeId, partner) {
+    return $http.post('/colleges/' + collegeId
+      + '/partners', partner, {
       headers: {Authorization: 'Bearer '+auth.getToken()}
     });
   }; // addPartner()
 
+  c.addReviewForPartner = function(collegeId, partnerId, review) {
+    return $http.post('/colleges/' + collegeId
+      + '/partners/' + partnerId + '/reviews', review, {
+        headers: {Authorization: 'Bearer '+auth.getToken()}
+      });
+  }; // addReviewForPartner()
+
   return c;
 }]); // colleges factory
-
-
-
-
-app.factory('labPartners', ['$http', 'auth', function($http, auth) {
-  var l = {
-    labPartners: []
-  };
-
-  l.getAll = function() {
-    return $http.get('/partners').success(function(data){
-      // create deep--not shallow--copy
-      angular.copy(data, l.labPartners);
-    })
-  };
-
-  return l;
-}]); // labPartners factory
 
 
 
@@ -214,6 +230,8 @@ function($scope, $state, auth, colleges){
   }; // addCollege()
 
 
+  // Takes the user to the college page he searched for, if
+  // he entered a valid college; else, gives error message
   $scope.showCollegePage = function() {
     if ($scope.collegeName != "") { // if the user entered a college name
       // Check if user entered valid college by attempting to find
@@ -274,10 +292,11 @@ function($scope, auth) {
 
 app.controller("CollegesCtrl", [
 '$scope',
+'$state',
 'colleges',
 'college',
 'auth',
-function($scope, colleges, college, auth){
+function($scope, $state, colleges, college, auth){
   $scope.college = college;
 
   $scope.isLoggedIn = auth.isLoggedIn;
@@ -293,6 +312,7 @@ function($scope, colleges, college, auth){
       firstName: $scope.firstName,
       lastName: $scope.lastName,
     }).success(function(partner) {
+      // Update front-end copy of the list of lab partners
       $scope.college.labPartners.push(partner);
     });
 
@@ -300,9 +320,88 @@ function($scope, colleges, college, auth){
     $scope.firstName = $scope.lastName = '';
   }; // addPartner()
 
-  $scope.showLabPartnerSearchForm = function() {
-    alert("Sup");
-  }; // showLabPartnerSearchForm()
+  // Takes the user to the lab partner page he searched for, if
+  // he entered a valid lab partner; else, gives error message
+  $scope.showLabPartnerPage = function() {
+    if ($scope.partnerName != "") { // only proceed if user entered something
+      // Check if user entered valid lab partner by attempting to find
+      // the datalist (<option>) entry.
+      // Use a jQuery selector that is friendly to ids with spaces.
+      var partnerTag = $("option[id='" + $scope.partnerName + "']");
+
+      if (partnerTag.length === 0) { // if invalid college
+        // return error message
+        $scope.error = { message: "Bruh, pick a valid lab partner."};
+      } else { // if valid college
+        // Go to that lab partner's page
+        $state.go('partners', {
+          collegeId: $scope.college._id,
+          partnerId: partnerTag.data("database-id"),
+        });
+      }
+    }
+  }; // showLabPartnerPage()
 
 
 }]); // CollegesCtrl controller
+
+
+
+app.controller("PartnersCtrl", [
+'$scope',
+'colleges',
+'college',
+'labPartner',
+'auth',
+function($scope, colleges, college, labPartner, auth){
+  $scope.isLoggedIn = auth.isLoggedIn;
+
+  $scope.college = college;
+  $scope.labPartner = labPartner;
+
+  // For ratings, the number of digits to show after the decimal point
+  $scope.ratingsPrecision = 1;
+
+  $scope.updateAverageRating = function() {
+    // Find average rating by dividing the sum of the ratings
+    // (obtained with reduce()) by the number of ratings
+    var sum = labPartner.reviews.reduce(function(acc, review) {
+      return acc + review.rating;
+    }, 0);
+    $scope.averageRating = sum / labPartner.reviews.length;
+  }
+
+  $scope.averageRating = 0;
+  $scope.updateAverageRating();
+
+  $scope.addReview = function() {
+    if (!$scope.class || $scope.class === ''
+      || !$scope.rating || $scope.rating === ''
+      || !$scope.body || $scope.body === '') { // if incomplete form
+      $("#add-review-form-error > span").text("Fill out all fields");
+    }
+    else { // if complete form
+
+      // Contact the Factory to get the review stored server-side
+      colleges.addReviewForPartner(college._id, labPartner._id,
+      {
+        class: $scope.class,
+        rating: $scope.rating,
+        body: $scope.body,
+      }).error(function(error){
+        $scope.error = error;
+      }).success(function(review) {
+        // Update front-end reviews data
+        $scope.labPartner.reviews.push(review);
+        $scope.updateAverageRating();
+
+        // Remove server-side error message (if any)
+        $scope.error = "";
+      });
+
+      // Erase the form
+      $scope.class = $scope.rating = $scope.body = '';
+    }
+  }; // addReview()
+
+}]); // PartnersCtrl controller

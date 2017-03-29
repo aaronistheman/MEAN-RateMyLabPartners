@@ -1,14 +1,7 @@
 Current:
--lab partner page
-	-get to this page by searching for a lab partner
-		-incorrect searches should be rejected
-	-Review model instance
-		-subject/class
-		-rating
-		-comments
-	-User can leave review for a LabPartner
-		-must require authentication in the appropriate route
 -making the webpage look nice
+	-show something special if partner has no ratings
+		-don't show average rating if partner has no ratings
 	-Bootstrap-related ideas
 		-display reviews with <blockquote>
 		-style login/registration forms (with default style?)

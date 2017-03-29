@@ -9,6 +9,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 var College = mongoose.model('College');
 var LabPartner = mongoose.model('LabPartner');
+var Review = mongoose.model('Review');
 
 
 
@@ -106,25 +107,13 @@ router.param('college', function(req, res, next, id) {
 });
 
 
+// Gets one College instance
 router.get('/colleges/:college', function(req, res, next) {
   // Load the lab partners of that college as well
   req.college.populate('labPartners', function(err, college) {
     if (err) return next(err);
 
     res.json(college);
-  });
-});
-
-
-
-// Gets all LabPartner instances
-router.get('/partners', function(req, res, next) {
-  LabPartner.find(function(err, partners) {
-    if (err) {
-      return next(err);
-    }
-
-    res.json(partners);
   });
 });
 
@@ -144,7 +133,64 @@ router.post('/colleges/:college/partners', auth, function(req, res, next) {
     req.college.save(function(err, college) {
       if(err) return next(err);
 
+      // Return the partner so can add on front-end
+      // without reloading
       res.json(partner);
+    });
+  });
+});
+
+
+
+router.param('partner', function(req, res, next, id) {
+  var query = LabPartner.findById(id);
+
+  query.exec(function(err, partner) {
+    if (err) { return next(err); }
+    if (!partner) { return next(new Error("can't find lab partner")); }
+
+    req.partner = partner;
+    return next();
+  });
+});
+
+
+// Gets one LabPartner instance
+router.get('/colleges/:college/partners/:partner',
+  function(req, res, next) {
+
+  // Load the reviews of that partner as well
+  req.partner.populate('reviews', function(err, partner) {
+    if (err) return next(err);
+
+    res.json(partner);
+  });
+});
+
+
+
+// Add new Review instance
+router.post('/colleges/:college/partners/:partner/reviews',
+  auth, function(req, res, next) {
+
+  var review = new Review(req.body);
+  review.labPartner = req.partner;
+
+  if (!(1 <= review.rating && review.rating <= 5))
+    return res.status(400).json({message: 'Rating not within range 1-5'});
+
+  // Save the review to the database
+  review.save(function(err, review) {
+    if (err) return next(err);
+
+    // Update the lab partner
+    req.partner.reviews.push(review);
+    req.partner.save(function(err, partner) {
+      if (err) return next(err);
+
+      // Return the review so can add on front-end
+      // without reloading
+      res.json(review);
     });
   });
 });

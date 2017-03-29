@@ -165,8 +165,12 @@
 
       <p>College name: {{ college.name }}</p>
 
+      <div ng-show="error">
+        <span>{{ error.message }}</span><br />
+      </div>
+
       <!-- Search bar for user to search for lab partner -->
-      <form id="lab-partner-search-form" ng-submit="showLabPartnerSearchForm()">
+      <form id="lab-partner-search-form" ng-submit="showLabPartnerPage()">
         <span>Search for your lab partner:</span>
         <input id="selected-partner" ng-model="partnerName"
           list="datalist-partners" />
@@ -217,6 +221,55 @@
 
     <script type="text/ng-template" id="/lab-partners.html">
       <p>You made it to lab-partners.html</p>
+
+      <p>Lab partner name: {{ labPartner.firstName }}</p>
+      <p>Average rating: {{ averageRating.toFixed(ratingsPrecision) }}</p>
+
+      <!-- Form for adding a review -->
+      <div>
+        <div id="add-review-form-error">
+          <span></span>
+        </div>
+        <div ng-show="error">
+          <span>{{ error.message }}</span>
+        </div>
+        <form ng-show="isLoggedIn()" ng-submit="addReview()"
+          id="add-review-form">
+          <span>Had a bad time with this lab partner? Take revenge
+            by leaving a review. Or leave a good review. Whatever.
+            (Note that we advise that you only review lab partners
+            that you have actually been partnered with.)
+            </span><br />
+
+          <!-- The form fields -->
+          <input type="text" placeholder="Which Class?"
+            ng-model="class" /><br />
+          <input type="text" placeholder="Rating? (Between 1-5)"
+            ng-model="rating" /><br />
+          <textarea rows="8" cols="80"
+            placeholder="Enter Justifications Here"
+            ng-model="body"></textarea><br />
+
+          <button type="submit" class="btn btn-primary">
+            Add Review</button>
+        </form>
+        <div ng-hide="isLoggedIn()">
+          <span>Have a score to settle? Log in to write a review
+            for this lab partner.</span>
+        </div>
+      </div>
+
+      <!-- Show already-existing reviews -->
+      <div>
+        <div ng-repeat="review in labPartner.reviews
+          | orderBy:'-creationDate'">
+          <br />
+          <div>{{ review.class }}</div>
+          <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
+          <div>{{ review.body }}</div>
+        </div>
+      </div>
+
     </script> <!-- lab-partners.html -->
 
   </body>
