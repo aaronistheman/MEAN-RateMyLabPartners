@@ -38,6 +38,8 @@ https://thinkster.io/tutorials/mean-stack
 
 * Found the .gitignore file here: https://github.com/meanjs/mean/blob/master/.gitignore
 
+* Made the background image with MS Paint
+
 About the Author
 ----------------
 
