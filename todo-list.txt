@@ -1,10 +1,7 @@
 Current:
--lab partner page
-	-front-end validation
-		-rating must be:
-			-a number
-			-within designated range
 -making the webpage look nice
+	-show something special if partner has no ratings
+		-don't show average rating if partner has no ratings
 	-Bootstrap-related ideas
 		-display reviews with <blockquote>
 		-style login/registration forms (with default style?)

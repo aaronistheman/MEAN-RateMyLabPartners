@@ -388,10 +388,15 @@ function($scope, colleges, college, labPartner, auth){
         class: $scope.class,
         rating: $scope.rating,
         body: $scope.body,
+      }).error(function(error){
+        $scope.error = error;
       }).success(function(review) {
         // Update front-end reviews data
         $scope.labPartner.reviews.push(review);
         $scope.updateAverageRating();
+
+        // Remove server-side error message (if any)
+        $scope.error = "";
       });
 
       // Erase the form

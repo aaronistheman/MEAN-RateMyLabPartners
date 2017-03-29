@@ -230,6 +230,9 @@
         <div id="add-review-form-error">
           <span></span>
         </div>
+        <div ng-show="error">
+          <span>{{ error.message }}</span>
+        </div>
         <form ng-show="isLoggedIn()" ng-submit="addReview()"
           id="add-review-form">
           <span>Had a bad time with this lab partner? Take revenge

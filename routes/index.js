@@ -176,6 +176,9 @@ router.post('/colleges/:college/partners/:partner/reviews',
   var review = new Review(req.body);
   review.labPartner = req.partner;
 
+  if (!(1 <= review.rating && review.rating <= 5))
+    return res.status(400).json({message: 'Rating not within range 1-5'});
+
   // Save the review to the database
   review.save(function(err, review) {
     if (err) return next(err);
