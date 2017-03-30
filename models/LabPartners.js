@@ -13,4 +13,11 @@ var LabPartnerSchema = new mongoose.Schema({
 });
 
 
+LabPartnerSchema.virtual('numReviews').get(function() {
+    // get number of reviews
+    return this.reviews.length;
+});
+
+
+LabPartnerSchema.set('toJSON', { virtuals: true});
 mongoose.model('LabPartner', LabPartnerSchema);

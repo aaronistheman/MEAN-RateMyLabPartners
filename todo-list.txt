@@ -1,12 +1,7 @@
 Current:
 -making the webpage look nice
-	-college-search page
-	-lab-partner-search page (i.e. college page)
-		-left panel showing list of lab partners
-			-set this up so lab partner page can use it to
-			-each list entry should be hyperlink
 	-lab partner page
-		-left panel showing list of lab partners
+		-left panel showing list of lab partners; reuse college page's
 		-display reviews in thsoe rectangle styles
 			-display reviews with <blockquote> (Bootstrap styled)
 		-show something special if partner has no ratings

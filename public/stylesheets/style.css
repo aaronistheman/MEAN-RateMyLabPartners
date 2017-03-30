@@ -1,3 +1,7 @@
+/***************************************************************
+ * General
+ **************************************************************/
+
 body {
     padding: 0px; /*50px;*/
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -7,6 +11,14 @@ body {
 a {
     color: #00B7FF;
 }
+
+
+
+
+
+/***************************************************************
+ * Panel-related
+ **************************************************************/
 
 div.left-half-panel, div.right-half-panel {
     width: 40%;
@@ -71,6 +83,35 @@ div.right-half-panel span {
     font-size: 1.5em;
     color: #ff8080;
 }
+
+
+
+
+/***************************************************************
+ * Regarding list of lab partners
+ **************************************************************/
+
+ul#partner-list {
+    /* Make list scrollable */
+    overflow: scroll;
+    height: 300px;
+
+    /* Make list look pretty */
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+}
+
+ul#partner-list li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+/***************************************************************
+ * Navbar-related
+ **************************************************************/
 
 nav.navbar-color-settings {
     background-color: black;

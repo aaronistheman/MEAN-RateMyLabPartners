@@ -250,7 +250,6 @@ function($scope, $state, auth, colleges){
       }
     }
   }; // showCollegePage()
-
 }]); // MainCtrl controller
 
 
@@ -308,6 +307,13 @@ function($scope, $state, colleges, college, auth){
   }; // showLabPartnerPage()
 
 
+  $scope.goPartnerPage = function(partnerId) {
+    // Redirect to the page of this lab partner
+    $state.go('partners', {
+      collegeId: $scope.college._id,
+      partnerId: partnerId,
+    });
+  } // goPartnerPage()
 }]); // CollegesCtrl controller
 
 
