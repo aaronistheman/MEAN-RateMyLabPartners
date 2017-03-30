@@ -215,13 +215,17 @@ function($scope, $state, auth, colleges){
     }).then(function(){
       // Erase the form
       $scope.returningUser = {};
+      $scope.errorLogin = false;
 
       $state.go('home');
     })
   };
 
   $scope.addCollege = function(){
-    if (!$scope.name || $scope.name === '') { return; }
+    if (!$scope.name || $scope.name === '') { 
+      $("#add-college-form-error > span").text("Fill out all fields");
+      return;
+    }
 
     colleges.create({
       name: $scope.name
@@ -229,6 +233,7 @@ function($scope, $state, auth, colleges){
 
     // Erase the form
     $scope.name = '';
+    $("#add-college-form-error > span").text("");
   }; // addCollege()
 
 
@@ -247,6 +252,7 @@ function($scope, $state, auth, colleges){
         $scope.errorCollegeSearch = { message: "Dude, pick a valid college." };
       } else { // if user entered valid college
         $state.go('colleges', { id: collegeTag.data("database-id") });
+        $scope.errorCollegeSearch = false;
       }
     }
   }; // showCollegePage()
@@ -282,6 +288,7 @@ function($scope, $state, colleges, college, auth){
 
     // Erase the form
     $scope.firstName = $scope.lastName = '';
+    $("#add-partner-form-error > span").text("");
   }; // addPartner()
 
   // Takes the user to the lab partner page he searched for, if
@@ -297,6 +304,8 @@ function($scope, $state, colleges, college, auth){
         // return error message
         $scope.error = { message: "Bruh, pick a valid lab partner."};
       } else { // if valid college
+        $scope.error = false;
+
         // Go to that lab partner's page
         $state.go('partners', {
           collegeId: $scope.college._id,
@@ -305,6 +314,11 @@ function($scope, $state, colleges, college, auth){
       }
     }
   }; // showLabPartnerPage()
+
+
+  $scope.goHome = function() {
+    $state.go('home');
+  } // goHome()
 
 
   $scope.goPartnerPage = function(partnerId) {
@@ -320,11 +334,12 @@ function($scope, $state, colleges, college, auth){
 
 app.controller("PartnersCtrl", [
 '$scope',
+'$state',
 'colleges',
 'college',
 'labPartner',
 'auth',
-function($scope, colleges, college, labPartner, auth){
+function($scope, $state, colleges, college, labPartner, auth){
   $scope.isLoggedIn = auth.isLoggedIn;
 
   $scope.college = college;
@@ -356,6 +371,7 @@ function($scope, colleges, college, labPartner, auth){
       $("#add-review-form-error > span").text("Fill out all fields");
     }
     else { // if complete form
+      $("#add-review-form-error > span").text("");
 
       // Contact the Factory to get the review stored server-side
       colleges.addReviewForPartner(college._id, labPartner._id,
@@ -390,6 +406,16 @@ function($scope, colleges, college, labPartner, auth){
       $("#review-form-toggle").html("Show Review Form");
     }
   } // toggleReviewForm()
+
+
+  $scope.goHome = function() {
+    $state.go('home');
+  } // goHome()
+
+
+  $scope.goCollegePage = function() {
+    $state.go('colleges', { id: college._id });
+  } // goCollegePage()
 
 }]); // PartnersCtrl controller
 

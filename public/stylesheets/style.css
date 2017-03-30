@@ -12,6 +12,26 @@ a {
     color: #00B7FF;
 }
 
+a:hover {
+    cursor: pointer; /* Not sure why I have to do this but I do */
+}
+
+.error-text {
+    font-weight: bold;
+}
+
+ol.breadcrumb-my-settings {
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+    border-radius: 25px;
+    font-size: 1.3em;
+}
+
+ol.breadcrumb-my-settings > li > a {
+    color: #ff8080;
+}
+
 
 
 
@@ -54,6 +74,7 @@ div.right-half-panel span.panel-label {
     background-color: black;
     opacity: 0.9;
     border: 5px solid #660000;
+    border-radius: 25px;
 }
 
 div.left-half-panel span.panel-label {
@@ -81,8 +102,14 @@ div.left-half-panel textarea {
 /* Styling general text within the right panel */
 div.left-half-panel span,
 div.right-half-panel span {
+    /* Styling the text */
     font-size: 1.5em;
     color: #ff8080;
+
+    border-radius: 5px;
+
+    /* Styling the background of the text */
+    background-color: rgba(77, 0, 0, 0.8);
 }
 
 
@@ -121,6 +148,7 @@ div.review {
     background-color: #4d0000;
     opacity: 0.9;
     border: 5px solid black;
+    border-radius: 15px;
 }
 
 div.review > span.rating {
