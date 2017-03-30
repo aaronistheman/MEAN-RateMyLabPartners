@@ -24,14 +24,6 @@ div.left-half-panel, div.right-half-panel {
     width: 40%;
 }
 
-div.left-half-panel.lab-partners-page {
-    width: 95%;
-}
-
-div.right-half-panel.lab-partners-page {
-    width: 0%;
-}
-
 div.left-half-panel {
     float: left;
     margin-left: 15px;
@@ -91,6 +83,33 @@ div.left-half-panel span,
 div.right-half-panel span {
     font-size: 1.5em;
     color: #ff8080;
+}
+
+
+
+/***************************************************************
+ * Specific to lab partner page
+ **************************************************************/
+
+div.left-half-panel.lab-partners-page {
+    width: 95%;
+}
+
+div.right-half-panel.lab-partners-page {
+    width: 0%;
+}
+
+div#review-form-wrapper {
+    padding-top: 10px;
+    display: block;
+}
+
+div#review-form-wrapper > * {
+    margin-left: 10px;
+}
+
+div#review-form-wrapper.hidden {
+    display: none;
 }
 
 

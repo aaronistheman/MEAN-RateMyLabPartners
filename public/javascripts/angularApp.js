@@ -375,6 +375,18 @@ function($scope, colleges, college, labPartner, auth){
     }
   }; // addReview()
 
+  $scope.toggleReviewForm = function() {
+    var form = $("#review-form-wrapper");
+    if (form.hasClass("hidden")) {
+      form.removeClass("hidden");
+      $("#review-form-toggle").html("Hide Review Form");
+    }
+    else {
+      form.addClass("hidden");
+      $("#review-form-toggle").html("Show Review Form");
+    }
+  } // toggleReviewForm()
+
 }]); // PartnersCtrl controller
 
 
