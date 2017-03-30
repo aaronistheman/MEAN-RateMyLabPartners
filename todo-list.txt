@@ -4,9 +4,11 @@ Current:
 		-left panel showing list of lab partners
 			-each list entry should show average rating and number of
 			ratings
-			-set this up so lab partner page can use it too
+				-these properties should be accessible from the model,
+				but not necessarily stored
+				-make it look good
 	-lab partner page
-		-left panel showing list of lab partners
+		-left panel showing list of lab partners; reuse college page's
 		-display reviews in thsoe rectangle styles
 			-display reviews with <blockquote> (Bootstrap styled)
 		-show something special if partner has no ratings

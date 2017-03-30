@@ -173,6 +173,7 @@
             <li ng-repeat="partner in college.labPartners | orderBy:'name'"
               ng-click="goPartnerPage(partner._id)">
               {{ partner.firstName}} {{ partner.lastName }}
+              (Number of reviews: {{ partner.numReviews }})
             </li></span>
           </ul>
         </div> <!-- #partner-list-panel -->

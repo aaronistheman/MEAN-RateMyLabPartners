@@ -94,7 +94,7 @@ div.right-half-panel span {
 ul#partner-list {
     /* Make list scrollable */
     overflow: scroll;
-    height: 200px;
+    height: 300px;
 
     /* Make list look pretty */
     background-color: black;
