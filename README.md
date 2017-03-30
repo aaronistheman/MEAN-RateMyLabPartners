@@ -1,17 +1,30 @@
 # MEAN-RateMyLabPartners
 
-(Last updated: 3/26/2017)
+(Last updated: 3/30/2017)
 
 About
 -----
 
-Is being programmed with the JavaScript MEAN framework.
-Will be a "just for fun," not real version of RateMyProfessors.com
+This is a "just for fun," not real version of RateMyProfessors.com
 for rating lab partners instead :-)
 
 Languages/Software Used: JavaScript, MEAN framework
 (MongoDB/Mongoose, Express, AngularJS, Node.js), HTML/CSS,
 Bootstrap.
+
+Features
+--------
+
+* Can create a basic account to leave a review.
+
+* Can view a college's list of reviewed lab partners.
+
+* Can view the reviews and average rating of a lab partner.
+
+* Can introduce a new (not yet reviewed) college or lab partner.
+
+* Reasonably good-looking UI (though this wasn't my main priority
+with this application).
 
 To Run
 ------

@@ -3,14 +3,8 @@ Current:
 
 -making the webpage look nice
 	-general
-		-try everything and see how it all looks; fix:
-			-error texts
-				-they should disappear after correct submission
-		-use the text/bg color classes for messges to the user
-		(e.g. account created, wrong password)
-		-use breadcrumbs to show hierarchy of college to
-		lab partner
 		-use glyphicons where possible
+		-use breadcrumbs to show hierarchy of college to lab partner
 		-make it easier to log in
 -start keeping track of features on readme
 
