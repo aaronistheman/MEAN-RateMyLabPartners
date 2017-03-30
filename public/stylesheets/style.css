@@ -65,7 +65,8 @@ div.right-half-panel span.panel-label {
     padding-right: 10px;
 }
 
-div.left-half-panel input, div.right-half-panel input {
+div.left-half-panel input, div.right-half-panel input,
+div.left-half-panel textarea {
     /* The input element itself */
     background-color: white;
     border-color: black;
@@ -82,6 +83,53 @@ div.left-half-panel span,
 div.right-half-panel span {
     font-size: 1.5em;
     color: #ff8080;
+}
+
+
+
+/***************************************************************
+ * Specific to lab partner page
+ **************************************************************/
+
+div.left-half-panel.lab-partners-page {
+    width: 95%;
+}
+
+div.right-half-panel.lab-partners-page {
+    width: 0%;
+}
+
+div#review-form-wrapper {
+    padding-top: 10px;
+    display: block;
+}
+
+div#review-form-wrapper > * {
+    margin-left: 10px;
+}
+
+div#review-form-wrapper.hidden {
+    display: none;
+}
+
+div.review {
+    margin-left: 20px;
+    margin-top: 10px;
+
+    padding-left: 5px;
+
+    background-color: #4d0000;
+    opacity: 0.9;
+    border: 5px solid black;
+}
+
+div.review > span.rating {
+    font-weight: bold;
+}
+
+div.review > span.body {
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 

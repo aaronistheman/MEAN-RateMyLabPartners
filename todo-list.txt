@@ -1,12 +1,8 @@
 Current:
 -making the webpage look nice
-	-lab partner page
-		-left panel showing list of lab partners; reuse college page's
-		-display reviews in thsoe rectangle styles
-			-display reviews with <blockquote> (Bootstrap styled)
-		-show something special if partner has no ratings
-			-don't show average rating if partner has no ratings
 	-general
+		-faint background for all <span>
+		-less rectangles; have radial ends
 		-really consider the general look and ask yourself -- deep
 			inside your soul -- if you feel it's right :D
 			-try everything and see how it all looks
@@ -16,6 +12,7 @@ Current:
 		-use breadcrumbs to show hierarchy of college to
 		lab partner
 		-use glyphicons where possible
+-start keeping track of features on readme
 
 
 Eventually:
@@ -47,6 +44,7 @@ be redirected to that same page, rather than to the home
 page again
 -put the college search bar into the navigation bar
 -make entire webpage responsive
+-a user can't review the same person twice within three months
 
 
 Junk users and passwords (for manual testing)
