@@ -168,14 +168,20 @@
 
         <div id="partner-list-panel" class="subpanel">
           <span class="panel-label">List of Lab Partners</span>
-          <ul id="partner-list">
-            <span>
-            <li ng-repeat="partner in college.labPartners | orderBy:'name'"
-              ng-click="goPartnerPage(partner._id)">
-              {{ partner.firstName}} {{ partner.lastName }}
-              (Number of reviews: {{ partner.numReviews }})
-            </li></span>
-          </ul>
+          <div ng-hide="college.labPartners.length > 0">
+            <span>No reviewed lab partners at this college yet!
+              What a great college!</span>
+          </div>
+          <div ng-show="college.labPartners.length > 0">
+            <ul id="partner-list">
+              <span>
+              <li ng-repeat="partner in college.labPartners | orderBy:'name'"
+                ng-click="goPartnerPage(partner._id)">
+                {{ partner.firstName}} {{ partner.lastName }}
+                (Number of reviews: {{ partner.numReviews }})
+              </li></span>
+            </ul>
+          </div>
         </div> <!-- #partner-list-panel -->
       </div> <!-- .left-half-panel -->
 

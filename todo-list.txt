@@ -1,6 +1,5 @@
 Current:
 -making the webpage look nice
-	-lab-partner-search page (i.e. college page)
 	-lab partner page
 		-left panel showing list of lab partners; reuse college page's
 		-display reviews in thsoe rectangle styles
