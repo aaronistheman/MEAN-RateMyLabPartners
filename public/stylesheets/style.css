@@ -9,7 +9,7 @@ a {
 }
 
 div.left-half-panel, div.right-half-panel {
-    width: 35%;
+    width: 40%;
 }
 
 div.left-half-panel {
@@ -22,14 +22,11 @@ div.right-half-panel {
     margin-right: 15px;
 }
 
-/*
-div.left-half-panel div,
-div.right-half-panel div {
-    background-color: white;
-    opacity: 0.8;
-    border: 5px solid black;
+div.left-half-panel > div.subpanel,
+div.right-half-panel > div.subpanel {
+    /* For verticaly spacing out subpanels */
+    margin-bottom: 80px;
 }
-*/
 
 div.left-half-panel span.panel-label,
 div.right-half-panel span.panel-label {

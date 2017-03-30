@@ -2,9 +2,9 @@ Current:
 -making the webpage look nice
 	-login/registration
 		-try to get the desired look
-			-logged out page
-				-space out the login and register panels
 			-logged in page
+			-really consider the general look and ask yourself -- deep
+				inside your soul -- if you feel it's right :D
 	-new navbar
 		-logo
 		-what should it have?

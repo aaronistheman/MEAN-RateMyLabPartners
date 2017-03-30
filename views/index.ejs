@@ -42,15 +42,15 @@
     <script type="text/ng-template" id="/home.html">
 
       <div class="left-half-panel">
-        <div ng-show="isLoggedIn()" id="name-panel">
+        <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
           <span>Welcome, {{ currentUser() }}</span>
         </div> <!-- #name-panel -->
 
-        <div ng-show="isLoggedIn()" id="logout-form-panel">
+        <div ng-show="isLoggedIn()" id="logout-form-panel" class="subpanel">
           <span><a href="" ng-click="logOut()">Log Out</a></span>
         </div> <!-- #logout-form-panel -->
 
-        <div ng-hide="isLoggedIn()" id="login-form-panel">
+        <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
           <div ng-show="errorLogin">
             <span>{{ errorLogin.message }}</span>
           </div>
@@ -66,7 +66,7 @@
         </div> <!-- #login-form-panel -->
 
 
-        <div ng-hide="isLoggedIn()" id="registration-form-panel">
+        <div ng-hide="isLoggedIn()" id="registration-form-panel" class="subpanel">
           <div ng-show="errorRegistration">
             <span>{{ errorRegistration.message }}</span>
           </div>
@@ -84,7 +84,7 @@
 
 
       <div class="right-half-panel">
-        <div id="college-search-form-panel">
+        <div id="college-search-form-panel" class="subpanel">
           <div ng-show="errorCollegeSearch">
             <span>{{ errorCollegeSearch.message }}</span><br />
           </div>
@@ -105,12 +105,11 @@
           </form>
         </div> <!-- #college-search-form-panel -->
 
-        <br /><br />
-
         <!-- Form for adding a college -->
-        <div id="add-college-form-panel">
+        <div id="add-college-form-panel" class="subpanel">
+          <span class="panel-label">Don't See Your College?</span>
           <form ng-show="isLoggedIn()" ng-submit="addCollege()">
-            <span>Don't see your college? Do something about it
+            <span>Do something about it
               by submitting the form below.</span><br />
             <input type="text" placeholder="College Name"
               ng-model="name">
