@@ -55,7 +55,7 @@
             <span>{{ errorLogin.message }}</span>
           </div>
 
-          <h3>Log In</h3>
+          <span class="panel-label">Log In</span>
           <form ng-submit="logIn()">
             <input type="text" placeholder="Username"
               ng-model="returningUser.username" />
@@ -71,7 +71,7 @@
             <span>{{ errorRegistration.message }}</span>
           </div>
 
-          <h3>Register</h3>
+          <span class="panel-label">Register</span>
           <form ng-submit="register()">
             <input type="text" placeholder="Username"
               ng-model="newUser.username" />
@@ -90,7 +90,7 @@
           </div>
 
           <!-- Search bar for user to search for college -->
-          <h3>Find Lab Partner</h3>
+          <span class="panel-label">Find Lab Partner</span>
           <form id="college-search-form" ng-submit="showCollegePage()">
             <span>First, search for your college:</span>
             <input type="text" placeholder="College Name"

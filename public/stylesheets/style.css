@@ -10,7 +10,6 @@ a {
 
 div.left-half-panel, div.right-half-panel {
     width: 35%;
-    /*background-color: white;*/
 }
 
 div.left-half-panel {
@@ -23,14 +22,27 @@ div.right-half-panel {
     margin-right: 15px;
 }
 
-div.left-half-panel h3, div.right-half-panel h3 {
+div.left-half-panel span.panel-label,
+div.right-half-panel span.panel-label {
+
+    /* Take the width of the container */
+    display: block;
+
+    /* Text in the element */
+    font-size: 3em;
+    color: #ff8080;
+
+    /* The element itself */
     background-color: black;
     opacity: 0.9;
-    color: #ff8080;
     border: 5px solid #660000;
 }
 
-div.right-half-panel h3 {
+div.left-half-panel span.panel-label {
+    padding-left: 10px;
+}
+
+div.right-half-panel span.panel-label {
     text-align: right;
-    /*padding-right: 20px;*/
+    padding-right: 10px;
 }

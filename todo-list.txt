@@ -3,7 +3,6 @@ Current:
 	-login/registration
 		-try to get the desired look
 			-logged out page
-				-ribbons for the labels
 				-text stylings
 				-background color for each?
 	-new navbar
