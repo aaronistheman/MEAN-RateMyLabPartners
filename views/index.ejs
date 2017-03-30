@@ -39,7 +39,11 @@
           <li><a href="#">Blah2</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
-          <!-- The navbar if the user is logged in -->
+          <!-- Show this part to non-logged-in user -->
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">Log In</a></li>
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">Register</a></li>
+
+          <!-- Show this part to logged-in user -->
           <li ng-show="isLoggedIn()"><a ng-click="goHome()">{{ currentUser() }}</a></li>
           <li ng-show="isLoggedIn()"><a ng-click="logOut()">Log Out</a></li>
         </ul>
@@ -158,52 +162,83 @@
     -->
 
     <script type="text/ng-template" id="/colleges.html">
-      <p>You made it to colleges.html!!!</p>
 
-      <p>College name: {{ college.name }}</p>
+      <div class="left-half-panel">
+        <div id="college-panel" class="subpanel">
+          <span class="panel-label">College: {{ college.name }}</span>
+        </div> <!-- #college-panel -->
 
-      <div ng-show="error">
-        <span>{{ error.message }}</span><br />
-      </div>
+        <div id="partner-list-panel" class="subpanel">
+          <span class="panel-label">List of Lab Partners</span>
+          <ul id="partner-list">
+            <span>
+            <li ng-repeat="partner in college.labPartners | orderBy:'name'">
+              {{ partner.firstName}} {{ partner.lastName }}
+            </li></span>
+          </ul>
+        </div> <!-- #partner-list-panel -->
+      </div> <!-- .left-half-panel -->
 
-      <!-- Search bar for user to search for lab partner -->
-      <form id="lab-partner-search-form" ng-submit="showLabPartnerPage()">
-        <span>Search for your lab partner:</span>
-        <input id="selected-partner" ng-model="partnerName"
-          list="datalist-partners" />
-        <datalist id="datalist-partners">
-          <option ng-repeat="partner in college.labPartners | orderBy:'name'"
-            value="{{ partner.firstName }}"
-            id="{{ partner.firstName }}"
-            data-database-id="{{ partner._id }}" />
-        </datalist>
 
-        <button type="submit" class="btn btn-danger">Search</button>
-      </form>
+      <div class="right-half-panel">
+        <!-- <div id="partner-search-form-panel" class="subpanel">
+          <div ng-show="error">
+            <span>{{ error.message }}</span><br />
+          </div> -->
 
-      <br /><br />
+          <!-- Search bar for user to search for lab partner -->
+          <!-- <span class="panel-label">Search for Lab Partner</span>
+          <form id="lab-partner-search-form" ng-submit="showLabPartnerPage()">
+            <!-- Form field for first name -->
+            <!-- <input id="selected-partner" ng-model="partnerFirstName"
+              placeholder="First Name" list="datalist-partners" />
+            <datalist id="datalist-partners">
+              <option ng-repeat="partner in college.labPartners | orderBy:'name'"
+                value="{{ partner.firstName }}"
+                id="{{ partner.firstName }}"
+                data-database-id="{{ partner._id }}" /> --> 
 
-      <!-- Form for adding a lab partner -->
-      <div id="add-partner-form-error">
-        <span></span>
-      </div>
-      <form ng-show="isLoggedIn()" ng-submit="addPartner()"
-        id="add-partner-form">
-        <span>Don't see your lab partner? Do a public service
-          by submitting the form below.</span><br />
+            <!-- Form field for last name -->
+            <!-- <input id="selected-partner" ng-model="partnerLastName"
+              placeholder="Last Name" list="datalist-partners" />
+            <datalist id="datalist-partners">
+              <option ng-repeat="partner in college.labPartners | orderBy:'name'"
+                value="{{ partner.lastName }}"
+                id="{{ partner.lastName }}"
+                data-database-id="{{ partner._id }}" />
+            </datalist>
 
-        <input type="text" placeholder="First Name"
-          ng-model="firstName" />
-        <input type="text" placeholder="Last Name"
-          ng-model="lastName" />
+            <button type="submit" class="btn btn-danger">Search</button>
+          </form>
+        </div>  --><!-- #partner-search-form-panel -->
 
-        <button type="submit" class="btn btn-danger">
-          Add Lab Partner</button>
-      </form>
-      <div ng-hide="isLoggedIn()">
-        <span>Don't see your lab partner? Log in to write
-          his/her first review.</span>
-      </div>
+
+        <!-- Form for adding a lab partner -->
+        <div id="partner-add-form-panel" class="subpanel">
+          <div id="add-partner-form-error">
+            <span></span>
+          </div>
+
+          <span class="panel-label">Don't see your lab partner?</span>
+          <form ng-show="isLoggedIn()" ng-submit="addPartner()"
+            id="add-partner-form">
+            <span>Do a public service
+              by submitting the form below.</span><br />
+
+            <input type="text" placeholder="First Name"
+              ng-model="firstName" />
+            <input type="text" placeholder="Last Name"
+              ng-model="lastName" />
+
+            <button type="submit" class="btn btn-danger">
+              Add Lab Partner</button>
+          </form>
+          <div ng-hide="isLoggedIn()">
+            <span>Log in to write his/her first review.</span>
+          </div>
+        </div> <!-- #partner-add-form-panel -->
+      </div> <!-- .right-half-panel -->
+
 
     </script> <!-- colleges.html -->
 
@@ -217,8 +252,6 @@
     -->
 
     <script type="text/ng-template" id="/lab-partners.html">
-      <p>You made it to lab-partners.html</p>
-
       <p>Lab partner name: {{ labPartner.firstName }}</p>
       <p>Average rating: {{ averageRating.toFixed(ratingsPrecision) }}</p>
 
