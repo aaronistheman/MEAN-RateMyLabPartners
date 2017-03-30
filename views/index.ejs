@@ -72,6 +72,13 @@
     -->
 
     <script type="text/ng-template" id="/home.html">
+      <ol class="breadcrumb breadcrumb-my-settings">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Private</a></li>
+        <li><a href="#">Pictures</a></li>
+        <li class="active">Vacation</li>        
+      </ol>
+
       <div class="left-half-panel">
         <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
           <span class="panel-label">Welcome, {{ currentUser() }}</span>

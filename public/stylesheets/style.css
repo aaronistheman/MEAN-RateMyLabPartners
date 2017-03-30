@@ -16,6 +16,18 @@ a {
     font-weight: bold;
 }
 
+ol.breadcrumb-my-settings {
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+    border-radius: 25px;
+    font-size: 1.3em;
+}
+
+ol.breadcrumb-my-settings > li > a {
+    color: #ff8080;
+}
+
 
 
 
