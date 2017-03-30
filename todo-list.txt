@@ -1,12 +1,6 @@
 Current:
 -making the webpage look nice
 	-lab-partner-search page (i.e. college page)
-		-left panel showing list of lab partners
-			-each list entry should show average rating and number of
-			ratings
-				-these properties should be accessible from the model,
-				but not necessarily stored
-				-make it look good
 	-lab partner page
 		-left panel showing list of lab partners; reuse college page's
 		-display reviews in thsoe rectangle styles
