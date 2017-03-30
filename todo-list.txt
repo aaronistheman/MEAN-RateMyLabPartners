@@ -1,17 +1,8 @@
 Current:
 --------
 
--what else?
-
-
-Eventually:
------------
-
--there are some parts of code that I initially neglected
-copying from the tutorial; examine these;
-should end up checking off the entire tutorial
--should "just anyone" be allowed to add a college?
-	-No. Add a superuser feature
+-add an admin account; only this account can add a college
+-a user can't review the same person twice within three months
 	
 
 Considerable
@@ -31,9 +22,7 @@ the secret used for signing the tokens
 -if the user logs in while in the college page, he should
 be redirected to that same page, rather than to the home
 page again
--put the college search bar into the navigation bar
 -make entire webpage responsive
--a user can't review the same person twice within three months
 
 
 Junk users and passwords (for manual testing)
