@@ -1,10 +1,5 @@
 Current:
 -making the webpage look nice
-	-login/registration
-		-try to get the desired look
-			-logged in page
-			-really consider the general look and ask yourself -- deep
-				inside your soul -- if you feel it's right :D
 	-new navbar
 		-logo
 		-what should it have?
@@ -23,6 +18,10 @@ Current:
 		-show something special if partner has no ratings
 			-don't show average rating if partner has no ratings
 	-general
+		-really consider the general look and ask yourself -- deep
+			inside your soul -- if you feel it's right :D
+			-try everything and see how it all looks
+				-error texts
 		-use the text/bg color classes for messges to the user
 		(e.g. account created, wrong password)
 		-use breadcrumbs to show hierarchy of college to

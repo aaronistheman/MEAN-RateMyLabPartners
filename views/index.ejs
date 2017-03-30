@@ -43,11 +43,13 @@
 
       <div class="left-half-panel">
         <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
-          <span>Welcome, {{ currentUser() }}</span>
+          <span class="panel-label">Welcome, {{ currentUser() }}</span>
         </div> <!-- #name-panel -->
 
         <div ng-show="isLoggedIn()" id="logout-form-panel" class="subpanel">
-          <span><a href="" ng-click="logOut()">Log Out</a></span>
+          <span class="panel-label">Done With Us?</span>
+          <span><button ng-click="logOut()" class="btn btn-danger">
+            Log Out</button></span>
         </div> <!-- #logout-form-panel -->
 
         <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
@@ -118,8 +120,7 @@
               Add College</button>
           </form>
           <div ng-hide="isLoggedIn()">
-            <span>Don't see your college? Log in so you can
-              do something about it.</span>
+            <span>Log in so you can do something about it.</span>
           </div>
         </div> <!-- #add-college-form-panel -->
       </div> <!-- .right-half-panel -->
