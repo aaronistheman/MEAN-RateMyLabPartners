@@ -84,6 +84,13 @@ div.right-half-panel span {
     color: #ff8080;
 }
 
+
+
+
+/***************************************************************
+ * Regarding list of lab partners
+ **************************************************************/
+
 ul#partner-list {
     /* Make list scrollable */
     overflow: scroll;
@@ -93,6 +100,11 @@ ul#partner-list {
     background-color: black;
     opacity: 0.9;
     border: 5px solid #660000;
+}
+
+ul#partner-list li:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 

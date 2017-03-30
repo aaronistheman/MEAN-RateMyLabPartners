@@ -64,7 +64,6 @@
     -->
 
     <script type="text/ng-template" id="/home.html">
-
       <div class="left-half-panel">
         <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
           <span class="panel-label">Welcome, {{ currentUser() }}</span>
@@ -162,7 +161,6 @@
     -->
 
     <script type="text/ng-template" id="/colleges.html">
-
       <div class="left-half-panel">
         <div id="college-panel" class="subpanel">
           <span class="panel-label">College: {{ college.name }}</span>
@@ -172,7 +170,8 @@
           <span class="panel-label">List of Lab Partners</span>
           <ul id="partner-list">
             <span>
-            <li ng-repeat="partner in college.labPartners | orderBy:'name'">
+            <li ng-repeat="partner in college.labPartners | orderBy:'name'"
+              ng-click="goPartnerPage(partner._id)">
               {{ partner.firstName}} {{ partner.lastName }}
             </li></span>
           </ul>
