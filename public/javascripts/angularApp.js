@@ -67,6 +67,7 @@ function($stateProvider, $urlRouterProvider) {
 
 
 var LocalStorageTokenName = 'rate-token';
+var AdminStorageName = 'is-admin';
 app.factory('auth', [
 '$http',
 '$window',
@@ -113,13 +114,21 @@ function($http, $window) {
 
   auth.logIn = function(user){
     return $http.post('/login', user).success(function(data){
+      $window.localStorage[AdminStorageName] = data.isAdmin;
       auth.saveToken(data.token);
     });
   };
 
   auth.logOut = function(){
+    $window.localStorage[AdminStorageName] = false;
     $window.localStorage.removeItem(LocalStorageTokenName);
   };
+
+  auth.isUserAdmin = function() {
+    // Note that local storage elements are stored as strings,
+    // even if they were put in as boolean values
+    return $window.localStorage[AdminStorageName] === "true";
+  }
 
   return auth;
 }]); // auth factory
@@ -196,6 +205,7 @@ function($scope, $state, auth, colleges){
 
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
+  $scope.isUserAdmin = auth.isUserAdmin;
   $scope.logOut = auth.logOut;
 
   $scope.register = function(){

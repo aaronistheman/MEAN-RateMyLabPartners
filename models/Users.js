@@ -14,7 +14,10 @@ var UserSchema = new mongoose.Schema({
 
   // Password-related
 	hash: String,    // the hidden password
-	salt: String
+	salt: String,
+
+
+  isAdmin: {type: Boolean, default: false},
 });
 
 

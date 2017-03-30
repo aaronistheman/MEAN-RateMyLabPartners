@@ -139,13 +139,14 @@
         </div> <!-- #college-search-form-panel -->
 
         <!-- Form for adding a college -->
-        <div id="add-college-form-panel" class="subpanel">
+        <div ng-show="isLoggedIn() && isUserAdmin()"
+          id="add-college-form-panel" class="subpanel">
           <span class="panel-label">Don't See Your College?</span>
 
           <div id="add-college-form-error">
             <span class="error-text"></span>
           </div>
-          <form ng-show="isLoggedIn()" ng-submit="addCollege()">
+          <form ng-submit="addCollege()">
             <span>Do something about it
               by submitting the form below.</span><br />
             <input type="text" placeholder="College Name"
@@ -154,9 +155,6 @@
             <button type="submit" class="btn btn-danger">
               Add College</button>
           </form>
-          <div ng-hide="isLoggedIn()">
-            <span>Log in so you can do something about it.</span>
-          </div>
         </div> <!-- #add-college-form-panel -->
       </div> <!-- .right-half-panel -->
     

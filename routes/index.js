@@ -59,7 +59,7 @@ router.post('/login', function(req, res, next){
     if(err){ return next(err); }
 
     if(user){
-      return res.json({token: user.generateJWT()});
+      return res.json({token: user.generateJWT(), isAdmin: user.isAdmin });
     } else {
       return res.status(401).json(info);
     }

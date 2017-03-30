@@ -21,12 +21,14 @@ Features
 
 * Can view the reviews and average rating of a lab partner.
 
-* Can introduce a new (not yet reviewed) college or lab partner.
+* Can introduce a new (not yet reviewed) lab partner.
+
+* Admin account can introduce a new college.
+
+* Use of breadcrumbs to present a navigational hierarchy to the user.
 
 * Reasonably good-looking UI (though this wasn't my main priority
 with this application).
-
-* Use of breadcrumbs to present a navigational hierarchy to the user.
 
 To Run
 ------

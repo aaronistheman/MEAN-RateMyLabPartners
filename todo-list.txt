@@ -1,7 +1,6 @@
 Current:
 --------
 
--add an admin account; only this account can add a college
 -a user can't review the same person twice within three months
 	
 
@@ -30,3 +29,4 @@ Junk users and passwords (for manual testing)
 
 tahu nuva
 gali nuva
+admin admin
