@@ -41,84 +41,88 @@
 
     <script type="text/ng-template" id="/home.html">
 
-      <div ng-show="isLoggedIn()" id="name-panel">
-        Welcome, {{ currentUser() }}
-      </div> <!-- #name-panel -->
+      <div class="left-half-panel">
+        <div ng-show="isLoggedIn()" id="name-panel">
+          Welcome, {{ currentUser() }}
+        </div> <!-- #name-panel -->
 
-      <div ng-show="isLoggedIn()" id="logout-form-panel">
-        <a href="" ng-click="logOut()">Log Out</a>
-      </div> <!-- #logout-form-panel -->
+        <div ng-show="isLoggedIn()" id="logout-form-panel">
+          <a href="" ng-click="logOut()">Log Out</a>
+        </div> <!-- #logout-form-panel -->
 
-      <div ng-hide="isLoggedIn()" id="login-form-panel">
-        <div ng-show="errorLogin">
-          <span>{{ errorLogin.message }}</span>
-        </div>
-        <form ng-submit="logIn()">
-          <h3>Log In</h3>
+        <div ng-hide="isLoggedIn()" id="login-form-panel">
+          <div ng-show="errorLogin">
+            <span>{{ errorLogin.message }}</span>
+          </div>
+          <form ng-submit="logIn()">
+            <h3>Log In</h3>
 
-          <input type="text" placeholder="Username"
-            ng-model="returningUser.username" />
-          <input type="password" placeholder="Password"
-            ng-model="returningUser.password" />
-          <button type="submit" class="btn btn-primary">Log In</button>
-        </form>
-      </div> <!-- #login-form-panel -->
-
-
-      <div ng-hide="isLoggedIn()" id="registration-form-panel">
-        <div ng-show="errorRegistration">
-          <span>{{ errorRegistration.message }}</span>
-        </div>
-
-        <form ng-submit="register()">
-          <h3>Register</h3>
-
-          <input type="text" placeholder="Username"
-            ng-model="newUser.username" />
-          <input type="password" placeholder="Password"
-            ng-model="newUser.password" />
-          <button type="submit" class="btn btn-primary">Register</button>
-        </form>  
-      </div> <!-- #registration-form-panel -->
+            <input type="text" placeholder="Username"
+              ng-model="returningUser.username" />
+            <input type="password" placeholder="Password"
+              ng-model="returningUser.password" />
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </form>
+        </div> <!-- #login-form-panel -->
 
 
-      <div id="college-search-form-panel">
-        <div ng-show="errorCollegeSearch">
-          <span>{{ errorCollegeSearch.message }}</span><br />
-        </div>
+        <div ng-hide="isLoggedIn()" id="registration-form-panel">
+          <div ng-show="errorRegistration">
+            <span>{{ errorRegistration.message }}</span>
+          </div>
 
-        <!-- Search bar for user to search for college -->
-        <form id="college-search-form" ng-submit="showCollegePage()">
-          <span>Search for your college:</span>
-          <input id="selected-college" ng-model="collegeName" list="colleges" />
-          <datalist id="colleges">
-            <option ng-repeat="college in colleges | orderBy:'name'"
-              value="{{ college.name }}" id="{{ college.name }}"
-              data-database-id="{{ college._id }}" />
-          </datalist>
+          <form ng-submit="register()">
+            <h3>Register</h3>
 
-          <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-      </div> <!-- #college-search-form-panel -->
+            <input type="text" placeholder="Username"
+              ng-model="newUser.username" />
+            <input type="password" placeholder="Password"
+              ng-model="newUser.password" />
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>  
+        </div> <!-- #registration-form-panel -->
+      </div> <!-- .left-half-panel -->
 
-      <br /><br />
 
-      <!-- Form for adding a college -->
-      <div id="add-college-form-panel">
-        <form ng-show="isLoggedIn()" ng-submit="addCollege()">
-          <span>Don't see your college? Do something about it
-            by submitting the form below.</span><br />
-          <input type="text" placeholder="College Name"
-            ng-model="name">
+      <div class="right-half-panel">
+        <div id="college-search-form-panel">
+          <div ng-show="errorCollegeSearch">
+            <span>{{ errorCollegeSearch.message }}</span><br />
+          </div>
 
-          <button type="submit" class="btn btn-primary">
-            Add College</button>
-        </form>
-        <div ng-hide="isLoggedIn()">
-          <span>Don't see your college? Log in so you can
-            do something about it.</span>
-        </div>
-      </div> <!-- #add-college-form-panel -->
+          <!-- Search bar for user to search for college -->
+          <form id="college-search-form" ng-submit="showCollegePage()">
+            <span>Search for your college:</span>
+            <input id="selected-college" ng-model="collegeName" list="colleges" />
+            <datalist id="colleges">
+              <option ng-repeat="college in colleges | orderBy:'name'"
+                value="{{ college.name }}" id="{{ college.name }}"
+                data-database-id="{{ college._id }}" />
+            </datalist>
+
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div> <!-- #college-search-form-panel -->
+
+        <br /><br />
+
+        <!-- Form for adding a college -->
+        <div id="add-college-form-panel">
+          <form ng-show="isLoggedIn()" ng-submit="addCollege()">
+            <span>Don't see your college? Do something about it
+              by submitting the form below.</span><br />
+            <input type="text" placeholder="College Name"
+              ng-model="name">
+
+            <button type="submit" class="btn btn-primary">
+              Add College</button>
+          </form>
+          <div ng-hide="isLoggedIn()">
+            <span>Don't see your college? Log in so you can
+              do something about it.</span>
+          </div>
+        </div> <!-- #add-college-form-panel -->
+      </div> <!-- .right-half-panel -->
     
     </script> <!-- home.html -->
 

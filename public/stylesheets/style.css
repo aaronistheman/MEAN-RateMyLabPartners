@@ -1,9 +1,18 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("../images/background.png");
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url("../images/background.png");
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+div.left-half-panel {
+    width: 50%;
+    float: left;
+}
+
+div.right-half-panel {
+    margin-left: 50%;
 }
