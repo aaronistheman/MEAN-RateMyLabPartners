@@ -1,8 +1,5 @@
 Current:
 -making the webpage look nice
-	-new navbar
-		-logo and username should link to home
-		-collapse the nav bar if it takes too much space
 	-college-search page
 	-lab-partner-search page (i.e. college page)
 		-left panel showing list of lab partners
@@ -54,10 +51,11 @@ the secret used for signing the tokens
 be redirected to that same page, rather than to the home
 page again
 -put the college search bar into the navigation bar
+-make entire webpage responsive
 
 
 Junk users and passwords (for manual testing)
 ----------------------------------------------
 
 tahu nuva
-Tahu Nuva
+gali nuva

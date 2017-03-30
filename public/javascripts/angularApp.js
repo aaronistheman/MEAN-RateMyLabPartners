@@ -375,9 +375,14 @@ function($scope, colleges, college, labPartner, auth){
 // for nav bar
 app.controller('NavCtrl', [
 '$scope',
+'$state',
 'auth',
-function($scope, auth) {
+function($scope, $state, auth) {
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
   $scope.logOut = auth.logOut;
+
+  $scope.goHome = function() {
+    $state.go('home');
+  } // goHome()
 }]); // NavCtrl controller
