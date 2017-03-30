@@ -1,9 +1,7 @@
 Current:
 -making the webpage look nice
 	-new navbar
-		-logo should link to home
-		-what should it have?
-			-Logout button shown if user is logged in
+		-logo and username should link to home
 		-collapse the nav bar if it takes too much space
 	-college-search page
 	-lab-partner-search page (i.e. college page)

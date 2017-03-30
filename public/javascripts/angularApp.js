@@ -370,3 +370,14 @@ function($scope, colleges, college, labPartner, auth){
   }; // addReview()
 
 }]); // PartnersCtrl controller
+
+
+// for nav bar
+app.controller('NavCtrl', [
+'$scope',
+'auth',
+function($scope, auth) {
+  $scope.isLoggedIn = auth.isLoggedIn;
+  $scope.currentUser = auth.currentUser;
+  $scope.logOut = auth.logOut;
+}]); // NavCtrl controller

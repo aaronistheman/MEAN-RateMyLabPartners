@@ -81,3 +81,7 @@ nav.navbar-color-settings {
 nav.navbar-color-settings a {
     font-size: 1.5em;
 }
+
+nav.navbar-color-settings a:hover {
+    cursor: pointer
+}
