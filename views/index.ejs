@@ -93,7 +93,8 @@
           <h3>Find Lab Partner</h3>
           <form id="college-search-form" ng-submit="showCollegePage()">
             <span>First, search for your college:</span>
-            <input id="selected-college" ng-model="collegeName" list="colleges" />
+            <input type="text" placeholder="College Name"
+              id="selected-college" ng-model="collegeName" list="colleges" />
             <datalist id="colleges">
               <option ng-repeat="college in colleges | orderBy:'name'"
                 value="{{ college.name }}" id="{{ college.name }}"

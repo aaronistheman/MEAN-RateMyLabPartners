@@ -8,18 +8,29 @@ a {
     color: #00B7FF;
 }
 
-div.left-half-panel {
-    width: 45%;
-    float: left;
+div.left-half-panel, div.right-half-panel {
+    width: 35%;
     /*background-color: white;*/
+}
+
+div.left-half-panel {
+    float: left;
+    margin-left: 15px;
 }
 
 div.right-half-panel {
-    width: 45%;
     float: right;
-    /*background-color: white;*/
+    margin-right: 15px;
 }
 
 div.left-half-panel h3, div.right-half-panel h3 {
-    border: 5px solid red;
+    background-color: black;
+    opacity: 0.9;
+    color: #ff8080;
+    border: 5px solid #660000;
+}
+
+div.right-half-panel h3 {
+    text-align: right;
+    /*padding-right: 20px;*/
 }
