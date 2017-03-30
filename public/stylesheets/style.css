@@ -112,6 +112,26 @@ div#review-form-wrapper.hidden {
     display: none;
 }
 
+div.review {
+    margin-left: 20px;
+    margin-top: 10px;
+
+    padding-left: 5px;
+
+    background-color: #4d0000;
+    opacity: 0.9;
+    border: 5px solid black;
+}
+
+div.review > span.rating {
+    font-weight: bold;
+}
+
+div.review > span.body {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
 
 
 

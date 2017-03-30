@@ -318,10 +318,13 @@
           <div ng-show="labPartner.reviews.length > 0">
             <div ng-repeat="review in labPartner.reviews
               | orderBy:'-creationDate'">
-              <br />
-              <div>{{ review.class }}</div>
-              <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
-              <div>{{ review.body }}</div>
+              <div class="review">
+                <span>{{ review.class }}</span><br />
+                <span class="rating">
+                  {{ review.rating.toFixed(ratingsPrecision) }}</span>
+                  <br />
+                <span class="body">"{{ review.body }}"</span>
+              </div>
             </div>
           </div>
           <div ng-hide="labPartner.reviews.length > 0">

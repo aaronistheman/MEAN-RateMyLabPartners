@@ -1,9 +1,7 @@
 Current:
 -making the webpage look nice
-	-lab partner page
-		-display reviews in those rectangle styles
-			-display reviews with <blockquote> (Bootstrap styled)
 	-general
+		-faint background for all <span>
 		-less rectangles; have radial ends
 		-really consider the general look and ask yourself -- deep
 			inside your soul -- if you feel it's right :D
