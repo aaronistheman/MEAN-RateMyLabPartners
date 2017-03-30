@@ -316,6 +316,11 @@ function($scope, $state, colleges, college, auth){
   }; // showLabPartnerPage()
 
 
+  $scope.goHome = function() {
+    $state.go('home');
+  } // goHome()
+
+
   $scope.goPartnerPage = function(partnerId) {
     // Redirect to the page of this lab partner
     $state.go('partners', {
@@ -329,11 +334,12 @@ function($scope, $state, colleges, college, auth){
 
 app.controller("PartnersCtrl", [
 '$scope',
+'$state',
 'colleges',
 'college',
 'labPartner',
 'auth',
-function($scope, colleges, college, labPartner, auth){
+function($scope, $state, colleges, college, labPartner, auth){
   $scope.isLoggedIn = auth.isLoggedIn;
 
   $scope.college = college;
@@ -400,6 +406,16 @@ function($scope, colleges, college, labPartner, auth){
       $("#review-form-toggle").html("Show Review Form");
     }
   } // toggleReviewForm()
+
+
+  $scope.goHome = function() {
+    $state.go('home');
+  } // goHome()
+
+
+  $scope.goCollegePage = function() {
+    $state.go('colleges', { id: college._id });
+  } // goCollegePage()
 
 }]); // PartnersCtrl controller
 

@@ -1,14 +1,7 @@
 Current:
 --------
 
--making the webpage look nice
-	-general
-		-use breadcrumbs to show hierarchy of college to lab partner
-			-make it work the right way
-				-correct hierarchy
-				-correct hyperlinks
-		-make it easier to log in
--start keeping track of features on readme
+-what else?
 
 
 Eventually:

@@ -12,6 +12,10 @@ a {
     color: #00B7FF;
 }
 
+a:hover {
+    cursor: pointer; /* Not sure why I have to do this but I do */
+}
+
 .error-text {
     font-weight: bold;
 }

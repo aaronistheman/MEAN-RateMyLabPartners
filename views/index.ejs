@@ -72,13 +72,6 @@
     -->
 
     <script type="text/ng-template" id="/home.html">
-      <ol class="breadcrumb breadcrumb-my-settings">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Private</a></li>
-        <li><a href="#">Pictures</a></li>
-        <li class="active">Vacation</li>        
-      </ol>
-
       <div class="left-half-panel">
         <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
           <span class="panel-label">Welcome, {{ currentUser() }}</span>
@@ -180,6 +173,11 @@
     -->
 
     <script type="text/ng-template" id="/colleges.html">
+      <ol class="breadcrumb breadcrumb-my-settings">
+        <li><a ng-click="goHome()">Home</a></li>
+        <li class="active">{{ college.name }}</li>
+      </ol>
+
       <div class="left-half-panel">
         <div id="college-panel" class="subpanel">
           <span class="panel-label">College: {{ college.name }}</span>
@@ -276,6 +274,11 @@
     -->
 
     <script type="text/ng-template" id="/lab-partners.html">
+      <ol class="breadcrumb breadcrumb-my-settings">
+        <li><a ng-click="goHome()">Home</a></li>
+        <li><a ng-click="goCollegePage()">{{ college.name }}</a></li>
+        <li class="active">{{ labPartner.firstName }} {{ labPartner.lastName }}</li>
+      </ol>
 
       <div class="left-half-panel lab-partners-page">
         <div id="partner-info-panel" class="subpanel">

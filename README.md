@@ -26,6 +26,8 @@ Features
 * Reasonably good-looking UI (though this wasn't my main priority
 with this application).
 
+* Use of breadcrumbs to present a navigational hierarchy to the user.
+
 To Run
 ------
 
