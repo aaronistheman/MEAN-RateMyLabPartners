@@ -258,54 +258,64 @@
     -->
 
     <script type="text/ng-template" id="/lab-partners.html">
-      <p>Lab partner name: {{ labPartner.firstName }}</p>
-      <p>Average rating: {{ averageRating.toFixed(ratingsPrecision) }}</p>
 
-      <!-- Form for adding a review -->
-      <div>
-        <div id="add-review-form-error">
-          <span></span>
-        </div>
-        <div ng-show="error">
-          <span>{{ error.message }}</span>
-        </div>
-        <form ng-show="isLoggedIn()" ng-submit="addReview()"
-          id="add-review-form">
-          <span>Had a bad time with this lab partner? Take revenge
-            by leaving a review. Or leave a good review. Whatever.
-            (Note that we advise that you only review lab partners
-            that you have actually been partnered with.)
-            </span><br />
+      <div class="left-half-panel lab-partners-page">
+        <div id="partner-info-panel" class="subpanel">
+          <span class="panel-label">
+            Name: {{ labPartner.firstName }} {{ labPartner.lastName }}</span>
+          <span>Average Rating: {{ averageRating.toFixed(ratingsPrecision) }}</span><br />
+          <span>College: {{ college.name }}</span>
+        </div> <!-- #partner-info-panel -->
 
-          <!-- The form fields -->
-          <input type="text" placeholder="Which Class?"
-            ng-model="class" /><br />
-          <input type="text" placeholder="Rating? (Between 1-5)"
-            ng-model="rating" /><br />
-          <textarea rows="8" cols="80"
-            placeholder="Enter Justifications Here"
-            ng-model="body"></textarea><br />
+        <!-- Form for adding a review -->
+        <div id="add-review-form-panel" class="subpanel">
+          <span class="panel-label">Got Something to Say?</span>
 
-          <button type="submit" class="btn btn-danger">
-            Add Review</button>
-        </form>
-        <div ng-hide="isLoggedIn()">
-          <span>Have a score to settle? Log in to write a review
-            for this lab partner.</span>
-        </div>
-      </div>
+          <div id="add-review-form-error">
+            <span></span>
+          </div>
+          <div ng-show="error">
+            <span>{{ error.message }}</span>
+          </div>
+          <form ng-show="isLoggedIn()" ng-submit="addReview()"
+            id="add-review-form">
+            <span>Had a bad time with this lab partner? Take revenge
+              by leaving a review. Or leave a good review. Whatever.
+              <!-- (Please only review lab partners
+              that you have actually been partnered with.) -->
+              </span><br />
 
-      <!-- Show already-existing reviews -->
-      <div>
-        <div ng-repeat="review in labPartner.reviews
-          | orderBy:'-creationDate'">
-          <br />
-          <div>{{ review.class }}</div>
-          <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
-          <div>{{ review.body }}</div>
-        </div>
-      </div>
+            <!-- The form fields -->
+            <input type="text" placeholder="Which Class?"
+              ng-model="class" /><br />
+            <input type="text" placeholder="Rating? (Between 1-5)"
+              ng-model="rating" /><br />
+            <textarea rows="8" cols="60"
+              placeholder="Enter Justifications Here"
+              ng-model="body"></textarea><br />
 
+            <button type="submit" class="btn btn-danger">
+              Add Review</button>
+          </form>
+          <div ng-hide="isLoggedIn()">
+            <span>Have a score to settle? Log in to write a review
+              for this lab partner.</span>
+          </div>
+        </div> <!-- #add-review-form-panel -->
+
+        <!-- Show already-existing reviews -->
+        <div id="reviews-list-panel" class="subpanel">
+          <span class="panel-label">Reviews</span>
+          <div ng-repeat="review in labPartner.reviews
+            | orderBy:'-creationDate'">
+            <br />
+            <div>{{ review.class }}</div>
+            <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
+            <div>{{ review.body }}</div>
+          </div>
+        </div> <!-- #reviews-list-panel -->
+
+      </div> <!-- .left-half-panel -->
     </script> <!-- lab-partners.html -->
 
   </body>

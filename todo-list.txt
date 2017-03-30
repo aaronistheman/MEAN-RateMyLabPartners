@@ -1,11 +1,11 @@
 Current:
 -making the webpage look nice
 	-lab partner page
-		-left panel showing list of lab partners; reuse college page's
-		-display reviews in thsoe rectangle styles
-			-display reviews with <blockquote> (Bootstrap styled)
+		-the "leave review" form should be toggle-able
 		-show something special if partner has no ratings
 			-don't show average rating if partner has no ratings
+		-display reviews in those rectangle styles
+			-display reviews with <blockquote> (Bootstrap styled)
 	-general
 		-really consider the general look and ask yourself -- deep
 			inside your soul -- if you feel it's right :D

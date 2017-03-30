@@ -24,6 +24,14 @@ div.left-half-panel, div.right-half-panel {
     width: 40%;
 }
 
+div.left-half-panel.lab-partners-page {
+    width: 95%;
+}
+
+div.right-half-panel.lab-partners-page {
+    width: 0%;
+}
+
 div.left-half-panel {
     float: left;
     margin-left: 15px;
@@ -65,7 +73,8 @@ div.right-half-panel span.panel-label {
     padding-right: 10px;
 }
 
-div.left-half-panel input, div.right-half-panel input {
+div.left-half-panel input, div.right-half-panel input,
+div.left-half-panel textarea {
     /* The input element itself */
     background-color: white;
     border-color: black;
