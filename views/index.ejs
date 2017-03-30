@@ -32,7 +32,9 @@
       ng-controller="NavCtrl">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" ng-click="goHome()">RateMyLabPartner.com</a>
+          <a class="navbar-brand" ng-click="goHome()">
+            <span class="glyphicon glyphicon-home"></span>
+            RateMyLabPartner.com</a>
         </div>
         <!-- <ul class="nav navbar-nav">
           <li><a href="#">Blah</a></li>
@@ -40,12 +42,19 @@
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
           <!-- Show this part to non-logged-in user -->
-          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">Log In</a></li>
-          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">Register</a></li>
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-user"></span>
+            Register</a></li>
 
           <!-- Show this part to logged-in user -->
-          <li ng-show="isLoggedIn()"><a ng-click="goHome()">{{ currentUser() }}</a></li>
-          <li ng-show="isLoggedIn()"><a ng-click="logOut()">Log Out</a></li>
+          <li ng-show="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-user"></span>
+            {{ currentUser() }}</a></li>
+          <li ng-show="isLoggedIn()"><a ng-click="logOut()">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Log Out</a></li>
         </ul>
       </div>
     </nav>
@@ -93,7 +102,7 @@
 
         <div ng-hide="isLoggedIn()" id="registration-form-panel" class="subpanel">
           <span class="panel-label">Register</span>
-          
+
           <div ng-show="errorRegistration">
             <span class="error-text">{{ errorRegistration.message }}</span>
           </div>
