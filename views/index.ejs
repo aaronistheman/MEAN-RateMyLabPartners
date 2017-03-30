@@ -43,10 +43,9 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Show this part to non-logged-in user -->
           <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
-            <span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+            <span class="glyphicon glyphicon-user"></span>Register</a></li>
           <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
-            <span class="glyphicon glyphicon-user"></span>
-            Register</a></li>
+            <span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
 
           <!-- Show this part to logged-in user -->
           <li ng-show="isLoggedIn()"><a ng-click="goHome()">
@@ -84,21 +83,6 @@
             Log Out</button></span>
         </div> <!-- #logout-form-panel -->
 
-        <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
-          <span class="panel-label">Log In</span>
-
-          <div ng-show="errorLogin">
-            <span class="error-text">{{ errorLogin.message }}</span>
-          </div>
-          <form ng-submit="logIn()">
-            <input type="text" placeholder="Username"
-              ng-model="returningUser.username" />
-            <input type="password" placeholder="Password"
-              ng-model="returningUser.password" />
-            <button type="submit" class="btn btn-danger">Log In</button>
-          </form>
-        </div> <!-- #login-form-panel -->
-
 
         <div ng-hide="isLoggedIn()" id="registration-form-panel" class="subpanel">
           <span class="panel-label">Register</span>
@@ -114,6 +98,21 @@
             <button type="submit" class="btn btn-danger">Register</button>
           </form>  
         </div> <!-- #registration-form-panel -->
+
+        <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
+          <span class="panel-label">Log In</span>
+
+          <div ng-show="errorLogin">
+            <span class="error-text">{{ errorLogin.message }}</span>
+          </div>
+          <form ng-submit="logIn()">
+            <input type="text" placeholder="Username"
+              ng-model="returningUser.username" />
+            <input type="password" placeholder="Password"
+              ng-model="returningUser.password" />
+            <button type="submit" class="btn btn-danger">Log In</button>
+          </form>
+        </div> <!-- #login-form-panel -->
       </div> <!-- .left-half-panel -->
 
 

@@ -3,7 +3,6 @@ Current:
 
 -making the webpage look nice
 	-general
-		-switch order of login and signup
 		-use breadcrumbs to show hierarchy of college to lab partner
 		-make it easier to log in
 -start keeping track of features on readme
