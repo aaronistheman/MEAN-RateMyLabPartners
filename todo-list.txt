@@ -1,7 +1,6 @@
 Current:
 -making the webpage look nice
 	-login/registration
-		-move logout button too; remove navbar
 		-try to get the desired look
 	-navbar
 		-logo

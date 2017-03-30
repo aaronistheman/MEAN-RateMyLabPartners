@@ -28,28 +28,6 @@ function($stateProvider, $urlRouterProvider) {
         }]
       }
 		})
-    // .state('login', {
-    //   url: '/login',
-    //   templateUrl: '/login.html',
-    //   controller: 'AuthCtrl',
-    //   onEnter: ['$state', 'auth', function($state, auth){
-    //     // redirect user to home state if already logged in
-    //     if(auth.isLoggedIn()){
-    //       $state.go('home');
-    //     }
-    //   }]
-    // })
-    // .state('register', {
-    //   url: '/register',
-    //   templateUrl: '/register.html',
-    //   controller: 'AuthCtrl',
-    //   onEnter: ['$state', 'auth', function($state, auth){
-    //     // redirect user to home state if already logged in
-    //     if(auth.isLoggedIn()){
-    //       $state.go('home');
-    //     }
-    //   }]
-    // })
     .state('colleges', { // state for showing one college
       url: '/colleges/{id}',
       templateUrl: '/colleges.html',
@@ -217,6 +195,8 @@ function($scope, $state, auth, colleges){
   $scope.colleges = colleges.colleges;
 
   $scope.isLoggedIn = auth.isLoggedIn;
+  $scope.currentUser = auth.currentUser;
+  $scope.logOut = auth.logOut;
 
   $scope.register = function(){
     auth.register($scope.newUser).error(function(error){
@@ -272,44 +252,6 @@ function($scope, $state, auth, colleges){
   }; // showCollegePage()
 
 }]); // MainCtrl controller
-
-
-
-// app.controller('AuthCtrl', [
-// '$scope',
-// '$state',
-// 'auth',
-// function($scope, $state, auth){
-//   $scope.user = {};
-
-//   $scope.register = function(){
-//     auth.register($scope.newUser).error(function(error){
-//       $scope.error = error;
-//     }).then(function(){
-//       $state.go('home');
-//     });
-//   };
-
-//   $scope.logIn = function(){
-//     alert("Hullo");
-//     auth.logIn($scope.returningUser).error(function(error){
-//       $scope.error = error;
-//     }).then(function(){
-//       $state.go('home');
-//     })
-//   };
-// }]); // AuthCtrl controller
-
-
-
-app.controller('NavCtrl', [
-'$scope',
-'auth',
-function($scope, auth) {
-  $scope.isLoggedIn = auth.isLoggedIn;
-  $scope.currentUser = auth.currentUser;
-  $scope.logOut = auth.logOut;
-}]); // NavCtrl controller
 
 
 
