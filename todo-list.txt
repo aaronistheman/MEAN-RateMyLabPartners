@@ -1,7 +1,6 @@
 Current:
 -making the webpage look nice
 	-general
-		-faint background for all <span>
 		-less rectangles; have radial ends
 		-really consider the general look and ask yourself -- deep
 			inside your soul -- if you feel it's right :D
@@ -12,6 +11,7 @@ Current:
 		-use breadcrumbs to show hierarchy of college to
 		lab partner
 		-use glyphicons where possible
+		-make it easier to log in
 -start keeping track of features on readme
 
 
