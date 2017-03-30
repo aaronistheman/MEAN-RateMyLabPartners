@@ -3,7 +3,6 @@ Current:
 	-login/registration
 		-try to get the desired look
 			-logged out page
-				-buttons
 				-space out the login and register panels
 			-logged in page
 	-new navbar
