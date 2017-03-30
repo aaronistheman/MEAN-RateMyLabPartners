@@ -1,8 +1,6 @@
 Current:
 -making the webpage look nice
 	-lab partner page
-		-show something special if partner has no ratings
-			-don't show average rating if partner has no ratings
 		-display reviews in those rectangle styles
 			-display reviews with <blockquote> (Bootstrap styled)
 	-general

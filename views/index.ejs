@@ -263,7 +263,8 @@
         <div id="partner-info-panel" class="subpanel">
           <span class="panel-label">
             Name: {{ labPartner.firstName }} {{ labPartner.lastName }}</span>
-          <span>Average Rating: {{ averageRating.toFixed(ratingsPrecision) }}</span><br />
+          <span ng-show="averageRating">Average Rating:
+            {{ averageRating.toFixed(ratingsPrecision) }}<br /></span>
           <span>College: {{ college.name }}</span>
         </div> <!-- #partner-info-panel -->
 
@@ -314,12 +315,17 @@
         <!-- Show already-existing reviews -->
         <div id="reviews-list-panel" class="subpanel">
           <span class="panel-label">Reviews</span>
-          <div ng-repeat="review in labPartner.reviews
-            | orderBy:'-creationDate'">
-            <br />
-            <div>{{ review.class }}</div>
-            <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
-            <div>{{ review.body }}</div>
+          <div ng-show="labPartner.reviews.length > 0">
+            <div ng-repeat="review in labPartner.reviews
+              | orderBy:'-creationDate'">
+              <br />
+              <div>{{ review.class }}</div>
+              <div>{{ review.rating.toFixed(ratingsPrecision) }}</div>
+              <div>{{ review.body }}</div>
+            </div>
+          </div>
+          <div ng-hide="labPartner.reviews.length > 0">
+            <span>No reviews yet. What a nice person.</span>
           </div>
         </div> <!-- #reviews-list-panel -->
 

@@ -334,15 +334,19 @@ function($scope, colleges, college, labPartner, auth){
   $scope.ratingsPrecision = 1;
 
   $scope.updateAverageRating = function() {
-    // Find average rating by dividing the sum of the ratings
-    // (obtained with reduce()) by the number of ratings
-    var sum = labPartner.reviews.reduce(function(acc, review) {
-      return acc + review.rating;
-    }, 0);
-    $scope.averageRating = sum / labPartner.reviews.length;
+    if (labPartner.reviews.length > 0) { // if are reviews
+      // Find average rating by dividing the sum of the ratings
+      // (obtained with reduce()) by the number of ratings
+      var sum = labPartner.reviews.reduce(function(acc, review) {
+        return acc + review.rating;
+      }, 0);
+      $scope.averageRating = sum / labPartner.reviews.length;
+    } else { // if are NOT reviews
+      $scope.averageRating = false; // as sentinel ("numeric") value
+    }
   }
 
-  $scope.averageRating = 0;
+  $scope.averageRating = false; // as sentinel ("numeric") value
   $scope.updateAverageRating();
 
   $scope.addReview = function() {
