@@ -28,28 +28,28 @@ function($stateProvider, $urlRouterProvider) {
         }]
       }
 		})
-    .state('login', {
-      url: '/login',
-      templateUrl: '/login.html',
-      controller: 'AuthCtrl',
-      onEnter: ['$state', 'auth', function($state, auth){
-        // redirect user to home state if already logged in
-        if(auth.isLoggedIn()){
-          $state.go('home');
-        }
-      }]
-    })
-    .state('register', {
-      url: '/register',
-      templateUrl: '/register.html',
-      controller: 'AuthCtrl',
-      onEnter: ['$state', 'auth', function($state, auth){
-        // redirect user to home state if already logged in
-        if(auth.isLoggedIn()){
-          $state.go('home');
-        }
-      }]
-    })
+    // .state('login', {
+    //   url: '/login',
+    //   templateUrl: '/login.html',
+    //   controller: 'AuthCtrl',
+    //   onEnter: ['$state', 'auth', function($state, auth){
+    //     // redirect user to home state if already logged in
+    //     if(auth.isLoggedIn()){
+    //       $state.go('home');
+    //     }
+    //   }]
+    // })
+    // .state('register', {
+    //   url: '/register',
+    //   templateUrl: '/register.html',
+    //   controller: 'AuthCtrl',
+    //   onEnter: ['$state', 'auth', function($state, auth){
+    //     // redirect user to home state if already logged in
+    //     if(auth.isLoggedIn()){
+    //       $state.go('home');
+    //     }
+    //   }]
+    // })
     .state('colleges', { // state for showing one college
       url: '/colleges/{id}',
       templateUrl: '/colleges.html',
@@ -218,6 +218,28 @@ function($scope, $state, auth, colleges){
 
   $scope.isLoggedIn = auth.isLoggedIn;
 
+  $scope.register = function(){
+    auth.register($scope.newUser).error(function(error){
+      $scope.errorRegistration = error;
+    }).then(function(){
+      // Erase the form
+      $scope.newUser = {};
+
+      $state.go('home');
+    });
+  };
+
+  $scope.logIn = function(){
+    auth.logIn($scope.returningUser).error(function(error){
+      $scope.errorLogin = error;
+    }).then(function(){
+      // Erase the form
+      $scope.returningUser = {};
+
+      $state.go('home');
+    })
+  };
+
   $scope.addCollege = function(){
     if (!$scope.name || $scope.name === '') { return; }
 
@@ -242,7 +264,7 @@ function($scope, $state, auth, colleges){
 
       if (collegeTag.length == 0) { // if user didn't enter valid college
         // return error message
-        $scope.error = { message: "Dude, pick a valid college." };
+        $scope.errorCollegeSearch = { message: "Dude, pick a valid college." };
       } else { // if user entered valid college
         $state.go('colleges', { id: collegeTag.data("database-id") });
       }
@@ -253,29 +275,30 @@ function($scope, $state, auth, colleges){
 
 
 
-app.controller('AuthCtrl', [
-'$scope',
-'$state',
-'auth',
-function($scope, $state, auth){
-  $scope.user = {};
+// app.controller('AuthCtrl', [
+// '$scope',
+// '$state',
+// 'auth',
+// function($scope, $state, auth){
+//   $scope.user = {};
 
-  $scope.register = function(){
-    auth.register($scope.user).error(function(error){
-      $scope.error = error;
-    }).then(function(){
-      $state.go('home');
-    });
-  };
+//   $scope.register = function(){
+//     auth.register($scope.newUser).error(function(error){
+//       $scope.error = error;
+//     }).then(function(){
+//       $state.go('home');
+//     });
+//   };
 
-  $scope.logIn = function(){
-    auth.logIn($scope.user).error(function(error){
-      $scope.error = error;
-    }).then(function(){
-      $state.go('home');
-    })
-  };
-}]); // AuthCtrl controller
+//   $scope.logIn = function(){
+//     alert("Hullo");
+//     auth.logIn($scope.returningUser).error(function(error){
+//       $scope.error = error;
+//     }).then(function(){
+//       $state.go('home');
+//     })
+//   };
+// }]); // AuthCtrl controller
 
 
 
