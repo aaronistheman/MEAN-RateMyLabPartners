@@ -221,7 +221,10 @@ function($scope, $state, auth, colleges){
   };
 
   $scope.addCollege = function(){
-    if (!$scope.name || $scope.name === '') { return; }
+    if (!$scope.name || $scope.name === '') { 
+      $("#add-college-form-error > span").text("Fill out all fields");
+      return;
+    }
 
     colleges.create({
       name: $scope.name

@@ -76,11 +76,11 @@
         </div> <!-- #logout-form-panel -->
 
         <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
-          <div ng-show="errorLogin">
-            <span>{{ errorLogin.message }}</span>
-          </div>
-
           <span class="panel-label">Log In</span>
+
+          <div ng-show="errorLogin">
+            <span class="error-text">{{ errorLogin.message }}</span>
+          </div>
           <form ng-submit="logIn()">
             <input type="text" placeholder="Username"
               ng-model="returningUser.username" />
@@ -92,11 +92,11 @@
 
 
         <div ng-hide="isLoggedIn()" id="registration-form-panel" class="subpanel">
-          <div ng-show="errorRegistration">
-            <span>{{ errorRegistration.message }}</span>
-          </div>
-
           <span class="panel-label">Register</span>
+          
+          <div ng-show="errorRegistration">
+            <span class="error-text">{{ errorRegistration.message }}</span>
+          </div>
           <form ng-submit="register()">
             <input type="text" placeholder="Username"
               ng-model="newUser.username" />
@@ -110,12 +110,12 @@
 
       <div class="right-half-panel">
         <div id="college-search-form-panel" class="subpanel">
-          <div ng-show="errorCollegeSearch">
-            <span>{{ errorCollegeSearch.message }}</span><br />
-          </div>
-
           <!-- Search bar for user to search for college -->
           <span class="panel-label">Find Lab Partner</span>
+          <div ng-show="errorCollegeSearch">
+            <span class="error-text">{{ errorCollegeSearch.message }}
+              </span><br />
+          </div>
           <form id="college-search-form" ng-submit="showCollegePage()">
             <span>First, search for your college:</span>
             <input type="text" placeholder="College Name"
@@ -133,6 +133,10 @@
         <!-- Form for adding a college -->
         <div id="add-college-form-panel" class="subpanel">
           <span class="panel-label">Don't See Your College?</span>
+
+          <div id="add-college-form-error">
+            <span class="error-text"></span>
+          </div>
           <form ng-show="isLoggedIn()" ng-submit="addCollege()">
             <span>Do something about it
               by submitting the form below.</span><br />
@@ -189,7 +193,7 @@
       <div class="right-half-panel">
         <!-- <div id="partner-search-form-panel" class="subpanel">
           <div ng-show="error">
-            <span>{{ error.message }}</span><br />
+            <span class="error-text">{{ error.message }}</span><br />
           </div> -->
 
           <!-- Search bar for user to search for lab partner -->
@@ -221,11 +225,10 @@
 
         <!-- Form for adding a lab partner -->
         <div id="partner-add-form-panel" class="subpanel">
-          <div id="add-partner-form-error">
-            <span></span>
-          </div>
-
           <span class="panel-label">Don't see your lab partner?</span>
+          <div id="add-partner-form-error">
+            <span class="error-text"></span>
+          </div>
           <form ng-show="isLoggedIn()" ng-submit="addPartner()"
             id="add-partner-form">
             <span>Do a public service
@@ -282,17 +285,16 @@
               Show Review Form
             </button>
 
-            <div id="add-review-form-error">
-              <span></span>
-            </div>
-            <div ng-show="error">
-              <span>{{ error.message }}</span>
-            </div>
-            <form ng-submit="addReview()"
-              id="add-review-form">
-
+            <form ng-submit="addReview()" id="add-review-form">
               <!-- The form fields -->
               <div id="review-form-wrapper" class="hidden">
+                <div id="add-review-form-error">
+                  <span class="error-text"></span>
+                </div>
+                <div ng-show="error">
+                  <span class="error-text">{{ error.message }}</span>
+                </div>
+
                 <span>(Please only review lab partners
                 that you have actually been partners with.)</span><br />
 

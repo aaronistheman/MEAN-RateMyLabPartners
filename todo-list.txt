@@ -3,10 +3,9 @@ Current:
 
 -making the webpage look nice
 	-general
-		-really consider the general look and ask yourself -- deep
-			inside your soul -- if you feel it's right :D
-			-try everything and see how it all looks
-				-error texts
+		-try everything and see how it all looks; fix:
+			-error texts
+				-they should disappear after correct submission
 		-use the text/bg color classes for messges to the user
 		(e.g. account created, wrong password)
 		-use breadcrumbs to show hierarchy of college to
