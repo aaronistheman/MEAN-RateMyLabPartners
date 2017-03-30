@@ -1,7 +1,8 @@
 Current:
+--------
+
 -making the webpage look nice
 	-general
-		-less rectangles; have radial ends
 		-really consider the general look and ask yourself -- deep
 			inside your soul -- if you feel it's right :D
 			-try everything and see how it all looks
