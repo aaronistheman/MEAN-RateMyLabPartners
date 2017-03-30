@@ -3,9 +3,9 @@ Current:
 	-login/registration
 		-try to get the desired look
 			-logged out page
-				-background color for each
 				-ribbons for the labels
 				-text stylings
+				-background color for each?
 	-new navbar
 		-logo
 		-what should it have?
@@ -37,6 +37,8 @@ Eventually:
 -there are some parts of code that I initially neglected
 copying from the tutorial; examine these;
 should end up checking off the entire tutorial
+-should "just anyone" be allowed to add a college?
+	-No. Add a superuser feature
 	
 
 Considerable

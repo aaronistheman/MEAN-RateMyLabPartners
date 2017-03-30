@@ -1,5 +1,5 @@
 body {
-    padding: 50px;
+    padding: 0px; /*50px;*/
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-image: url("../images/background.png");
 }
@@ -9,10 +9,17 @@ a {
 }
 
 div.left-half-panel {
-    width: 50%;
+    width: 45%;
     float: left;
+    /*background-color: white;*/
 }
 
 div.right-half-panel {
-    margin-left: 50%;
+    width: 45%;
+    float: right;
+    /*background-color: white;*/
+}
+
+div.left-half-panel h3, div.right-half-panel h3 {
+    border: 5px solid red;
 }
