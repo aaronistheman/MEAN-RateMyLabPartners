@@ -27,6 +27,26 @@
   </head>
   <body ng-app="rateMyLabPartners" ng-cloak>
 
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default navbar-color-settings"
+      ng-controller="NavCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ng-click="goHome()">RateMyLabPartner.com</a>
+        </div>
+        <!-- <ul class="nav navbar-nav">
+          <li><a href="#">Blah</a></li>
+          <li><a href="#">Blah2</a></li>
+        </ul> -->
+        <ul class="nav navbar-nav navbar-right">
+          <!-- The navbar if the user is logged in -->
+          <li ng-show="isLoggedIn()"><a ng-click="goHome()">{{ currentUser() }}</a></li>
+          <li ng-show="isLoggedIn()"><a ng-click="logOut()">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
     <!-- Specify where to render the current AngularJS template -->
     <ui-view></ui-view>
 

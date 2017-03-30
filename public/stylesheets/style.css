@@ -71,3 +71,17 @@ div.right-half-panel span {
     font-size: 1.5em;
     color: #ff8080;
 }
+
+nav.navbar-color-settings {
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+}
+
+nav.navbar-color-settings a {
+    font-size: 1.5em;
+}
+
+nav.navbar-color-settings a:hover {
+    cursor: pointer
+}
