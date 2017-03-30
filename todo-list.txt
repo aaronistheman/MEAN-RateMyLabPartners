@@ -1,9 +1,10 @@
 Current:
 -making the webpage look nice
-	-login/registration
-		-style login/registration forms (with default style?)
-	-navbar
+	-new navbar
 		-logo
+		-what should it have?
+			-Login and Register buttons that go to the main page
+			-Logout button
 		-collapse the nav bar if it takes too much space
 	-college-search page
 	-lab-partner-search page (i.e. college page)
@@ -17,6 +18,10 @@ Current:
 		-show something special if partner has no ratings
 			-don't show average rating if partner has no ratings
 	-general
+		-really consider the general look and ask yourself -- deep
+			inside your soul -- if you feel it's right :D
+			-try everything and see how it all looks
+				-error texts
 		-use the text/bg color classes for messges to the user
 		(e.g. account created, wrong password)
 		-use breadcrumbs to show hierarchy of college to
@@ -30,6 +35,8 @@ Eventually:
 -there are some parts of code that I initially neglected
 copying from the tutorial; examine these;
 should end up checking off the entire tutorial
+-should "just anyone" be allowed to add a college?
+	-No. Add a superuser feature
 	
 
 Considerable

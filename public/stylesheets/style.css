@@ -1,9 +1,73 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("../images/background.png");
+    padding: 0px; /*50px;*/
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url("../images/background.png");
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+div.left-half-panel, div.right-half-panel {
+    width: 40%;
+}
+
+div.left-half-panel {
+    float: left;
+    margin-left: 15px;
+}
+
+div.right-half-panel {
+    float: right;
+    margin-right: 15px;
+}
+
+div.left-half-panel > div.subpanel,
+div.right-half-panel > div.subpanel {
+    /* For verticaly spacing out subpanels */
+    margin-bottom: 80px;
+}
+
+div.left-half-panel span.panel-label,
+div.right-half-panel span.panel-label {
+
+    /* Take the width of the container */
+    display: block;
+
+    /* Text in the element */
+    font-size: 3em;
+    color: #ff8080;
+
+    /* The element itself */
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+}
+
+div.left-half-panel span.panel-label {
+    padding-left: 10px;
+}
+
+div.right-half-panel span.panel-label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+div.left-half-panel input, div.right-half-panel input {
+    /* The input element itself */
+    background-color: white;
+    border-color: black;
+    opacity: 0.8;
+
+    /* Within the input element (the text) */
+    padding: 5px;
+    color: black;
+    font-size: 1.3em;
+}
+
+/* Styling general text within the right panel */
+div.left-half-panel span,
+div.right-half-panel span {
+    font-size: 1.5em;
+    color: #ff8080;
 }
