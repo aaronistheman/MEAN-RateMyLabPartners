@@ -22,6 +22,15 @@ div.right-half-panel {
     margin-right: 15px;
 }
 
+/*
+div.left-half-panel div,
+div.right-half-panel div {
+    background-color: white;
+    opacity: 0.8;
+    border: 5px solid black;
+}
+*/
+
 div.left-half-panel span.panel-label,
 div.right-half-panel span.panel-label {
 
@@ -45,4 +54,23 @@ div.left-half-panel span.panel-label {
 div.right-half-panel span.panel-label {
     text-align: right;
     padding-right: 10px;
+}
+
+div.left-half-panel input, div.right-half-panel input {
+    /* The input element itself */
+    background-color: white;
+    border-color: black;
+    opacity: 0.8;
+
+    /* Within the input element (the text) */
+    padding: 5px;
+    color: black;
+    font-size: 1.3em;
+}
+
+/* Styling general text within the right panel */
+div.left-half-panel span,
+div.right-half-panel span {
+    font-size: 1.5em;
+    color: #ff8080;
 }

@@ -43,11 +43,11 @@
 
       <div class="left-half-panel">
         <div ng-show="isLoggedIn()" id="name-panel">
-          Welcome, {{ currentUser() }}
+          <span>Welcome, {{ currentUser() }}</span>
         </div> <!-- #name-panel -->
 
         <div ng-show="isLoggedIn()" id="logout-form-panel">
-          <a href="" ng-click="logOut()">Log Out</a>
+          <span><a href="" ng-click="logOut()">Log Out</a></span>
         </div> <!-- #logout-form-panel -->
 
         <div ng-hide="isLoggedIn()" id="login-form-panel">
