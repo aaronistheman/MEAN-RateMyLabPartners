@@ -1,11 +1,359 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+  <head lang="en">
+
+    <title>RateMyLabPartners</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap's CSS part -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Bootstrap's JS part -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+
+    <!-- My own included files -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/angularApp.js"></script>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body ng-app="rateMyLabPartners" ng-cloak>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default navbar-color-settings"
+      ng-controller="NavCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ng-click="goHome()">
+            <span class="glyphicon glyphicon-home"></span>
+            RateMyLabPartner.com</a>
+        </div>
+        <!-- <ul class="nav navbar-nav">
+          <li><a href="#">Blah</a></li>
+          <li><a href="#">Blah2</a></li>
+        </ul> -->
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Show this part to non-logged-in user -->
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-user"></span>Register</a></li>
+          <li ng-hide="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+
+          <!-- Show this part to logged-in user -->
+          <li ng-show="isLoggedIn()"><a ng-click="goHome()">
+            <span class="glyphicon glyphicon-user"></span>
+            {{ currentUser() }}</a></li>
+          <li ng-show="isLoggedIn()"><a ng-click="logOut()">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- Specify where to render the current AngularJS template -->
+    <ui-view></ui-view>
+
+
+
+
+    <!--
+    *****************************************************
+    *** template: home.html
+    *****************************************************
+    -->
+
+    <script type="text/ng-template" id="/home.html">
+      <div class="left-half-panel">
+        <div ng-show="isLoggedIn()" id="name-panel" class="subpanel">
+          <span class="panel-label">Welcome, {{ currentUser() }}</span>
+        </div> <!-- #name-panel -->
+
+        <div ng-show="isLoggedIn()" id="logout-form-panel" class="subpanel">
+          <span class="panel-label">Done With Us?</span>
+          <span><button ng-click="logOut()" class="btn btn-danger">
+            Log Out</button></span>
+        </div> <!-- #logout-form-panel -->
+
+
+        <div ng-hide="isLoggedIn()" id="registration-form-panel" class="subpanel">
+          <span class="panel-label">Register</span>
+
+          <div ng-show="errorRegistration">
+            <span class="error-text">{{ errorRegistration.message }}</span>
+          </div>
+          <form ng-submit="register()">
+            <input type="text" placeholder="Username"
+              ng-model="newUser.username" />
+            <input type="password" placeholder="Password"
+              ng-model="newUser.password" />
+            <button type="submit" class="btn btn-danger">Register</button>
+          </form>  
+        </div> <!-- #registration-form-panel -->
+
+        <div ng-hide="isLoggedIn()" id="login-form-panel" class="subpanel">
+          <span class="panel-label">Log In</span>
+
+          <div ng-show="errorLogin">
+            <span class="error-text">{{ errorLogin.message }}</span>
+          </div>
+          <form ng-submit="logIn()">
+            <input type="text" placeholder="Username"
+              ng-model="returningUser.username" />
+            <input type="password" placeholder="Password"
+              ng-model="returningUser.password" />
+            <button type="submit" class="btn btn-danger">Log In</button>
+          </form>
+        </div> <!-- #login-form-panel -->
+      </div> <!-- .left-half-panel -->
+
+
+      <div class="right-half-panel">
+        <div id="college-search-form-panel" class="subpanel">
+          <!-- Search bar for user to search for college -->
+          <span class="panel-label">Find Lab Partner</span>
+          <div ng-show="errorCollegeSearch">
+            <span class="error-text">{{ errorCollegeSearch.message }}
+              </span><br />
+          </div>
+          <form id="college-search-form" ng-submit="showCollegePage()">
+            <span>First, search for your college:</span>
+            <input type="text" placeholder="College Name"
+              id="selected-college" ng-model="collegeName" list="colleges" />
+            <datalist id="colleges">
+              <option ng-repeat="college in colleges | orderBy:'name'"
+                value="{{ college.name }}" id="{{ college.name }}"
+                data-database-id="{{ college._id }}" />
+            </datalist>
+
+            <button type="submit" class="btn btn-danger">Search</button>
+          </form>
+        </div> <!-- #college-search-form-panel -->
+
+        <!-- Form for adding a college -->
+        <div ng-show="isLoggedIn() && isUserAdmin()"
+          id="add-college-form-panel" class="subpanel">
+          <span class="panel-label">Don't See Your College?</span>
+
+          <div id="add-college-form-error">
+            <span class="error-text"></span>
+          </div>
+          <form ng-submit="addCollege()">
+            <span>Do something about it
+              by submitting the form below.</span><br />
+            <input type="text" placeholder="College Name"
+              ng-model="name">
+
+            <button type="submit" class="btn btn-danger">
+              Add College</button>
+          </form>
+        </div> <!-- #add-college-form-panel -->
+      </div> <!-- .right-half-panel -->
+    
+    </script> <!-- home.html -->
+
+
+
+
+
+    <!--
+    *****************************************************
+    *** template: colleges.html
+    *****************************************************
+    -->
+
+    <script type="text/ng-template" id="/colleges.html">
+      <ol class="breadcrumb breadcrumb-my-settings">
+        <li><a ng-click="goHome()">Home</a></li>
+        <li class="active">{{ college.name }}</li>
+      </ol>
+
+      <div class="left-half-panel">
+        <div id="college-panel" class="subpanel">
+          <span class="panel-label">College: {{ college.name }}</span>
+        </div> <!-- #college-panel -->
+
+        <div id="partner-list-panel" class="subpanel">
+          <span class="panel-label">List of Lab Partners</span>
+          <div ng-hide="college.labPartners.length > 0">
+            <span>No reviewed lab partners at this college yet!
+              What a great college!</span>
+          </div>
+          <div ng-show="college.labPartners.length > 0">
+            <ul id="partner-list">
+              <span>
+              <li ng-repeat="partner in college.labPartners | orderBy:'name'"
+                ng-click="goPartnerPage(partner._id)">
+                {{ partner.firstName}} {{ partner.lastName }}
+                (Number of reviews: {{ partner.numReviews }})
+              </li></span>
+            </ul>
+          </div>
+        </div> <!-- #partner-list-panel -->
+      </div> <!-- .left-half-panel -->
+
+
+      <div class="right-half-panel">
+        <!-- <div id="partner-search-form-panel" class="subpanel">
+          <div ng-show="error">
+            <span class="error-text">{{ error.message }}</span><br />
+          </div> -->
+
+          <!-- Search bar for user to search for lab partner -->
+          <!-- <span class="panel-label">Search for Lab Partner</span>
+          <form id="lab-partner-search-form" ng-submit="showLabPartnerPage()">
+            <!-- Form field for first name -->
+            <!-- <input id="selected-partner" ng-model="partnerFirstName"
+              placeholder="First Name" list="datalist-partners" />
+            <datalist id="datalist-partners">
+              <option ng-repeat="partner in college.labPartners | orderBy:'name'"
+                value="{{ partner.firstName }}"
+                id="{{ partner.firstName }}"
+                data-database-id="{{ partner._id }}" /> --> 
+
+            <!-- Form field for last name -->
+            <!-- <input id="selected-partner" ng-model="partnerLastName"
+              placeholder="Last Name" list="datalist-partners" />
+            <datalist id="datalist-partners">
+              <option ng-repeat="partner in college.labPartners | orderBy:'name'"
+                value="{{ partner.lastName }}"
+                id="{{ partner.lastName }}"
+                data-database-id="{{ partner._id }}" />
+            </datalist>
+
+            <button type="submit" class="btn btn-danger">Search</button>
+          </form>
+        </div>  --><!-- #partner-search-form-panel -->
+
+
+        <!-- Form for adding a lab partner -->
+        <div id="partner-add-form-panel" class="subpanel">
+          <span class="panel-label">Don't see your lab partner?</span>
+          <div id="add-partner-form-error">
+            <span class="error-text"></span>
+          </div>
+          <form ng-show="isLoggedIn()" ng-submit="addPartner()"
+            id="add-partner-form">
+            <span>Do a public service
+              by submitting the form below.</span><br />
+
+            <input type="text" placeholder="First Name"
+              ng-model="firstName" />
+            <input type="text" placeholder="Last Name"
+              ng-model="lastName" />
+
+            <button type="submit" class="btn btn-danger">
+              Add Lab Partner</button>
+          </form>
+          <div ng-hide="isLoggedIn()">
+            <span>Log in to write his/her first review.</span>
+          </div>
+        </div> <!-- #partner-add-form-panel -->
+      </div> <!-- .right-half-panel -->
+
+
+    </script> <!-- colleges.html -->
+
+
+
+
+    <!--
+    *****************************************************
+    *** template: lab-partners.html
+    *****************************************************
+    -->
+
+    <script type="text/ng-template" id="/lab-partners.html">
+      <ol class="breadcrumb breadcrumb-my-settings">
+        <li><a ng-click="goHome()">Home</a></li>
+        <li><a ng-click="goCollegePage()">{{ college.name }}</a></li>
+        <li class="active">{{ labPartner.firstName }} {{ labPartner.lastName }}</li>
+      </ol>
+
+      <div class="left-half-panel lab-partners-page">
+        <div id="partner-info-panel" class="subpanel">
+          <span class="panel-label">
+            Name: {{ labPartner.firstName }} {{ labPartner.lastName }}</span>
+          <span ng-show="averageRating">Average Rating:
+            {{ averageRating.toFixed(ratingsPrecision) }}<br /></span>
+          <span>College: {{ college.name }}</span>
+        </div> <!-- #partner-info-panel -->
+
+        <!-- Form for adding a review -->
+        <div id="add-review-form-panel" class="subpanel">
+          <span class="panel-label">Got Something to Say?</span>
+
+          <div ng-show="isLoggedIn()">
+            <span>Had a bad time with this lab partner? Take revenge
+              by leaving a review. Or leave a good review. Whatever.
+              </span><br />
+
+            <button id="review-form-toggle" class="btn btn-danger"
+              ng-click="toggleReviewForm()">
+              Show Review Form
+            </button>
+
+            <form ng-submit="addReview()" id="add-review-form">
+              <!-- The form fields -->
+              <div id="review-form-wrapper" class="hidden">
+                <div id="add-review-form-error">
+                  <span class="error-text"></span>
+                </div>
+                <div ng-show="error">
+                  <span class="error-text">{{ error.message }}</span>
+                </div>
+
+                <span>(Please only review lab partners
+                that you have actually been partners with.)</span><br />
+
+                <input type="text" placeholder="Which Class?"
+                  ng-model="class" /><br />
+                <input type="text" placeholder="Rating? (Between 1-5)"
+                  ng-model="rating" /><br />
+                <textarea rows="8" cols="60"
+                  placeholder="Enter Justifications Here"
+                  ng-model="body"></textarea><br />
+                <button type="submit" class="btn btn-danger">
+                  Add Review</button>
+              </div>
+            </form>
+          </div>
+          <div ng-hide="isLoggedIn()">
+            <span>Have a score to settle? Log in to write a review
+              for this lab partner.</span>
+          </div>
+        </div> <!-- #add-review-form-panel -->
+
+        <!-- Show already-existing reviews -->
+        <div id="reviews-list-panel" class="subpanel">
+          <span class="panel-label">Reviews</span>
+          <div ng-show="labPartner.reviews.length > 0">
+            <div ng-repeat="review in labPartner.reviews
+              | orderBy:'-creationDate'">
+              <div class="review">
+                <span>{{ review.class }}</span><br />
+                <span class="rating">
+                  {{ review.rating.toFixed(ratingsPrecision) }}</span>
+                  <br />
+                <span class="body">"{{ review.body }}"</span>
+              </div>
+            </div>
+          </div>
+          <div ng-hide="labPartner.reviews.length > 0">
+            <span>No reviews yet. What a nice person.</span>
+          </div>
+        </div> <!-- #reviews-list-panel -->
+
+      </div> <!-- .left-half-panel -->
+    </script> <!-- lab-partners.html -->
+
   </body>
 </html>

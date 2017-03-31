@@ -1,0 +1,32 @@
+Current:
+--------
+
+
+	
+
+Considerable
+------------
+
+-figure out a clean way to prevent duplicates (e.g. usernames,
+colleges) without having to use similar boilerplate code in
+the respective Express routes
+-figure out how to split angularApp.js into multiple files
+-should I be serializing the user?
+-although this is a trivial app, should I *not* hardcode
+the secret used for signing the tokens
+	-is hardcoded in:
+		-routes/index.js
+		-mdoels/Users.js
+	-could use environment variable instead
+-if the user logs in while in the college page, he should
+be redirected to that same page, rather than to the home
+page again
+-make entire webpage responsive
+
+
+Junk users and passwords (for manual testing)
+----------------------------------------------
+
+tahu nuva
+gali nuva
+admin admin

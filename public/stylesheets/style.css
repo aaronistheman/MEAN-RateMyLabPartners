@@ -1,8 +1,204 @@
+/***************************************************************
+ * General
+ **************************************************************/
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 0px; /*50px;*/
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url("../images/background.png");
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+a:hover {
+    cursor: pointer; /* Not sure why I have to do this but I do */
+}
+
+.error-text {
+    font-weight: bold;
+}
+
+ol.breadcrumb-my-settings {
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+    border-radius: 25px;
+    font-size: 1.3em;
+}
+
+ol.breadcrumb-my-settings > li > a {
+    color: #ff8080;
+}
+
+
+
+
+
+/***************************************************************
+ * Panel-related
+ **************************************************************/
+
+div.left-half-panel, div.right-half-panel {
+    width: 40%;
+}
+
+div.left-half-panel {
+    float: left;
+    margin-left: 15px;
+}
+
+div.right-half-panel {
+    float: right;
+    margin-right: 15px;
+}
+
+div.left-half-panel > div.subpanel,
+div.right-half-panel > div.subpanel {
+    /* For verticaly spacing out subpanels */
+    margin-bottom: 80px;
+}
+
+div.left-half-panel span.panel-label,
+div.right-half-panel span.panel-label {
+
+    /* Take the width of the container */
+    display: block;
+
+    /* Text in the element */
+    font-size: 3em;
+    color: #ff8080;
+
+    /* The element itself */
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+    border-radius: 25px;
+}
+
+div.left-half-panel span.panel-label {
+    padding-left: 10px;
+}
+
+div.right-half-panel span.panel-label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+div.left-half-panel input, div.right-half-panel input,
+div.left-half-panel textarea {
+    /* The input element itself */
+    background-color: white;
+    border-color: black;
+    opacity: 0.8;
+
+    /* Within the input element (the text) */
+    padding: 5px;
+    color: black;
+    font-size: 1.3em;
+}
+
+/* Styling general text within the right panel */
+div.left-half-panel span,
+div.right-half-panel span {
+    /* Styling the text */
+    font-size: 1.5em;
+    color: #ff8080;
+
+    border-radius: 5px;
+
+    /* Styling the background of the text */
+    background-color: rgba(77, 0, 0, 0.8);
+}
+
+
+
+/***************************************************************
+ * Specific to lab partner page
+ **************************************************************/
+
+div.left-half-panel.lab-partners-page {
+    width: 95%;
+}
+
+div.right-half-panel.lab-partners-page {
+    width: 0%;
+}
+
+div#review-form-wrapper {
+    padding-top: 10px;
+    display: block;
+}
+
+div#review-form-wrapper > * {
+    margin-left: 10px;
+}
+
+div#review-form-wrapper.hidden {
+    display: none;
+}
+
+div.review {
+    margin-left: 20px;
+    margin-top: 10px;
+
+    padding-left: 5px;
+
+    background-color: #4d0000;
+    opacity: 0.9;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
+div.review > span.rating {
+    font-weight: bold;
+}
+
+div.review > span.body {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+
+
+
+/***************************************************************
+ * Regarding list of lab partners
+ **************************************************************/
+
+ul#partner-list {
+    /* Make list scrollable */
+    overflow: scroll;
+    height: 300px;
+
+    /* Make list look pretty */
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+}
+
+ul#partner-list li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+/***************************************************************
+ * Navbar-related
+ **************************************************************/
+
+nav.navbar-color-settings {
+    background-color: black;
+    opacity: 0.9;
+    border: 5px solid #660000;
+}
+
+nav.navbar-color-settings a {
+    font-size: 1.5em;
+}
+
+nav.navbar-color-settings a:hover {
+    cursor: pointer
 }
