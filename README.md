@@ -5,8 +5,11 @@
 About
 -----
 
-This is a "just for fun," not real version of RateMyProfessors.com
-for rating lab partners instead :-)
+This is a comical, trivial version of RateMyProfessors.com
+meant for rating lab partners instead :-)
+
+There's not much to this project, as it was just meant to help me try
+out the MEAN framework.
 
 Languages/Software Used: JavaScript, MEAN framework
 (MongoDB/Mongoose, Express, AngularJS, Node.js), HTML/CSS,

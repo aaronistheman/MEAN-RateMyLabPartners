@@ -1,7 +1,7 @@
 Current:
 --------
 
--a user can't review the same person twice within three months
+
 	
 
 Considerable
